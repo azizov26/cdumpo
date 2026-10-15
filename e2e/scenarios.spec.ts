@@ -44,9 +44,9 @@ test("страница намаза: день, неделя, переключе�
 
 test("навигация: раздел-заглушка и «Ещё»", async ({ page }) => {
   await page.goto("/eshchyo");
-  await page.getByRole("main").getByRole("link", { name: "Закят" }).click();
-  await expect(page).toHaveURL(/\/dobro\/zakyat$/);
-  await expect(page.getByRole("heading", { level: 1, name: "Закят" })).toBeVisible();
+  await page.getByRole("main").getByRole("link", { name: "Садака по пятницам" }).click();
+  await expect(page).toHaveURL(/\/dobro\/sadaka$/);
+  await expect(page.getByRole("heading", { level: 1, name: "Садака по пятницам" })).toBeVisible();
   await expect(page.getByText("Раздел готовится")).toBeVisible();
 });
 

@@ -27,6 +27,12 @@ export function HijriCalendar() {
   const lead = (new Date(Date.UTC(year, month, 1, 9)).getUTCDay() + 6) % 7; // понедельник — первый столбец
 
   const hij = rows.map((r) => toHijri(noon(r.key)));
+  // Ячейки по неделям: у role="grid" дети — строки (role="row"), у строк — ячейки.
+  const cells = [...Array<null>(lead).fill(null), ...rows.map((r, i) => ({ r, h: hij[i] }))];
+  const weeks = Array.from({ length: Math.ceil(cells.length / 7) }, (_, w) => {
+    const week = cells.slice(w * 7, w * 7 + 7);
+    return [...week, ...Array<null>(7 - week.length).fill(null)];
+  });
   const names = [...new Set(hij.map((h) => `${HIJRI_MONTH_NAMES[h.month - 1]} ${h.year}`))];
   const events = eventsBetween(noon(rows[0].key), noon(rows[rows.length - 1].key));
   const evByKey = new Map(events.map((e) => [dateKey(e.date), e]));
@@ -55,41 +61,43 @@ export function HijriCalendar() {
         <div role="grid" aria-label={`${MONTHS[month]} ${year}`} className="mt-6">
           <div role="row" className="grid grid-cols-7 text-center text-[13px] font-semibold text-fg-3">
             {WEEK.map((w, i) => (
-              <span key={w} role="columnheader" className={i === 4 ? "text-zarya" : ""}>
+              <span key={w} role="columnheader" className={i === 4 ? "text-accent" : ""}>
                 {w}
               </span>
             ))}
           </div>
-          <div className="mt-2 grid grid-cols-7 gap-1 md:gap-1.5">
-            {Array.from({ length: lead }, (_, i) => (
-              <span key={`b${i}`} />
+          <div className="mt-2 grid gap-1 md:gap-1.5">
+            {weeks.map((week, wi) => (
+              <div key={wi} role="row" className="grid grid-cols-7 gap-1 md:gap-1.5">
+                {week.map((cell, ci) => {
+                  if (!cell) return <span key={`b${ci}`} role="presentation" />;
+                  const { r, h } = cell;
+                  const ev = evByKey.get(r.key);
+                  const isToday = r.key === today;
+                  return (
+                    <div
+                      key={r.key}
+                      role="gridcell"
+                      aria-current={isToday ? "date" : undefined}
+                      title={ev?.title}
+                      className={`relative flex min-h-[56px] flex-col items-center justify-center rounded-[14px] border md:min-h-[72px] ${
+                        isToday ? "border-zarya bg-zarya text-on-gold" : ev ? "border-zarya" : "border-line"
+                      }`}
+                    >
+                      <span
+                        className={`text-[17px] font-semibold md:text-[19px] ${r.friday && !isToday ? "text-accent" : ""}`}
+                      >
+                        {r.day}
+                      </span>
+                      <span className={`text-[11px] md:text-[12px] ${isToday ? "text-on-gold/75" : "text-fg-3"}`}>
+                        {h.day === 1 ? HIJRI_MONTH_NAMES[h.month - 1].slice(0, 7) : h.day}
+                      </span>
+                      {ev && <span aria-hidden className="absolute top-1.5 right-1.5 size-1.5 rounded-full bg-zarya" />}
+                    </div>
+                  );
+                })}
+              </div>
             ))}
-            {rows.map((r, i) => {
-              const h = hij[i];
-              const ev = evByKey.get(r.key);
-              const isToday = r.key === today;
-              return (
-                <div
-                  key={r.key}
-                  role="gridcell"
-                  aria-current={isToday ? "date" : undefined}
-                  title={ev?.title}
-                  className={`relative flex min-h-[56px] flex-col items-center justify-center rounded-[14px] border md:min-h-[72px] ${
-                    isToday ? "border-zarya bg-zarya text-on-gold" : ev ? "border-zarya" : "border-line"
-                  }`}
-                >
-                  <span
-                    className={`text-[17px] font-semibold md:text-[19px] ${r.friday && !isToday ? "text-zarya" : ""}`}
-                  >
-                    {r.day}
-                  </span>
-                  <span className={`text-[11px] md:text-[12px] ${isToday ? "text-on-gold/75" : "text-fg-3"}`}>
-                    {h.day === 1 ? HIJRI_MONTH_NAMES[h.month - 1].slice(0, 7) : h.day}
-                  </span>
-                  {ev && <span aria-hidden className="absolute top-1.5 right-1.5 size-1.5 rounded-full bg-zarya" />}
-                </div>
-              );
-            })}
           </div>
         </div>
         <p className="mt-4 text-[13px] leading-[1.5] text-fg-3">
