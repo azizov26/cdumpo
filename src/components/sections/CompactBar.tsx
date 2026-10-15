@@ -34,7 +34,7 @@ export function CompactBar() {
           className="size-5 shrink-0 rounded-full bg-sun shadow-[0_0_14px_4px_rgb(255_233_190/0.45)]"
         />
         <div className="min-w-0 flex-1">
-          <p className="text-[11px] text-light/70">
+          <p className="text-[12px] text-light/70">
             {PRAYER_NAMES[next.key]} в {formatTime(next.at)}
           </p>
           <p className="tnum text-[15px] font-semibold">через {formatCountdown(next.at.getTime() - now.getTime())}</p>

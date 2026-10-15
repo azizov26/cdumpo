@@ -126,7 +126,7 @@ export function NamazDay() {
                       : "border-line bg-surface text-fg hover:border-fg-3"
                   }`}
                 >
-                  <span className={`text-[11px] font-semibold uppercase ${on ? "" : "text-fg-2"}`}>
+                  <span className={`text-[12px] font-semibold uppercase ${on ? "" : "text-fg-2"}`}>
                     {key ? short(key) : " "}
                   </span>
                   <span className="tnum font-display text-[22px] leading-none font-semibold">

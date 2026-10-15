@@ -14,15 +14,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-[64px] max-w-[1328px] items-center justify-between gap-6 px-5 md:h-[76px] md:px-10 xl:px-14">
         <Link href="/" aria-label="ЦДУМ ПО — на главную" className="flex min-h-11 items-center gap-2.5">
           <span className="grid size-10 shrink-0 place-items-center rounded-full bg-white ring-1 ring-line md:size-11">
-            <Image
-              src="/brand/logo.png"
-              alt=""
-              width={747}
-              height={709}
-              sizes="40px"
-              className="w-[32px] md:w-[36px]"
-              priority
-            />
+            <Image src="/brand/logo.png" alt="" width={76} height={72} className="w-[32px] md:w-[36px]" priority />
           </span>
           <span className="text-[12px] leading-[1.25] font-semibold md:text-[13px]">
             <span className="md:hidden">

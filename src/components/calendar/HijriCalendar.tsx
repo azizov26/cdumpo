@@ -89,7 +89,7 @@ export function HijriCalendar() {
                       >
                         {r.day}
                       </span>
-                      <span className={`text-[11px] md:text-[12px] ${isToday ? "text-on-gold/75" : "text-fg-3"}`}>
+                      <span className={`text-[12px] ${isToday ? "text-on-gold/75" : "text-fg-3"}`}>
                         {h.day === 1 ? HIJRI_MONTH_NAMES[h.month - 1].slice(0, 7) : h.day}
                       </span>
                       {ev && <span aria-hidden className="absolute top-1.5 right-1.5 size-1.5 rounded-full bg-zarya" />}

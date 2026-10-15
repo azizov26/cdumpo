@@ -1,21 +1,49 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { NewsItem } from "@/lib/content/news";
-import { RUBRICS, type Rubric } from "@/lib/content/rubrics";
+import type { NewsItem, NewsPage } from "@/lib/content/news";
+import type { Rubric } from "@/lib/content/rubrics";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { FeaturedNews, NewsRow } from "./NewsCard";
 
-const PAGE = 12;
-
-/** Лента «Жизни уммы»: фильтр по рубрике и «Показать ещё». Данные приходят с сервера. */
-export function NewsFeed({ items }: { items: NewsItem[] }) {
+/** Лента «Жизни уммы»: фильтр по рубрике и «Показать ещё». Первая порция приходит с сервера, остальное — по запросу. */
+export function NewsFeed({ first, rubrics }: { first: NewsPage; rubrics: Rubric[] }) {
   const [rubric, setRubric] = useState<Rubric | null>(null);
-  const [shown, setShown] = useState(PAGE);
+  // Загруженные порции по рубрикам: переключение туда-обратно не ходит на сервер повторно.
+  const [pages, setPages] = useState<Record<string, NewsPage>>({ all: first });
+  const [loading, setLoading] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const key = rubric ?? "all";
+  const page = pages[key];
   const [query, setQuery] = useState("");
   // Результат хранится вместе с запросом, для которого получен: «Ищем…» — когда он отстаёт от строки поиска.
   const [result, setResult] = useState<{ q: string; items: NewsItem[] | null } | null>(null);
   const q = query.trim();
+
+  async function load(r: Rubric | null, offset: number) {
+    setLoading(true);
+    setFailed(false);
+    try {
+      const params = new URLSearchParams({ offset: String(offset) });
+      if (r) params.set("rubric", r);
+      const res = await fetch(`/umma/lenta?${params}`);
+      if (!res.ok) throw new Error(String(res.status));
+      const data = (await res.json()) as NewsPage;
+      setPages((prev) => {
+        const k = r ?? "all";
+        return { ...prev, [k]: { total: data.total, items: [...(prev[k]?.items ?? []), ...data.items] } };
+      });
+    } catch {
+      setFailed(true);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function pick(r: Rubric | null) {
+    setRubric(r);
+    if (!pages[r ?? "all"]) void load(r, 0);
+  }
 
   // Поиск идёт на сервере по всем новостям (в ленте только свежие); запрос отправляется после паузы в наборе.
   useEffect(() => {
@@ -36,7 +64,7 @@ export function NewsFeed({ items }: { items: NewsItem[] }) {
     };
   }, [q]);
 
-  if (items.length === 0) {
+  if (first.items.length === 0) {
     return (
       <EmptyState title="Новостей пока нет" sky="dawn">
         Здесь будут новости муфтията и общин области, обращения, видео и фотографии с мероприятий.
@@ -44,10 +72,8 @@ export function NewsFeed({ items }: { items: NewsItem[] }) {
     );
   }
 
-  const present = RUBRICS.filter((r) => items.some((n) => n.rubric === r));
-  const list = rubric ? items.filter((n) => n.rubric === rubric) : items;
-  const [featured, ...rest] = list;
-  const visible = rest.slice(0, shown);
+  const items = page?.items ?? [];
+  const [featured, ...rest] = items;
 
   const chip = (on: boolean) =>
     `inline-flex h-11 items-center rounded-full px-4 text-[14px] font-semibold whitespace-nowrap transition-[background-color,transform] duration-150 ease-out active:scale-[0.97] ${
@@ -107,23 +133,17 @@ export function NewsFeed({ items }: { items: NewsItem[] }) {
             <button
               type="button"
               aria-pressed={rubric === null}
-              onClick={() => {
-                setRubric(null);
-                setShown(PAGE);
-              }}
+              onClick={() => pick(null)}
               className={chip(rubric === null)}
             >
               Все
             </button>
-            {present.map((r) => (
+            {rubrics.map((r) => (
               <button
                 key={r}
                 type="button"
                 aria-pressed={rubric === r}
-                onClick={() => {
-                  setRubric(r);
-                  setShown(PAGE);
-                }}
+                onClick={() => pick(r)}
                 className={chip(rubric === r)}
               >
                 {r}
@@ -131,35 +151,44 @@ export function NewsFeed({ items }: { items: NewsItem[] }) {
             ))}
           </div>
 
-          <div key={rubric ?? "all"} className="month-in mt-6 grid gap-5 lg:grid-cols-[1.25fr_1fr] lg:gap-7">
-            <FeaturedNews item={featured} />
-            <ul>
-              {visible.slice(0, 4).map((n) => (
-                <li key={n.slug} className="border-b border-line py-3.5 first:pt-0">
-                  <NewsRow item={n} />
-                </li>
-              ))}
-            </ul>
-          </div>
+          {!featured ? (
+            <p aria-live="polite" className="mt-6 text-[16px] text-fg-2">
+              {failed ? "Не удалось загрузить. Попробуйте ещё раз." : "Загружаем…"}
+            </p>
+          ) : (
+            <>
+              <div key={key} className="month-in mt-6 grid gap-5 lg:grid-cols-[1.25fr_1fr] lg:gap-7">
+                <FeaturedNews item={featured} />
+                <ul>
+                  {rest.slice(0, 4).map((n) => (
+                    <li key={n.slug} className="border-b border-line py-3.5 first:pt-0">
+                      <NewsRow item={n} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-          {visible.length > 4 && (
-            <ul className="month-in mt-2 grid gap-x-7 md:grid-cols-2">
-              {visible.slice(4).map((n) => (
-                <li key={n.slug} className="border-b border-line py-3.5">
-                  <NewsRow item={n} />
-                </li>
-              ))}
-            </ul>
-          )}
+              {rest.length > 4 && (
+                <ul className="month-in mt-2 grid gap-x-7 md:grid-cols-2">
+                  {rest.slice(4).map((n) => (
+                    <li key={n.slug} className="border-b border-line py-3.5">
+                      <NewsRow item={n} />
+                    </li>
+                  ))}
+                </ul>
+              )}
 
-          {rest.length > shown && (
-            <button
-              type="button"
-              onClick={() => setShown((s) => s + PAGE)}
-              className="mt-8 inline-flex h-12 items-center rounded-full border border-btn-line bg-btn-line-bg px-6 text-[14.5px] font-bold transition-transform duration-150 ease-out hover:border-fg-3 active:scale-[0.97]"
-            >
-              Показать ещё
-            </button>
+              {items.length < (page?.total ?? 0) && (
+                <button
+                  type="button"
+                  disabled={loading}
+                  onClick={() => void load(rubric, items.length)}
+                  className="mt-8 inline-flex h-12 items-center rounded-full border border-btn-line bg-btn-line-bg px-6 text-[14.5px] font-bold transition-transform duration-150 ease-out hover:border-fg-3 active:scale-[0.97]"
+                >
+                  {loading ? "Загружаем…" : failed ? "Не удалось. Ещё раз" : "Показать ещё"}
+                </button>
+              )}
+            </>
           )}
         </>
       )}

@@ -6,7 +6,8 @@ import { getCms } from "@/lib/cms/payload";
 import type { Rubric } from "@/lib/content/rubrics";
 import type { SkyState } from "@/lib/sky/geometry";
 
-export { RUBRICS } from "@/lib/content/rubrics";
+import { RUBRICS } from "@/lib/content/rubrics";
+export { RUBRICS };
 export type { Rubric } from "@/lib/content/rubrics";
 
 export type NewsItem = {
@@ -68,6 +69,49 @@ export async function getLatestNews(limit?: number): Promise<NewsItem[]> {
       pagination: false,
     });
     return docs.map((d) => toItem(d));
+  });
+}
+
+export type NewsPage = { items: NewsItem[]; total: number };
+
+/** Порция ленты «Жизни уммы»: по рубрике (или все) и со смещением. Ленту листают с сервера, а не грузят целиком. */
+export async function getNewsPage(rubric: Rubric | null, offset: number, limit: number): Promise<NewsPage> {
+  "use cache";
+  cacheTag("news");
+  cacheLife("hours");
+  return safely("лента новостей", { items: [], total: 0 }, async () => {
+    const cms = await getCms();
+    const { docs, totalDocs } = await cms.find({
+      collection: "news",
+      where: rubric
+        ? { and: [{ _status: { equals: "published" } }, { rubric: { equals: rubric } }] }
+        : { _status: { equals: "published" } },
+      sort: "-date",
+      limit,
+      page: Math.floor(offset / limit) + 1,
+      depth: 1,
+    });
+    return { items: docs.map((d) => toItem(d)), total: totalDocs };
+  });
+}
+
+/** Рубрики, в которых есть опубликованные новости (для кнопок-фильтров). */
+export async function getNewsRubrics(): Promise<Rubric[]> {
+  "use cache";
+  cacheTag("news");
+  cacheLife("hours");
+  return safely("рубрики новостей", [], async () => {
+    const cms = await getCms();
+    const present = await Promise.all(
+      RUBRICS.map(async (r) => {
+        const { totalDocs } = await cms.count({
+          collection: "news",
+          where: { and: [{ _status: { equals: "published" } }, { rubric: { equals: r } }] },
+        });
+        return totalDocs > 0 ? r : null;
+      }),
+    );
+    return present.filter((r): r is Rubric => r !== null);
   });
 }
 

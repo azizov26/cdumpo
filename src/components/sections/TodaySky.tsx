@@ -45,15 +45,7 @@ function Brand({ size }: { size: "phone" | "desktop" }) {
     >
       {/* Настоящий знак ЦДУМ ПО (растр с текущего сайта) — знак-звезда эталона условный. */}
       <span className={`grid shrink-0 place-items-center rounded-full bg-white ${d ? "size-11" : "size-9"}`}>
-        <Image
-          src="/brand/logo.png"
-          alt=""
-          width={747}
-          height={709}
-          sizes="40px"
-          className={d ? "w-[38px]" : "w-[31px]"}
-          priority
-        />
+        <Image src="/brand/logo.png" alt="" width={76} height={72} className={d ? "w-[38px]" : "w-[31px]"} priority />
       </span>
       <span className={`leading-[1.25] font-semibold whitespace-nowrap ${d ? "text-[13px]" : "text-[11.5px]"}`}>
         {d ? "Централизованное духовное управление" : "ЦДУМ"}

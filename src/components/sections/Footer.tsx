@@ -42,7 +42,7 @@ export function Footer() {
           <div>
             <Link href="/" className="flex items-center gap-2.5" aria-label="ЦДУМ ПО — на главную">
               <span className="grid size-11 shrink-0 place-items-center rounded-full bg-white">
-                <Image src="/brand/logo.png" alt="" width={747} height={709} sizes="40px" className="w-[38px]" />
+                <Image src="/brand/logo.png" alt="" width={76} height={72} className="w-[38px]" />
               </span>
               <span className="text-[13px] leading-[1.25] font-semibold">
                 Централизованное духовное управление
@@ -63,7 +63,7 @@ export function Footer() {
           </div>
           {columns.map((col) => (
             <nav key={col.title} aria-label={col.title}>
-              <h2 className="mb-2 text-[10.5px] font-bold tracking-[0.16em] text-gold-soft uppercase">{col.title}</h2>
+              <h2 className="mb-2 text-[12px] font-bold tracking-[0.16em] text-gold-soft uppercase">{col.title}</h2>
               <ul>
                 {col.links.map((l) => (
                   <li key={l.href}>

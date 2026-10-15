@@ -30,7 +30,7 @@ export function MobileTabBar({ current }: { current?: string }) {
               <Link
                 href={t.href}
                 aria-current={on ? "page" : undefined}
-                className={`flex min-h-[50px] flex-col items-center justify-center gap-1 text-[10.5px] font-semibold ${
+                className={`flex min-h-[50px] flex-col items-center justify-center gap-1 text-[12px] font-semibold ${
                   on
                     ? "text-[color:var(--tab-on)]"
                     : t.dobro

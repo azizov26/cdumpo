@@ -133,7 +133,7 @@ const MonthTable = memo(function MonthTable({ rows, todayKey, nextKey, from, col
       <caption className="sr-only">
         Время намаза в Пензе{month !== null && `, ${MONTHS[month]}`}, московское время
       </caption>
-      <thead className="text-[11px] md:text-[11.5px] md:tracking-[0.08em] md:uppercase">
+      <thead className="text-[12px] md:tracking-[0.08em] md:uppercase">
         <tr>
           <th scope="col" className={`${head} rounded-tl-[23px] pl-3 text-left md:pl-5`}>
             День
@@ -186,7 +186,7 @@ const MonthTable = memo(function MonthTable({ rows, todayKey, nextKey, from, col
                       {r.day}
                     </span>
                     <span
-                      className={`block text-[10.5px] leading-tight md:ml-2 md:inline md:text-[12.5px] ${
+                      className={`block text-[12px] leading-tight md:ml-2 md:inline md:text-[12.5px] ${
                         r.friday
                           ? `font-bold ${today ? "text-[color:var(--row-today-time)]" : "text-accent"}`
                           : today

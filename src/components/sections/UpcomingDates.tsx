@@ -44,7 +44,7 @@ export function UpcomingDates() {
                 {dayNum(d.date)}
               </p>
               <p
-                className={`mt-1 text-[11.5px] font-semibold tracking-[0.1em] uppercase md:text-[12.5px] ${hl ? "text-light/62" : "text-fg-2"}`}
+                className={`mt-1 text-[12px] font-semibold tracking-[0.1em] uppercase md:text-[12.5px] ${hl ? "text-light/62" : "text-fg-2"}`}
               >
                 {monthLabel(d.date, !d.approx)}
               </p>

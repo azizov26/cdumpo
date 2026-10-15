@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 export function Chip({ children, on = false }: { children: ReactNode; on?: boolean }) {
   return (
     <span
-      className={`inline-flex h-[26px] items-center rounded-full px-2.5 text-[11px] font-semibold whitespace-nowrap ${
+      className={`inline-flex h-[26px] items-center rounded-full px-2.5 text-[12px] font-semibold whitespace-nowrap ${
         on ? "bg-chip-on text-chip-on-fg" : "bg-chip text-chip-fg"
       }`}
     >
