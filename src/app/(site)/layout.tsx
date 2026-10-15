@@ -3,7 +3,7 @@ import "@fontsource-variable/manrope/wght.css";
 import "@fontsource-variable/cormorant-garamond/wght.css";
 import "@fontsource-variable/cormorant-garamond/wght-italic.css";
 import "@fontsource/amiri/arabic-400.css";
-import "./globals.css";
+import "../globals.css";
 import { YandexMetrika } from "@/components/layout/YandexMetrika";
 import { SITE_FULL_NAME, SITE_NAME, SITE_URL, YANDEX_VERIFICATION } from "@/lib/site";
 

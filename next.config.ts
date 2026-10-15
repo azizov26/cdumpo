@@ -1,9 +1,13 @@
 import type { NextConfig } from "next";
+import { withPayload } from "@payloadcms/next/withPayload";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
+  experimental: {
+    // Два корневых layout (сайт и Payload) — единой 404 больше нет, нужна глобальная.
+    globalNotFound: true,
+  },
   turbopack: {
     rules: {
       "*.css": {
@@ -14,4 +18,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withPayload(nextConfig);

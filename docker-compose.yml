@@ -1,0 +1,15 @@
+# Локальная база для разработки. Версию Postgres держим такой же, как на хостинге (уточнить у хостинга).
+services:
+  db:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: cdumpo
+      POSTGRES_PASSWORD: cdumpo
+      POSTGRES_DB: cdumpo
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
