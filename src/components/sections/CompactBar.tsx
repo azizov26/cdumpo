@@ -5,7 +5,7 @@ import { formatTime, PRAYER_NAMES } from "@/lib/prayer/times";
 import { useSkyClock } from "@/lib/prayer/useSkyClock";
 import { formatCountdown, HERO_ID } from "./TodaySky";
 
-/** Плашка вместо неба (концепция, слайд 5): появляется сверху, когда небо ушло с экрана. Без анимации. */
+/** Плашка вместо неба (концепция, слайд 5): выезжает сверху за 220 мс, когда небо ушло с экрана. */
 export function CompactBar() {
   const clock = useSkyClock();
   const [visible, setVisible] = useState(false);
@@ -18,11 +18,16 @@ export function CompactBar() {
     return () => io.disconnect();
   }, []);
 
-  if (!visible || !clock) return null;
+  if (!clock) return null;
   const { next, now } = clock;
 
   return (
-    <div className="fixed inset-x-0 top-0 z-40 px-3 pt-[max(8px,env(safe-area-inset-top))] md:hidden">
+    <div
+      data-visible={visible}
+      aria-hidden={!visible}
+      inert={!visible}
+      className="compact-bar fixed inset-x-0 top-0 z-40 px-3 pt-[max(8px,env(safe-area-inset-top))] md:hidden"
+    >
       <div className="flex items-center gap-3 rounded-[20px] border border-[rgb(246_207_150/0.22)] bg-[rgb(10_14_34/0.92)] px-4 py-2.5 text-light backdrop-blur-[10px]">
         <span
           aria-hidden="true"

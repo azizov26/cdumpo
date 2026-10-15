@@ -64,6 +64,8 @@ var rm=matchMedia("(prefers-reduced-motion: reduce)").matches,seen=null;
 try{seen=sessionStorage.getItem("intro");sessionStorage.setItem("intro","1");}catch(e){}
 d.dataset.intro=(rm||seen)?"skip":"play";
 if(seen)d.dataset.revealed="1";
+var sd=navigator.connection&&navigator.connection.saveData;
+d.dataset.motion=(rm||sd)?"0":((navigator.deviceMemory||4)>=4&&(navigator.hardwareConcurrency||4)>=6)?"2":"1";
 }catch(e){}})()`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

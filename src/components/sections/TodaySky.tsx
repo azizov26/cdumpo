@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import type { CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { SkyGraphic } from "@/components/sky/SkyGraphic";
 import {
@@ -18,7 +18,8 @@ import {
   type PrayerKey,
 } from "@/lib/prayer/times";
 import { useApplySky, useSkyClock, type SkyClock } from "@/lib/prayer/useSkyClock";
-import { sunAngle } from "@/lib/sky/geometry";
+import { sunAngle, type SkyState } from "@/lib/sky/geometry";
+import { useSkyParallax } from "@/lib/sky/useSkyParallax";
 import { NAV } from "@/lib/site";
 
 // Первый экран «Сегодня» по эталону (README пакета: телефон 390×844, компьютер 1440×900).
@@ -154,18 +155,48 @@ function Center({ clock, desktop }: { clock: SkyClock | null; desktop: boolean }
   );
 }
 
+/** Небо предыдущего состояния: при смене лежит сверху и растворяется 3 с (styles/motion.css → .sky-out). */
+function usePreviousSky(sky: SkyState | undefined) {
+  const [prev, setPrev] = useState<SkyState | null>(null);
+  const last = useRef<SkyState | null>(null);
+  useEffect(() => {
+    if (!sky) return;
+    const before = last.current;
+    last.current = sky;
+    if (!before || before === sky) return;
+    setPrev(before);
+    const t = setTimeout(() => setPrev(null), 3000);
+    return () => clearTimeout(t);
+  }, [sky]);
+  return prev;
+}
+
 export function TodaySky() {
   const clock = useSkyClock();
   useApplySky(clock?.sky);
   const sky = clock?.sky ?? "night";
+  const prev = usePreviousSky(clock?.sky);
   const angle = clock ? sunAngle(clock.now, clock.times.sunrise, clock.times.maghrib) : null;
   const times = clock?.times ?? null;
   const next = clock?.next.key ?? null;
+  const ref = useRef<HTMLElement>(null);
+  useSkyParallax(ref);
+
+  // Небо ушло с экрана — мерцание и параллакс стоят (DESIGN.md → «Движение»).
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => el.toggleAttribute("data-offscreen", !e.isIntersecting));
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   return (
     <section
+      ref={ref}
       id={HERO_ID}
       data-sky={sky}
+      data-shifting={prev ? "" : undefined}
       aria-label="Небо над Пензой и время намаза"
       className="relative h-[100svh] min-h-[620px] overflow-hidden bg-[#0C1128] md:h-[clamp(720px,100svh,1000px)]"
     >
@@ -185,6 +216,22 @@ export function TodaySky() {
             sunAngle={angle}
             className="absolute inset-0 size-full max-md:hidden"
           />
+          {prev && (
+            <>
+              <SkyGraphic
+                state={prev}
+                frame="phone"
+                sunAngle={angle}
+                className="sky-out absolute inset-0 size-full md:hidden"
+              />
+              <SkyGraphic
+                state={prev}
+                frame="desktop"
+                sunAngle={angle}
+                className="sky-out absolute inset-0 size-full max-md:hidden"
+              />
+            </>
+          )}
         </>
       )}
 

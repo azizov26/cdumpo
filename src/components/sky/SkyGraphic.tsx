@@ -61,6 +61,15 @@ export function SkyGraphic({
   const s = SKY[state];
   const lite = s.theme === "light";
   const stars = s.stars ? skyStars(state, f) : [];
+  // Мерцают 12 звёзд из всех: равномерно по списку, только на первом экране.
+  const twinkling = new Set(
+    animated
+      ? stars
+          .map((_, i) => i)
+          .filter((i) => i % Math.max(1, Math.floor(stars.length / 12)) === 0)
+          .slice(0, 12)
+      : [],
+  );
   const city = skyline(f, seed ?? (frame === "desktop" ? 301 : 201));
   const { cx, cy, rx, ry } = f.arc;
   const sun = s.body === "sun" && sunAngle != null ? arcPoint(f, sunAngle) : null;
@@ -86,10 +95,32 @@ export function SkyGraphic({
       <rect width={f.W} height={f.H} fill={`url(#g${uid})`} className={a("sky-fade")} />
 
       {stars.length > 0 && (
-        <g className={a("sky-fade")}>
-          {stars.map((st, i) => (
-            <circle key={i} cx={st.x} cy={st.y} r={st.r} fill="#FFF6E4" opacity={st.o} />
-          ))}
+        <g className={animated ? "px-far" : undefined}>
+          <g className={a("sky-fade")}>
+            {stars.map((st, i) => {
+              const tw = twinkling.has(i);
+              return (
+                <circle
+                  key={i}
+                  cx={st.x}
+                  cy={st.y}
+                  r={st.r}
+                  fill="#FFF6E4"
+                  opacity={st.o}
+                  className={tw ? "twinkle" : undefined}
+                  style={
+                    tw
+                      ? ({
+                          "--o": st.o,
+                          "--tw": `${4 + ((i * 7) % 5)}s`,
+                          "--twd": `-${((i * 13) % 8) + 0.5}s`,
+                        } as CSSProperties)
+                      : undefined
+                  }
+                />
+              );
+            })}
+          </g>
         </g>
       )}
 
@@ -131,39 +162,45 @@ export function SkyGraphic({
       )}
 
       {sun && (
-        <g className={a("sky-sun")}>
-          <circle cx={sun.x} cy={sun.y} r={f.glowR} fill={`url(#sun${uid})`} />
-          <circle cx={sun.x} cy={sun.y} r={f.sunR} fill="#FFF3D6" />
+        <g className={animated ? "px-mid" : undefined}>
+          <g className={a("sky-sun")}>
+            <circle cx={sun.x} cy={sun.y} r={f.glowR} fill={`url(#sun${uid})`} />
+            <circle cx={sun.x} cy={sun.y} r={f.sunR} fill="#FFF3D6" />
+          </g>
         </g>
       )}
       {s.body === "moon" && (
-        <g className={a("sky-sun")}>
-          <circle cx={f.moon.x} cy={f.moon.y} r={f.moon.r * 4} fill={`url(#moon${uid})`} />
-          <Crescent x={f.moon.x} y={f.moon.y} r={f.moon.r} fill="#F4EEDC" id={`cm${uid}`} />
+        <g className={animated ? "px-mid" : undefined}>
+          <g className={a("sky-sun")}>
+            <circle cx={f.moon.x} cy={f.moon.y} r={f.moon.r * 4} fill={`url(#moon${uid})`} />
+            <Crescent x={f.moon.x} y={f.moon.y} r={f.moon.r} fill="#F4EEDC" id={`cm${uid}`} />
+          </g>
         </g>
       )}
 
-      <g className={a("sky-city")}>
-        <g style={{ fill: "var(--sky-silhouette)" }}>
-          {city.ground.map((sh, i) => (
-            <ShapeEl key={i} s={sh} />
-          ))}
-          {city.buildings.map((b, i) => (
-            <g key={i} transform={b.transform}>
-              {b.shapes.map((sh, j) => (
-                <ShapeEl key={j} s={sh} />
-              ))}
-            </g>
-          ))}
-        </g>
-        <g fill="#F6C77E" opacity={s.windows}>
-          {city.buildings.map((b, i) => (
-            <g key={i} transform={b.transform}>
-              {b.windows.map((sh, j) => (
-                <ShapeEl key={j} s={sh} />
-              ))}
-            </g>
-          ))}
+      <g className={animated ? "px-near" : undefined}>
+        <g className={a("sky-city")}>
+          <g style={{ fill: "var(--sky-silhouette)" }}>
+            {city.ground.map((sh, i) => (
+              <ShapeEl key={i} s={sh} />
+            ))}
+            {city.buildings.map((b, i) => (
+              <g key={i} transform={b.transform}>
+                {b.shapes.map((sh, j) => (
+                  <ShapeEl key={j} s={sh} />
+                ))}
+              </g>
+            ))}
+          </g>
+          <g fill="#F6C77E" opacity={s.windows}>
+            {city.buildings.map((b, i) => (
+              <g key={i} transform={b.transform}>
+                {b.windows.map((sh, j) => (
+                  <ShapeEl key={j} s={sh} />
+                ))}
+              </g>
+            ))}
+          </g>
         </g>
       </g>
     </svg>

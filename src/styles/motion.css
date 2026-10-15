@@ -128,3 +128,108 @@ html[data-revealed] :is(.sky-fade, .sky-city, .sky-arc, .sky-dot, .sky-progress,
     animation: none;
   }
 }
+
+/* ---------- Движение по уровням (DESIGN.md → «Три уровня») ----------
+   html[data-motion]: 0 — тихий (reduce-motion, Save-Data), 1 — базовый, 2 — полный (мощные устройства).
+   Ставит ранний скрипт в app/layout.tsx. */
+
+/* Уровень 1: мерцание 12 звёзд — только opacity, 4–8 с, фазы разные, амплитуда не больше 0.4. */
+.twinkle {
+  animation: twinkle var(--tw, 6s) ease-in-out var(--twd, 0s) infinite;
+}
+@keyframes twinkle {
+  50% {
+    opacity: max(calc(var(--o) - 0.4), 0.08);
+  }
+}
+/* Небо ушло с экрана — движение стоит. */
+#today-sky[data-offscreen] :is(.twinkle, .px) {
+  animation-play-state: paused;
+}
+
+/* Уровень 1: плавная смена неба. Старое небо лежит сверху и растворяется за 3 с. */
+.sky-out {
+  animation: sky-out 3s ease-in-out forwards;
+  pointer-events: none;
+}
+@keyframes sky-out {
+  to {
+    opacity: 0;
+  }
+}
+/* Цвета текста и панелей перетекают вместе с небом (только пока идёт смена, чтобы не замедлять наведение). */
+#today-sky[data-shifting] * {
+  transition:
+    color 3s ease-in-out,
+    background-color 3s ease-in-out,
+    border-color 3s ease-in-out,
+    fill 3s ease-in-out;
+}
+
+/* Уровень 2: небо следует за курсором или наклоном (6–10 px). --px и --py в диапазоне −1…1. */
+html[data-motion="2"] .px-far {
+  transform: translate3d(calc(var(--px, 0) * 8px), calc(var(--py, 0) * 6px), 0);
+}
+html[data-motion="2"] .px-mid {
+  transform: translate3d(calc(var(--px, 0) * 5px), calc(var(--py, 0) * 4px), 0);
+}
+html[data-motion="2"] .px-near {
+  transform: translate3d(calc(var(--px, 0) * 2px), calc(var(--py, 0) * 1.5px), 0);
+}
+
+/* Появление блоков при прокрутке: opacity 0 → 1, y 16 → 0, 600 мс. Скрытое состояние ставит JS, без него всё видно. */
+.reveal-block[data-reveal="hidden"] {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.reveal-block[data-reveal="shown"] {
+  transition:
+    opacity 600ms var(--ease-out),
+    transform 600ms var(--ease-out);
+}
+
+/* Плашка отсчёта: выезжает сверху за 220 мс, уходит быстрее. */
+.compact-bar {
+  transition:
+    transform 220ms var(--ease-out),
+    opacity 220ms var(--ease-out),
+    visibility 0s linear 0s;
+}
+.compact-bar[data-visible="false"] {
+  transform: translateY(-16px);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    transform 160ms var(--ease-in),
+    opacity 160ms var(--ease-in),
+    visibility 0s linear 160ms;
+}
+
+/* Уровень 0: всё статично, смена мгновенная. */
+html[data-motion="0"] :is(.twinkle, .sky-out, .reveal-block, .compact-bar) {
+  animation: none;
+  transition: none;
+}
+html[data-motion="0"] .sky-out {
+  display: none;
+}
+html[data-motion="0"] .reveal-block {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .twinkle {
+    animation: none;
+  }
+  .sky-out {
+    display: none;
+  }
+  .reveal-block {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none;
+  }
+  .compact-bar {
+    transition: none;
+  }
+}

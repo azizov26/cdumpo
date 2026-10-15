@@ -2,6 +2,7 @@ import { BismillahIntro } from "@/components/sections/BismillahIntro";
 import { CathedralConstellation } from "@/components/sections/CathedralConstellation";
 import { CompactBar } from "@/components/sections/CompactBar";
 import { Footer } from "@/components/sections/Footer";
+import { Reveal } from "@/components/layout/Reveal";
 import { MobileTabBar } from "@/components/sections/MobileTabBar";
 import { MosquesSection } from "@/components/sections/MosquesSection";
 import { MuftiyatSection } from "@/components/sections/MuftiyatSection";
@@ -26,12 +27,24 @@ export default function TodayPage() {
       <main id="main">
         <QuickActions />
         {/* Сразу под небом — время намаза на месяц, затем новости и муфтият (решения заказчика). */}
-        <PrayerMonth />
-        <UmmahLife />
-        <MuftiyatSection />
-        <CathedralConstellation />
-        <UpcomingDates />
-        <MosquesSection />
+        <Reveal>
+          <PrayerMonth />
+        </Reveal>
+        <Reveal>
+          <UmmahLife />
+        </Reveal>
+        <Reveal>
+          <MuftiyatSection />
+        </Reveal>
+        <Reveal>
+          <CathedralConstellation />
+        </Reveal>
+        <Reveal>
+          <UpcomingDates />
+        </Reveal>
+        <Reveal>
+          <MosquesSection />
+        </Reveal>
       </main>
       <Footer />
       <MobileTabBar current="/" />
