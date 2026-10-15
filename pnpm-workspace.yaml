@@ -3,3 +3,9 @@ allowBuilds:
   unrs-resolver: true
   esbuild: true
   "@embedded-postgres/darwin-arm64": true
+overrides:
+  undici@>=7.0.0 <7.29.1: ">=7.29.1"
+auditConfig:
+  # braces: только сборка стилей (sass), в рабочий код не попадает; исправления нет. Пересмотреть при обновлении Next.js.
+  ignoreGhsas:
+    - GHSA-vfj7-8cjw-p6xm

@@ -12,6 +12,7 @@
     "screens": "node scripts/screens.mjs",
     "test": "vitest run",
     "prayer:build": "node scripts/build-prayer-table.mjs",
+    "secrets:check": "node scripts/check-secrets.mjs --all",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepare": "husky",

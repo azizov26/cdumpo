@@ -13,6 +13,7 @@ import { News } from "./collections/News";
 import { Pages } from "./collections/Pages";
 import { Users } from "./collections/Users";
 import { Videos } from "./collections/Videos";
+import { allowedOrigins, MAX_UPLOAD_BYTES, payloadSecret } from "./lib/cms/security";
 import { PrayerTimes } from "./globals/PrayerTimes";
 import { SiteSettings } from "./globals/SiteSettings";
 
@@ -28,7 +29,11 @@ export default buildConfig({
   globals: [PrayerTimes, SiteSettings],
   editor: lexicalEditor(),
   sharp,
-  secret: process.env.PAYLOAD_SECRET || "",
+  secret: payloadSecret(),
+  // Запросы с cookie принимаются только со своего сайта; чужим страницам API не отвечает.
+  csrf: allowedOrigins,
+  cors: allowedOrigins,
+  upload: { limits: { fileSize: MAX_UPLOAD_BYTES }, abortOnLimit: true },
   typescript: { outputFile: path.resolve(dirname, "payload-types.ts") },
   db: postgresAdapter({
     pool: { connectionString: process.env.DATABASE_URI },

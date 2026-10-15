@@ -13,8 +13,10 @@ type Args = {
   searchParams: Promise<{ [key: string]: string | string[] }>;
 };
 
-export const generateMetadata = ({ params, searchParams }: Args): Promise<Metadata> =>
-  generatePageMetadata({ config, params, searchParams });
+export const generateMetadata = async ({ params, searchParams }: Args): Promise<Metadata> => {
+  await connection();
+  return generatePageMetadata({ config, params, searchParams });
+};
 
 const Page = async ({ params, searchParams }: Args) => {
   await connection();

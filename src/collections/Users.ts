@@ -1,10 +1,11 @@
 import type { CollectionConfig } from "payload";
 import { adminOnly, adminOnlyField, isAdmin } from "@/lib/cms/access";
+import { staffAuth } from "@/lib/cms/security";
 
 export const Users: CollectionConfig = {
   slug: "users",
   labels: { singular: "Сотрудник", plural: "Сотрудники" },
-  auth: true,
+  auth: staffAuth,
   admin: {
     useAsTitle: "email",
     defaultColumns: ["name", "email", "role"],
