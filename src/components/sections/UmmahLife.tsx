@@ -2,17 +2,9 @@ import Link from "next/link";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { Icon } from "@/components/ui/Icon";
 import { Chip } from "@/components/ui/Tag";
-import { SkyPicture } from "@/components/sky/SkyGraphic";
-import { getLatestNews, RUBRICS, type NewsItem } from "@/lib/content/news";
+import { getLatestNews, RUBRICS } from "@/lib/content/news";
+import { FeaturedNews, NewsRow } from "./NewsCard";
 import { SectionHeading } from "./SectionHeading";
-
-const formatNewsDate = (iso: string) =>
-  new Date(iso).toLocaleDateString("ru-RU", { day: "numeric", month: "long", timeZone: "Europe/Moscow" });
-
-function Cover({ item, className, width, height }: { item: NewsItem; className: string; width: number; height: number }) {
-  // Реальные фото подключатся вместе с админкой; до этого — фирменная заглушка.
-  return <SkyPicture sky={item.placeholderSky ?? "dawn"} width={width} height={height} className={className} />;
-}
 
 /** «Жизнь уммы» (эталон .news): главная новость + список с миниатюрами. */
 export async function UmmahLife() {
@@ -56,39 +48,12 @@ export async function UmmahLife() {
         </EmptyState>
       ) : (
         <div className="grid gap-5 lg:grid-cols-[1.25fr_1fr] lg:gap-7">
-          <article className="group relative overflow-hidden rounded-[24px] border border-line bg-surface">
-            <Cover item={featured} width={640} height={320} className="h-[200px] md:h-[320px]" />
-            <div className="px-5 pt-5 pb-6 md:px-7 md:pt-6 md:pb-7">
-              <p className="flex items-center gap-2.5 text-[12.5px] text-fg-2">
-                <Chip>{featured.rubric}</Chip>
-                <time dateTime={featured.date}>{formatNewsDate(featured.date)}</time>
-              </p>
-              <h3 className="mt-1.5 font-display text-[24px] leading-[1.12] font-semibold md:text-[32px]">
-                <Link href={`/umma/${featured.slug}`} className="after:absolute after:inset-0 group-hover:text-accent">
-                  {featured.title}
-                </Link>
-              </h3>
-              {featured.lead && <p className="mt-2.5 line-clamp-3 text-[15px] leading-[1.55] text-fg-2">{featured.lead}</p>}
-            </div>
-          </article>
+          <FeaturedNews item={featured} />
 
           <ul>
             {rest.map((n) => (
               <li key={n.slug} className="border-b border-line py-3.5">
-                <article className="group relative grid grid-cols-[96px_1fr] gap-4 md:grid-cols-[120px_1fr]">
-                  <Cover item={n} width={240} height={168} className="h-[68px] rounded-m md:h-[84px]" />
-                  <div>
-                    <p className="flex items-center gap-2.5 text-[12.5px] text-fg-2">
-                      <Chip>{n.rubric}</Chip>
-                      <time dateTime={n.date}>{formatNewsDate(n.date)}</time>
-                    </p>
-                    <h3 className="mt-1.5 font-display text-[19px] leading-[1.12] font-semibold md:text-[21px]">
-                      <Link href={`/umma/${n.slug}`} className="after:absolute after:inset-0 group-hover:text-accent">
-                        {n.title}
-                      </Link>
-                    </h3>
-                  </div>
-                </article>
+                <NewsRow item={n} />
               </li>
             ))}
           </ul>

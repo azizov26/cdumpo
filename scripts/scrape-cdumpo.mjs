@@ -136,7 +136,7 @@ async function main() {
       oldId: r.id,
       oldUrl: `/cdumpo/article?id=${r.id}`,
       slug,
-      newUrl: `/zhizn-ummy/${slug}`,
+      newUrl: `/umma/${slug}`,
       kind: RUBRIC[r.category] ?? 'news',
       category: r.category,
       date,
@@ -154,7 +154,7 @@ async function main() {
 
   // Редиректы: каждая статья + список новостей и корень старого раздела.
   const redirects = [
-    { from: '/cdumpo', to: '/zhizn-ummy' },
+    { from: '/cdumpo', to: '/umma' },
     ...items.map((i) => ({ from: i.oldUrl, to: i.newUrl })),
   ];
   await writeFile(path.join(OUT, 'redirects.json'), JSON.stringify(redirects, null, 2));
