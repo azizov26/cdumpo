@@ -25,7 +25,6 @@ import { NAV } from "@/lib/site";
 
 export const HERO_ID = "today-sky";
 
-
 /** Задержка появления элемента после заставки (styles/motion.css → .reveal). */
 const d = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 
@@ -38,10 +37,22 @@ export function formatCountdown(ms: number) {
 function Brand({ size }: { size: "phone" | "desktop" }) {
   const d = size === "desktop";
   return (
-    <Link href="/" aria-label="ЦДУМ ПО — на главную" className="flex min-h-11 items-center gap-2.5 text-[color:var(--sky-text)]">
+    <Link
+      href="/"
+      aria-label="ЦДУМ ПО — на главную"
+      className="flex min-h-11 items-center gap-2.5 text-[color:var(--sky-text)]"
+    >
       {/* Настоящий знак ЦДУМ ПО (растр с текущего сайта) — знак-звезда эталона условный. */}
       <span className={`grid shrink-0 place-items-center rounded-full bg-white ${d ? "size-11" : "size-9"}`}>
-        <Image src="/brand/logo.png" alt="" width={747} height={709} sizes="40px" className={d ? "w-[38px]" : "w-[31px]"} priority />
+        <Image
+          src="/brand/logo.png"
+          alt=""
+          width={747}
+          height={709}
+          sizes="40px"
+          className={d ? "w-[38px]" : "w-[31px]"}
+          priority
+        />
       </span>
       <span className={`leading-[1.25] font-semibold whitespace-nowrap ${d ? "text-[13px]" : "text-[11.5px]"}`}>
         {d ? "Централизованное духовное управление" : "ЦДУМ"}
@@ -52,8 +63,7 @@ function Brand({ size }: { size: "phone" | "desktop" }) {
   );
 }
 
-const glass =
-  "border border-[color:var(--sky-glass-line)] bg-[color:var(--sky-glass)] backdrop-blur-[10px]";
+const glass = "border border-[color:var(--sky-glass-line)] bg-[color:var(--sky-glass)] backdrop-blur-[10px]";
 
 function Prayers({ times, next }: { times: DayTimes | null; next: PrayerKey | null }) {
   return (
@@ -71,7 +81,9 @@ function Prayers({ times, next }: { times: DayTimes | null; next: PrayerKey | nu
             >
               {PRAYER_NAMES[key]}
             </span>
-            <span className={`mt-0.5 text-[15.5px] ${on ? "font-bold text-on-gold" : "font-semibold text-[color:var(--sky-glass-text)]"}`}>
+            <span
+              className={`mt-0.5 text-[15.5px] ${on ? "font-bold text-on-gold" : "font-semibold text-[color:var(--sky-glass-text)]"}`}
+            >
               {times ? formatTime(times[key]) : "—:—"}
             </span>
           </li>
@@ -159,27 +171,48 @@ export function TodaySky() {
     >
       {clock && (
         <>
-          <SkyGraphic animated state={sky} frame="phone" sunAngle={angle} className="absolute inset-0 size-full md:hidden" />
-          <SkyGraphic animated state={sky} frame="desktop" sunAngle={angle} className="absolute inset-0 size-full max-md:hidden" />
+          <SkyGraphic
+            animated
+            state={sky}
+            frame="phone"
+            sunAngle={angle}
+            className="absolute inset-0 size-full md:hidden"
+          />
+          <SkyGraphic
+            animated
+            state={sky}
+            frame="desktop"
+            sunAngle={angle}
+            className="absolute inset-0 size-full max-md:hidden"
+          />
         </>
       )}
 
       {/* Телефон: координаты от верха кадра 844 минус системная зона 47 px. */}
       <div className="md:hidden">
-        <header style={d(200)} className="reveal absolute inset-x-5 top-[calc(env(safe-area-inset-top)+9px)] z-10 flex h-11 items-center">
+        <header
+          style={d(200)}
+          className="reveal absolute inset-x-5 top-[calc(env(safe-area-inset-top)+9px)] z-10 flex h-11 items-center"
+        >
           <Brand size="phone" />
         </header>
         <div className="absolute inset-x-0 top-[calc(env(safe-area-inset-top)+89px)] z-[5]">
           <Center clock={clock} desktop={false} />
         </div>
-        <div style={d(1000)} className="reveal absolute inset-x-3 bottom-[calc(120px+env(safe-area-inset-bottom))] z-[6]">
+        <div
+          style={d(1000)}
+          className="reveal absolute inset-x-3 bottom-[calc(120px+env(safe-area-inset-bottom))] z-[6]"
+        >
           <Prayers times={times} next={next} />
         </div>
       </div>
 
       {/* Компьютер: кадр 1440×900. */}
       <div className="max-md:hidden">
-        <header style={d(200)} className="reveal absolute inset-x-0 top-0 z-10 flex h-[92px] items-center justify-between gap-6 px-12">
+        <header
+          style={d(200)}
+          className="reveal absolute inset-x-0 top-0 z-10 flex h-[92px] items-center justify-between gap-6 px-12"
+        >
           <Brand size="desktop" />
           <nav aria-label="Основное меню" className="hidden xl:block">
             <ul className="flex gap-[30px] text-[15px] font-medium text-[color:var(--sky-text)] opacity-90">
@@ -205,7 +238,10 @@ export function TodaySky() {
         <div className="absolute inset-x-0 top-[224px] z-[5]">
           <Center clock={clock} desktop />
         </div>
-        <div style={d(1000)} className="reveal absolute inset-x-12 bottom-9 z-[6] grid grid-cols-[1.6fr_1fr] gap-3 xl:grid-cols-[1.6fr_1fr_1fr_1fr_1fr]">
+        <div
+          style={d(1000)}
+          className="reveal absolute inset-x-12 bottom-9 z-[6] grid grid-cols-[1.6fr_1fr] gap-3 xl:grid-cols-[1.6fr_1fr_1fr_1fr_1fr]"
+        >
           <Prayers times={times} next={next} />
           {ACTIONS.map((a) => (
             <Link

@@ -39,7 +39,12 @@ const organizationLd = JSON.stringify({
   alternateName: [SITE_NAME, "Муфтият Пензы"],
   url: SITE_URL,
   logo: `${SITE_URL}/brand/logo.png`,
-  address: { "@type": "PostalAddress", addressLocality: "Пенза", streetAddress: "ул. Бакунина, 10", addressCountry: "RU" },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Пенза",
+    streetAddress: "ул. Бакунина, 10",
+    addressCountry: "RU",
+  },
 }).replace(/</g, "\\u003c");
 
 export const viewport: Viewport = {

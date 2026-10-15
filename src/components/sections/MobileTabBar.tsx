@@ -31,7 +31,11 @@ export function MobileTabBar({ current }: { current?: string }) {
                 href={t.href}
                 aria-current={on ? "page" : undefined}
                 className={`flex min-h-[50px] flex-col items-center justify-center gap-1 text-[10.5px] font-semibold ${
-                  on ? "text-[color:var(--tab-on)]" : t.dobro ? "text-[color:var(--tab-don)]" : "text-[color:var(--tab-fg)]"
+                  on
+                    ? "text-[color:var(--tab-on)]"
+                    : t.dobro
+                      ? "text-[color:var(--tab-don)]"
+                      : "text-[color:var(--tab-fg)]"
                 }`}
               >
                 <Icon name={t.icon} className="size-[22px]" />

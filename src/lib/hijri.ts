@@ -45,12 +45,23 @@ export function upcomingDates(now: Date, count = 4): UpcomingDate[] {
     if (!friday && wd === "Fri") friday = { date: d, title: "Джума-намаз", note: "Пятничная молитва", approx: false };
     const h = toHijri(d);
     const ev = EVENTS.find((e) => e.month === h.month && e.day === h.day);
-    if (ev) out.push({ date: d, title: ev.title, note: `${h.day} ${HIJRI_MONTHS_GEN[h.month - 1]} ${h.year}`, approx: true });
+    if (ev)
+      out.push({ date: d, title: ev.title, note: `${h.day} ${HIJRI_MONTHS_GEN[h.month - 1]} ${h.year}`, approx: true });
   }
   return friday ? [friday, ...out] : out;
 }
 
 const HIJRI_MONTHS_GEN = [
-  "мухаррама", "сафара", "раби-уль-авваля", "раби-ус-сани", "джумада-ль-уля", "джумада-ль-ахира",
-  "раджаба", "шаабана", "рамадана", "шавваля", "зуль-када", "зуль-хиджа",
+  "мухаррама",
+  "сафара",
+  "раби-уль-авваля",
+  "раби-ус-сани",
+  "джумада-ль-уля",
+  "джумада-ль-ахира",
+  "раджаба",
+  "шаабана",
+  "рамадана",
+  "шавваля",
+  "зуль-када",
+  "зуль-хиджа",
 ];

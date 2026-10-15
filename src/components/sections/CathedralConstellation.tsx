@@ -12,11 +12,15 @@ export function CathedralConstellation() {
       >
         <div className="relative z-10">
           <p className="eyebrow">Строим всем миром</p>
-          <h2 id="cathedral-title" className="mt-2 font-display text-[32px] leading-none font-medium lg:text-[52px] lg:leading-[1.02]">
+          <h2
+            id="cathedral-title"
+            className="mt-2 font-display text-[32px] leading-none font-medium lg:text-[52px] lg:leading-[1.02]"
+          >
             Соборная мечеть <em className="text-gold-soft">Пензы</em>
           </h2>
           <p className="mt-3.5 text-[15px] leading-[1.55] text-light/75 lg:text-[17px]">
-            Каждое пожертвование зажигает звезду. Созвездие собирается снизу вверх — от фундамента к куполу и полумесяцу.
+            Каждое пожертвование зажигает звезду. Созвездие собирается снизу вверх — от фундамента к куполу и
+            полумесяцу.
           </p>
           <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-light/15 bg-white/6 px-4 py-2 text-[14px] text-light/85">
             <span aria-hidden="true" className="size-1.5 rounded-full bg-gold-soft" />
@@ -24,8 +28,7 @@ export function CathedralConstellation() {
           </p>
           <div className="mt-6 flex flex-wrap gap-3 lg:mt-7">
             <Button href="/dobro">
-              <Icon name="light-star" />
-              О проекте «Небо добрых дел»
+              <Icon name="light-star" />О проекте «Небо добрых дел»
             </Button>
           </div>
         </div>

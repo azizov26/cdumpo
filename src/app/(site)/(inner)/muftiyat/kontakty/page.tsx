@@ -25,11 +25,7 @@ export default function ContactsPage() {
               { term: "Организация", value: SITE_FULL_NAME },
               {
                 term: "Адрес",
-                value: (
-                  <address className="not-italic">
-                    {SITE_ADDRESS}
-                  </address>
-                ),
+                value: <address className="not-italic">{SITE_ADDRESS}</address>,
               },
               { term: "Телефон приёмной", value: <Pending what="телефон приёмной" /> },
               { term: "Электронная почта", value: <Pending what="адрес электронной почты" /> },
@@ -40,7 +36,11 @@ export default function ContactsPage() {
             ]}
           />
           <div className="mt-6">
-            <Button href={ROUTE} variant="night" className="[[data-theme=dark]_&]:bg-light [[data-theme=dark]_&]:text-night">
+            <Button
+              href={ROUTE}
+              variant="night"
+              className="[[data-theme=dark]_&]:bg-light [[data-theme=dark]_&]:text-night"
+            >
               <Icon name="arrow-right" />
               Как проехать
             </Button>

@@ -79,7 +79,12 @@ export type DayTimes = Record<PrayerKey, Date>;
 
 /** Дата по Москве в формате YYYY-MM-DD. */
 export function dateKey(d: Date): string {
-  return new Intl.DateTimeFormat("en-CA", { timeZone: TIME_ZONE, year: "numeric", month: "2-digit", day: "2-digit" }).format(d);
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: TIME_ZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(d);
 }
 
 /** Есть ли на эту дату время из таблицы (иначе — предварительный расчёт). */
@@ -130,8 +135,18 @@ export const formatDate = (d: Date) =>
 
 // Названия месяцев хиджры — как в макетах дизайнера.
 export const HIJRI_MONTHS = [
-  "мухаррама", "сафара", "раби-уль-авваля", "раби-ус-сани", "джумада-ль-уля", "джумада-ль-ахира",
-  "раджаба", "шаабана", "рамадана", "шавваля", "зуль-када", "зуль-хиджа",
+  "мухаррама",
+  "сафара",
+  "раби-уль-авваля",
+  "раби-ус-сани",
+  "джумада-ль-уля",
+  "джумада-ль-ахира",
+  "раджаба",
+  "шаабана",
+  "рамадана",
+  "шавваля",
+  "зуль-када",
+  "зуль-хиджа",
 ];
 
 export function formatHijri(d: Date) {

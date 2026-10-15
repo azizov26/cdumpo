@@ -30,7 +30,10 @@ export function ComingSoon({ path }: { path: string }) {
     <>
       <PageHeading title={section.title}>
         {parent && (
-          <Link href={parent.href} className="mb-4 inline-flex min-h-11 items-center gap-1.5 text-[14.5px] font-semibold text-accent">
+          <Link
+            href={parent.href}
+            className="mb-4 inline-flex min-h-11 items-center gap-1.5 text-[14.5px] font-semibold text-accent"
+          >
             <Icon name="arrow-right" className="size-[18px] rotate-180" />
             {parent.title}
           </Link>
@@ -42,7 +45,11 @@ export function ComingSoon({ path }: { path: string }) {
           sky="dawn"
           action={
             <div className="flex flex-wrap gap-2.5">
-              <Button href="/" variant="night" className="[[data-theme=dark]_&]:bg-light [[data-theme=dark]_&]:text-night">
+              <Button
+                href="/"
+                variant="night"
+                className="[[data-theme=dark]_&]:bg-light [[data-theme=dark]_&]:text-night"
+              >
                 На главную
               </Button>
               <Button href="/#namaz-month">Время намаза на месяц</Button>

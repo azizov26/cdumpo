@@ -7,9 +7,9 @@ const msk = (iso: string) => new Date(`${iso}+03:00`);
 describe("время намаза из таблицы", () => {
   it("берёт строку таблицы на московскую дату", () => {
     const t = getDayTimes(msk("2026-10-15T12:00:00"));
-    expect(["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"].map((k) => formatTime(t[k as keyof typeof t]))).toEqual([
-      "04:54", "06:26", "12:15", "14:28", "17:04", "18:39",
-    ]);
+    expect(
+      ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"].map((k) => formatTime(t[k as keyof typeof t])),
+    ).toEqual(["04:54", "06:26", "12:15", "14:28", "17:04", "18:39"]);
   });
 
   it("определяет дату по Москве, а не по UTC", () => {
@@ -21,7 +21,9 @@ describe("время намаза из таблицы", () => {
     const d = msk("2027-03-01T12:00:00");
     expect(hasTable(d)).toBe(false);
     const t = getDayTimes(d);
-    expect(t.fajr < t.sunrise && t.sunrise < t.dhuhr && t.dhuhr < t.asr && t.asr < t.maghrib && t.maghrib < t.isha).toBe(true);
+    expect(
+      t.fajr < t.sunrise && t.sunrise < t.dhuhr && t.dhuhr < t.asr && t.asr < t.maghrib && t.maghrib < t.isha,
+    ).toBe(true);
   });
 });
 

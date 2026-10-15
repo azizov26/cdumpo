@@ -7,10 +7,28 @@ import type { NewsItem } from "@/lib/content/news";
 const shortDate = (iso: string) =>
   new Date(iso).toLocaleDateString("ru-RU", { day: "numeric", month: "long", timeZone: "Europe/Moscow" });
 
-export function Cover({ item, width, height, className }: { item: NewsItem; width: number; height: number; className: string }) {
+export function Cover({
+  item,
+  width,
+  height,
+  className,
+}: {
+  item: NewsItem;
+  width: number;
+  height: number;
+  className: string;
+}) {
   // Реальные фото — когда появятся в админке; до этого — фирменная заглушка-небо.
   if (item.cover) {
-    return <Image src={item.cover.src} alt={item.cover.alt} width={width} height={height} className={`${className} object-cover`} />;
+    return (
+      <Image
+        src={item.cover.src}
+        alt={item.cover.alt}
+        width={width}
+        height={height}
+        className={`${className} object-cover`}
+      />
+    );
   }
   return <SkyPicture sky={item.placeholderSky ?? "dawn"} width={width} height={height} className={className} />;
 }

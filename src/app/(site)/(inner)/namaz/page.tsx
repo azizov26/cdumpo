@@ -5,7 +5,8 @@ import { PrayerMonth } from "@/components/sections/PrayerMonth";
 
 export const metadata: Metadata = {
   title: "Время намаза в Пензе",
-  description: "Время намаза в Пензе на сегодня, неделю и месяц: фаджр, восход, зухр, аср, магриб и иша. Расписание ЦДУМ ПО.",
+  description:
+    "Время намаза в Пензе на сегодня, неделю и месяц: фаджр, восход, зухр, аср, магриб и иша. Расписание ЦДУМ ПО.",
   alternates: { canonical: "/namaz" },
 };
 

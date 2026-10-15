@@ -14,7 +14,12 @@ for (const w of widths) {
     await page.waitForTimeout(500);
     await page.screenshot({ path: `${out}/sky-${sky}-${w}.png` });
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
-    console.log(sky, w, overflow > 0 ? `СКРОЛЛ +${overflow}` : "ok", errors.length ? errors.slice(0, 2).join(" | ") : "");
+    console.log(
+      sky,
+      w,
+      overflow > 0 ? `СКРОЛЛ +${overflow}` : "ok",
+      errors.length ? errors.slice(0, 2).join(" | ") : "",
+    );
     await page.close();
   }
 }

@@ -1,0 +1,12 @@
+.next
+node_modules
+pnpm-lock.yaml
+docs
+data
+public
+*.md
+src/data
+.claude
+.agents
+.impeccable
+tsconfig.tsbuildinfo

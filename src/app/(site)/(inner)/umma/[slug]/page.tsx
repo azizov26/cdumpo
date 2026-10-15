@@ -23,7 +23,14 @@ export async function generateMetadata({ params }: PageProps<"/umma/[slug]">): P
     title: item.title,
     description: item.lead,
     alternates: { canonical: url },
-    openGraph: { type: "article", title: item.title, description: item.lead, url, publishedTime: item.date, ...(item.cover && { images: [item.cover.src] }) },
+    openGraph: {
+      type: "article",
+      title: item.title,
+      description: item.lead,
+      url,
+      publishedTime: item.date,
+      ...(item.cover && { images: [item.cover.src] }),
+    },
   };
 }
 
@@ -34,7 +41,10 @@ export default async function NewsPage({ params }: PageProps<"/umma/[slug]">) {
   return (
     <article className="container-site pt-8 pb-20 md:pt-12 md:pb-28">
       <div className="mx-auto max-w-[760px]">
-        <Link href="/umma" className="inline-flex min-h-11 items-center gap-1.5 text-[14.5px] font-semibold text-accent">
+        <Link
+          href="/umma"
+          className="inline-flex min-h-11 items-center gap-1.5 text-[14.5px] font-semibold text-accent"
+        >
           <Icon name="arrow-right" className="size-[18px] rotate-180" />
           Жизнь уммы
         </Link>
@@ -46,7 +56,9 @@ export default async function NewsPage({ params }: PageProps<"/umma/[slug]">) {
         {item.lead && <p className="mt-5 text-[19px] leading-[1.55] text-fg-2">{item.lead}</p>}
         <Cover item={item} width={1200} height={750} className="mt-8 h-[220px] w-full rounded-[24px] md:h-[420px]" />
         <div className="mt-8 space-y-5 text-[17px] leading-[1.7] md:text-[18px]">
-          {item.body?.map((p, i) => <p key={i}>{p}</p>)}
+          {item.body?.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
         </div>
         <div className="mt-10 border-t border-line pt-6">
           <ShareLinks url={`${SITE_URL}/umma/${item.slug}`} title={item.title} />

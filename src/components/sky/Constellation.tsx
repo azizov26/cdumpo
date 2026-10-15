@@ -12,7 +12,15 @@ export const litFromProgress = (collected: number, goal: number) =>
 
 const byId = new Map(data.stars.map((s) => [s.id, s]));
 
-export function Constellation({ lit, newest = false, className = "" }: { lit: number; newest?: boolean; className?: string }) {
+export function Constellation({
+  lit,
+  newest = false,
+  className = "",
+}: {
+  lit: number;
+  newest?: boolean;
+  className?: string;
+}) {
   const r = 3.4;
   const isLit = (order: number) => order <= lit;
   const latest = newest && lit > 0 ? data.stars.find((s) => s.order === lit) : undefined;
@@ -54,7 +62,15 @@ export function Constellation({ lit, newest = false, className = "" }: { lit: nu
               <circle cx={s.x} cy={s.y} r={rr} fill="#FFE7B8" />
             </g>
           ) : (
-            <circle key={s.id} cx={s.x} cy={s.y} r={r1(rr * 0.7)} fill="none" stroke="rgba(255,240,215,.45)" strokeWidth=".8" />
+            <circle
+              key={s.id}
+              cx={s.x}
+              cy={s.y}
+              r={r1(rr * 0.7)}
+              fill="none"
+              stroke="rgba(255,240,215,.45)"
+              strokeWidth=".8"
+            />
           );
         })}
       </g>
@@ -68,7 +84,15 @@ export function Constellation({ lit, newest = false, className = "" }: { lit: nu
       {latest && (
         <g>
           <circle cx={latest.x} cy={latest.y} r={r1(r * 4.5)} fill="none" stroke="#F6CF96" strokeWidth="1.2" />
-          <circle cx={latest.x} cy={latest.y} r={r1(r * 8)} fill="none" stroke="#F6CF96" strokeWidth=".8" opacity=".5" />
+          <circle
+            cx={latest.x}
+            cy={latest.y}
+            r={r1(r * 8)}
+            fill="none"
+            stroke="#F6CF96"
+            strokeWidth=".8"
+            opacity=".5"
+          />
           <circle cx={latest.x} cy={latest.y} r={r1(r * 1.7)} fill="#FFF6E0" />
         </g>
       )}

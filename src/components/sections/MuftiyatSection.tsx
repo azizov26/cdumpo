@@ -15,12 +15,7 @@ const LINKS: { href: string; title: string; icon: IconName; body: React.ReactNod
     href: "/muftiyat/kontakty",
     title: "Контакты и СМИ",
     icon: "phone",
-    body: (
-      <>
-        г. Пенза, ул. Бакунина, 10
-
-      </>
-    ),
+    body: <>г. Пенза, ул. Бакунина, 10</>,
   },
 ];
 
@@ -44,7 +39,10 @@ export function MuftiyatSection() {
                 >
                   <span className="flex items-center justify-between">
                     <Icon name={l.icon} className="size-[22px] text-accent" />
-                    <Icon name="arrow-right" className="size-[18px] text-fg-3 transition-transform duration-200 group-hover:translate-x-1" />
+                    <Icon
+                      name="arrow-right"
+                      className="size-[18px] text-fg-3 transition-transform duration-200 group-hover:translate-x-1"
+                    />
                   </span>
                   <span className="text-[15.5px] font-semibold">{l.title}</span>
                   <span className="text-[13px] leading-[1.45] text-fg-2">{l.body}</span>

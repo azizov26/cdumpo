@@ -65,9 +65,7 @@ const paths = {
     </>
   ),
   download: <path d="M12 4v11M7 10l5 5 5-5M5 20h14" />,
-  phone: (
-    <path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z" />
-  ),
+  phone: <path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z" />,
   play: (
     <>
       <circle cx="12" cy="12" r="9" />

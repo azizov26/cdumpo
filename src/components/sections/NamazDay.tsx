@@ -69,10 +69,22 @@ export function NamazDay() {
           </h2>
           <p className="tnum mt-1.5 text-[14px] text-fg-2">{week ? weekRange(week) : " "}</p>
           <div className="mt-4 flex items-center gap-2">
-            <button type="button" aria-label="Предыдущая неделя" onClick={() => moveWeek(-1)} className={nav} disabled={!week}>
+            <button
+              type="button"
+              aria-label="Предыдущая неделя"
+              onClick={() => moveWeek(-1)}
+              className={nav}
+              disabled={!week}
+            >
               <Icon name="arrow-right" className="size-[18px] rotate-180" />
             </button>
-            <button type="button" aria-label="Следующая неделя" onClick={() => moveWeek(1)} className={nav} disabled={!week}>
+            <button
+              type="button"
+              aria-label="Следующая неделя"
+              onClick={() => moveWeek(1)}
+              className={nav}
+              disabled={!week}
+            >
               <Icon name="arrow-right" className="size-[18px]" />
             </button>
             {offset !== 0 && (
@@ -97,16 +109,34 @@ export function NamazDay() {
                   type="button"
                   disabled={!key}
                   aria-pressed={on}
-                  aria-label={key ? at(key).toLocaleDateString("ru-RU", { weekday: "long", day: "numeric", month: "long", timeZone: TIME_ZONE }) : undefined}
+                  aria-label={
+                    key
+                      ? at(key).toLocaleDateString("ru-RU", {
+                          weekday: "long",
+                          day: "numeric",
+                          month: "long",
+                          timeZone: TIME_ZONE,
+                        })
+                      : undefined
+                  }
                   onClick={() => key && setPicked(key === todayKey ? null : key)}
                   className={`relative flex h-[68px] flex-col items-center justify-center gap-1 rounded-m border transition-[background-color,border-color,transform] duration-150 ease-out active:scale-[0.97] ${
-                    on ? "border-transparent bg-chip-on text-chip-on-fg" : "border-line bg-surface text-fg hover:border-fg-3"
+                    on
+                      ? "border-transparent bg-chip-on text-chip-on-fg"
+                      : "border-line bg-surface text-fg hover:border-fg-3"
                   }`}
                 >
-                  <span className={`text-[11px] font-semibold uppercase ${on ? "" : "text-fg-2"}`}>{key ? short(key) : " "}</span>
-                  <span className="tnum font-display text-[22px] leading-none font-semibold">{key ? dayNum(key) : " "}</span>
+                  <span className={`text-[11px] font-semibold uppercase ${on ? "" : "text-fg-2"}`}>
+                    {key ? short(key) : " "}
+                  </span>
+                  <span className="tnum font-display text-[22px] leading-none font-semibold">
+                    {key ? dayNum(key) : " "}
+                  </span>
                   {key === todayKey && (
-                    <span aria-hidden="true" className={`absolute top-1.5 right-1.5 size-1.5 rounded-full ${on ? "bg-zarya" : "bg-accent"}`} />
+                    <span
+                      aria-hidden="true"
+                      className={`absolute top-1.5 right-1.5 size-1.5 rounded-full ${on ? "bg-zarya" : "bg-accent"}`}
+                    />
                   )}
                 </button>
               );
@@ -126,7 +156,10 @@ export function NamazDay() {
             </div>
 
             {isToday && next && clock && (
-              <div data-theme="dark" className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 bg-night px-5 py-4 text-light md:px-7">
+              <div
+                data-theme="dark"
+                className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 bg-night px-5 py-4 text-light md:px-7"
+              >
                 <div>
                   <p className="text-[13px] text-light/70">{PRAYER_UNTIL[next.key]}</p>
                   <p className="tnum font-count text-[40px] leading-none md:text-[48px]">
@@ -152,12 +185,20 @@ export function NamazDay() {
                     }`}
                   >
                     <span className="flex items-baseline gap-3">
-                      <span className={`text-[17px] font-semibold md:text-[19px] ${minor && !on ? "text-fg-2" : ""}`}>{PRAYER_NAMES[k]}</span>
-                      <span lang="ar" dir="rtl" className={`font-ar text-[22px] ${on ? "text-on-gold/80" : "text-accent"}`}>
+                      <span className={`text-[17px] font-semibold md:text-[19px] ${minor && !on ? "text-fg-2" : ""}`}>
+                        {PRAYER_NAMES[k]}
+                      </span>
+                      <span
+                        lang="ar"
+                        dir="rtl"
+                        className={`font-ar text-[22px] ${on ? "text-on-gold/80" : "text-accent"}`}
+                      >
                         {PRAYER_NAMES_AR[k]}
                       </span>
                     </span>
-                    <span className={`text-[24px] md:text-[28px] ${on ? "font-bold" : "font-medium"} ${minor && !on ? "text-fg-2" : ""}`}>
+                    <span
+                      className={`text-[24px] md:text-[28px] ${on ? "font-bold" : "font-medium"} ${minor && !on ? "text-fg-2" : ""}`}
+                    >
                       {times ? formatTime(times[k]) : "—:—"}
                     </span>
                   </li>

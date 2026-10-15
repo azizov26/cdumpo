@@ -28,11 +28,20 @@ const daysWord = (n: number) => (n % 10 === 1 && n !== 11 ? "день" : "дне
 function Capsule({ d }: { d: Daylight | undefined }) {
   const seg = (from: number, to: number) => ({ top: `${from * 100}%`, height: `${(to - from) * 100}%` });
   return (
-    <span aria-hidden="true" className="capsule relative block h-10 w-2 overflow-hidden rounded-full bg-[color:var(--capsule-track)]">
+    <span
+      aria-hidden="true"
+      className="capsule relative block h-10 w-2 overflow-hidden rounded-full bg-[color:var(--capsule-track)]"
+    >
       {d && (
         <>
-          <span className="absolute inset-x-0 rounded-full bg-[color:var(--capsule-twilight)]" style={seg(d.fajr, d.isha)} />
-          <span className="absolute inset-x-0 rounded-full bg-[color:var(--capsule-day)]" style={seg(d.sunrise, d.maghrib)} />
+          <span
+            className="absolute inset-x-0 rounded-full bg-[color:var(--capsule-twilight)]"
+            style={seg(d.fajr, d.isha)}
+          />
+          <span
+            className="absolute inset-x-0 rounded-full bg-[color:var(--capsule-day)]"
+            style={seg(d.sunrise, d.maghrib)}
+          />
         </>
       )}
     </span>
@@ -60,7 +69,10 @@ const MonthPicker = memo(function MonthPicker({
     const btn = month === null ? null : el?.children[month];
     if (!el || !(btn instanceof HTMLElement) || el.scrollWidth <= el.clientWidth) return;
     const smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    el.scrollTo({ left: btn.offsetLeft - (el.clientWidth - btn.offsetWidth) / 2, behavior: smooth ? "smooth" : "auto" });
+    el.scrollTo({
+      left: btn.offsetLeft - (el.clientWidth - btn.offsetWidth) / 2,
+      behavior: smooth ? "smooth" : "auto",
+    });
   }, [month]);
 
   return (
@@ -89,7 +101,10 @@ const MonthPicker = memo(function MonthPicker({
             <Capsule d={daylight?.[i]} />
             {label}
             {i === current && (
-              <span aria-hidden="true" className={`absolute top-2 right-2 size-1.5 rounded-full ${on ? "bg-zarya" : "bg-accent"}`} />
+              <span
+                aria-hidden="true"
+                className={`absolute top-2 right-2 size-1.5 rounded-full ${on ? "bg-zarya" : "bg-accent"}`}
+              />
             )}
           </button>
         );
@@ -111,7 +126,8 @@ type TableProps = {
 
 const MonthTable = memo(function MonthTable({ rows, todayKey, nextKey, from, collapsed, month }: TableProps) {
   // Телефон: шапка прилегает к плашке отсчёта (CompactBar: отступ сверху + 62 px высоты).
-  const head = "sticky top-[calc(max(8px,env(safe-area-inset-top))+61px)] z-10 h-11 border-b border-line bg-[color:var(--thead-bg)] font-semibold text-fg-2 md:top-0";
+  const head =
+    "sticky top-[calc(max(8px,env(safe-area-inset-top))+61px)] z-10 h-11 border-b border-line bg-[color:var(--thead-bg)] font-semibold text-fg-2 md:top-0";
   return (
     <table className="tnum w-full border-separate border-spacing-0 text-center">
       <caption className="sr-only">
@@ -123,7 +139,11 @@ const MonthTable = memo(function MonthTable({ rows, todayKey, nextKey, from, col
             День
           </th>
           {PRAYER_ORDER.map((k, i) => (
-            <th key={k} scope="col" className={`${head} px-0.5 md:w-[13%] ${i === PRAYER_ORDER.length - 1 ? "rounded-tr-[23px]" : ""}`}>
+            <th
+              key={k}
+              scope="col"
+              className={`${head} px-0.5 md:w-[13%] ${i === PRAYER_ORDER.length - 1 ? "rounded-tr-[23px]" : ""}`}
+            >
               {PRAYER_NAMES[k]}
             </th>
           ))}
@@ -141,7 +161,10 @@ const MonthTable = memo(function MonthTable({ rows, todayKey, nextKey, from, col
               <Fragment key={r.key}>
                 {r.hijriStart && (
                   <tr className={hide}>
-                    <td colSpan={7} className={`border-t ${rule} h-9 pl-3 text-left text-[12px] font-semibold text-accent md:pl-5`}>
+                    <td
+                      colSpan={7}
+                      className={`border-t ${rule} h-9 pl-3 text-left text-[12px] font-semibold text-accent md:pl-5`}
+                    >
                       ≈ {r.hijriStart}
                       <span className="font-medium text-fg-2 max-sm:hidden"> · начало месяца по хиджре</span>
                     </td>
@@ -164,7 +187,11 @@ const MonthTable = memo(function MonthTable({ rows, todayKey, nextKey, from, col
                     </span>
                     <span
                       className={`block text-[10.5px] leading-tight md:ml-2 md:inline md:text-[12.5px] ${
-                        r.friday ? `font-bold ${today ? "text-[color:var(--row-today-time)]" : "text-accent"}` : today ? "opacity-75" : "text-fg-2"
+                        r.friday
+                          ? `font-bold ${today ? "text-[color:var(--row-today-time)]" : "text-accent"}`
+                          : today
+                            ? "opacity-75"
+                            : "text-fg-2"
                       }`}
                     >
                       {r.weekday}
@@ -269,7 +296,10 @@ export function PrayerMonth() {
     >
       <div className="lg:sticky lg:top-10">
         <p className="eyebrow">Пенза{year && ` · ${year}`}</p>
-        <h2 id="namaz-month-title" className="mt-2 font-display text-[32px] leading-none font-medium md:text-[44px] lg:text-[52px] lg:leading-[1.02]">
+        <h2
+          id="namaz-month-title"
+          className="mt-2 font-display text-[32px] leading-none font-medium md:text-[44px] lg:text-[52px] lg:leading-[1.02]"
+        >
           Время намаза{" "}
           <em key={month ?? "none"} className="month-in inline-block text-accent">
             {month !== null ? `в ${MONTHS_IN[month]}` : "на месяц"}
@@ -283,8 +313,16 @@ export function PrayerMonth() {
         </p>
 
         <div className="mt-6 print:hidden">
-          <MonthPicker year={year} month={month} current={current?.month ?? null} daylight={daylight} onPick={setPicked} />
-          <p className="mt-2.5 text-[12.5px] text-fg-2">Полоска — долгота дня в середине месяца: от восхода до магриба.</p>
+          <MonthPicker
+            year={year}
+            month={month}
+            current={current?.month ?? null}
+            daylight={daylight}
+            onPick={setPicked}
+          />
+          <p className="mt-2.5 text-[12.5px] text-fg-2">
+            Полоска — долгота дня в середине месяца: от восхода до магриба.
+          </p>
         </div>
 
         <div className="mt-7 hidden lg:block">{printButton}</div>
@@ -292,7 +330,14 @@ export function PrayerMonth() {
 
       <div className="mt-6 lg:mt-0">
         <div className="overflow-clip rounded-[24px] border border-line bg-surface shadow-card [[data-theme=dark]_&]:shadow-none print:shadow-none">
-          <MonthTable rows={rows} todayKey={todayKey} nextKey={nextKey} from={from} collapsed={!expanded} month={month} />
+          <MonthTable
+            rows={rows}
+            todayKey={todayKey}
+            nextKey={nextKey}
+            from={from}
+            collapsed={!expanded}
+            month={month}
+          />
         </div>
 
         {rows && (

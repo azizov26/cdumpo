@@ -7,15 +7,31 @@ import { SITE_ADDRESS, SITE_FULL_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "О ЦДУМ ПО — муфтият Пензы",
-  description: "Централизованное духовное управление мусульман Пензенской области: муфтий, структура, документы и контакты.",
+  description:
+    "Централизованное духовное управление мусульман Пензенской области: муфтий, структура, документы и контакты.",
   alternates: { canonical: "/muftiyat" },
 };
 
 const SECTIONS: { href: string; title: string; text: string; icon: IconName }[] = [
-  { href: "/muftiyat/istoriya", title: "История и миссия", text: "Как возникло управление и чем оно занимается.", icon: "book" },
-  { href: "/muftiyat/struktura", title: "Структура и имамы", text: "Устройство управления и имамы мечетей области.", icon: "users" },
+  {
+    href: "/muftiyat/istoriya",
+    title: "История и миссия",
+    text: "Как возникло управление и чем оно занимается.",
+    icon: "book",
+  },
+  {
+    href: "/muftiyat/struktura",
+    title: "Структура и имамы",
+    text: "Устройство управления и имамы мечетей области.",
+    icon: "users",
+  },
   { href: "/muftiyat/dokumenty", title: "Документы", text: "Официальные документы муфтията.", icon: "download" },
-  { href: "/muftiyat/kontakty", title: "Контакты и СМИ", text: "Адрес, как проехать, связь для прихожан и журналистов.", icon: "phone" },
+  {
+    href: "/muftiyat/kontakty",
+    title: "Контакты и СМИ",
+    text: "Адрес, как проехать, связь для прихожан и журналистов.",
+    icon: "phone",
+  },
 ];
 
 export default function MuftiyatPage() {
@@ -55,7 +71,10 @@ export default function MuftiyatPage() {
                 >
                   <span className="flex items-center justify-between">
                     <Icon name={s.icon} className="size-[22px] text-accent" />
-                    <Icon name="arrow-right" className="size-[18px] text-fg-3 transition-transform duration-200 group-hover:translate-x-1" />
+                    <Icon
+                      name="arrow-right"
+                      className="size-[18px] text-fg-3 transition-transform duration-200 group-hover:translate-x-1"
+                    />
                   </span>
                   <span className="text-[16px] font-semibold">{s.title}</span>
                   <span className="text-[14px] leading-[1.45] text-fg-2">{s.text}</span>

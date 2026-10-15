@@ -32,7 +32,12 @@ function MosquesMap() {
         </radialGradient>
       </defs>
       <rect width="748" height="460" fill="#0A1230" />
-      <path d="M-20,170 C150,150 230,250 380,220 C540,190 600,120 770,150" fill="none" stroke="#16295A" strokeWidth="26" />
+      <path
+        d="M-20,170 C150,150 230,250 380,220 C540,190 600,120 770,150"
+        fill="none"
+        stroke="#16295A"
+        strokeWidth="26"
+      />
       {ROADS.map(([d, w]) => (
         <path key={d} d={d} fill="none" stroke="rgba(255,255,255,.07)" strokeWidth={w} />
       ))}
@@ -58,7 +63,12 @@ export function MosquesSection() {
     <section aria-labelledby="mosques-title" className="container-site pt-14 pb-16 md:pt-24 md:pb-24">
       <div className="grid items-stretch gap-6 lg:grid-cols-[420px_1fr] lg:gap-8">
         <div>
-          <SectionHeading id="mosques-title" label="Мечети и общины" title={"Мечеть рядом\u00a0—"} accent="в два касания" />
+          <SectionHeading
+            id="mosques-title"
+            label="Мечети и общины"
+            title={"Мечеть рядом\u00a0—"}
+            accent="в два касания"
+          />
           <p className="-mt-2 text-[15px] leading-[1.55] text-fg-2 lg:text-[17px]">
             Карта всех мечетей области: адрес, джума, имам, удобства и маршрут.
           </p>

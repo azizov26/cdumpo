@@ -66,7 +66,10 @@ export function Footer() {
               <ul>
                 {col.links.map((l) => (
                   <li key={l.href}>
-                    <Link href={l.href} className="inline-flex min-h-11 items-center text-[14.5px] text-light/78 hover:text-light">
+                    <Link
+                      href={l.href}
+                      className="inline-flex min-h-11 items-center text-[14.5px] text-light/78 hover:text-light"
+                    >
                       {l.label}
                     </Link>
                   </li>

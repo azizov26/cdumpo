@@ -5,7 +5,8 @@ import { getLatestNews } from "@/lib/content/news";
 
 export const metadata: Metadata = {
   title: "Жизнь уммы — новости",
-  description: "Новости муфтията и мусульманских общин Пензенской области, обращения, видео и фотографии с мероприятий.",
+  description:
+    "Новости муфтията и мусульманских общин Пензенской области, обращения, видео и фотографии с мероприятий.",
   alternates: { canonical: "/umma" },
 };
 

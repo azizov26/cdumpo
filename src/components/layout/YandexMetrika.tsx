@@ -32,7 +32,11 @@ export function YandexMetrika() {
       <Script id="yandex-metrika" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: init }} />
       <noscript>
         {/* eslint-disable-next-line @next/next/no-img-element -- пиксель счётчика для браузеров без JavaScript */}
-        <img src={`https://mc.yandex.ru/watch/${METRIKA_ID}`} style={{ position: "absolute", left: "-9999px" }} alt="" />
+        <img
+          src={`https://mc.yandex.ru/watch/${METRIKA_ID}`}
+          style={{ position: "absolute", left: "-9999px" }}
+          alt=""
+        />
       </noscript>
     </>
   );

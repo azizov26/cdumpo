@@ -8,7 +8,9 @@ import { SectionHeading } from "./SectionHeading";
 const dayNum = (d: Date) => d.toLocaleDateString("ru-RU", { day: "numeric", timeZone: TIME_ZONE });
 /** «октября» (родительный падеж берём из «16 октября») и, для джумы, день недели. */
 function monthLabel(d: Date, withWeekday: boolean) {
-  const month = d.toLocaleDateString("ru-RU", { day: "numeric", month: "long", timeZone: TIME_ZONE }).replace(/^\d+\s/, "");
+  const month = d
+    .toLocaleDateString("ru-RU", { day: "numeric", month: "long", timeZone: TIME_ZONE })
+    .replace(/^\d+\s/, "");
   const weekday = d.toLocaleDateString("ru-RU", { weekday: "long", timeZone: TIME_ZONE });
   return withWeekday ? `${month} · ${weekday}` : month;
 }
@@ -31,7 +33,9 @@ export function UpcomingDates() {
                 hl ? "border-night bg-night text-light" : "border-line bg-surface"
               }`}
             >
-              <p className={`tnum font-display text-[40px] leading-none font-semibold md:text-[52px] ${hl ? "text-gold-soft" : ""}`}>
+              <p
+                className={`tnum font-display text-[40px] leading-none font-semibold md:text-[52px] ${hl ? "text-gold-soft" : ""}`}
+              >
                 {d.approx && <span title="Дата приблизительная">≈</span>}
                 {dayNum(d.date)}
               </p>

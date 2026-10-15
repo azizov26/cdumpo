@@ -32,12 +32,33 @@ export function NewsFeed({ items }: { items: NewsItem[] }) {
 
   return (
     <>
-      <div role="group" aria-label="Рубрики" className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] md:mx-0 md:flex-wrap md:px-0 [&::-webkit-scrollbar]:hidden">
-        <button type="button" aria-pressed={rubric === null} onClick={() => { setRubric(null); setShown(PAGE); }} className={chip(rubric === null)}>
+      <div
+        role="group"
+        aria-label="Рубрики"
+        className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] md:mx-0 md:flex-wrap md:px-0 [&::-webkit-scrollbar]:hidden"
+      >
+        <button
+          type="button"
+          aria-pressed={rubric === null}
+          onClick={() => {
+            setRubric(null);
+            setShown(PAGE);
+          }}
+          className={chip(rubric === null)}
+        >
           Все
         </button>
         {present.map((r) => (
-          <button key={r} type="button" aria-pressed={rubric === r} onClick={() => { setRubric(r); setShown(PAGE); }} className={chip(rubric === r)}>
+          <button
+            key={r}
+            type="button"
+            aria-pressed={rubric === r}
+            onClick={() => {
+              setRubric(r);
+              setShown(PAGE);
+            }}
+            className={chip(rubric === r)}
+          >
             {r}
           </button>
         ))}

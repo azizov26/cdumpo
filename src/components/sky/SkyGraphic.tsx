@@ -111,7 +111,10 @@ export function SkyGraphic({
                 style={animated ? ({ "--d": `${800 + i * 150}ms` } as CSSProperties) : undefined}
                 cx={p.x}
                 cy={p.y}
-                r={f.dotR} fill={lite ? "#161A2E" : "#F7F1E6"} opacity={state === "night" ? 0.4 : 0.7} />
+                r={f.dotR}
+                fill={lite ? "#161A2E" : "#F7F1E6"}
+                opacity={state === "night" ? 0.4 : 0.7}
+              />
             );
           })}
           {sun && (
@@ -141,27 +144,27 @@ export function SkyGraphic({
       )}
 
       <g className={a("sky-city")}>
-      <g style={{ fill: "var(--sky-silhouette)" }}>
-        {city.ground.map((sh, i) => (
-          <ShapeEl key={i} s={sh} />
-        ))}
-        {city.buildings.map((b, i) => (
-          <g key={i} transform={b.transform}>
-            {b.shapes.map((sh, j) => (
-              <ShapeEl key={j} s={sh} />
-            ))}
-          </g>
-        ))}
-      </g>
-      <g fill="#F6C77E" opacity={s.windows}>
-        {city.buildings.map((b, i) => (
-          <g key={i} transform={b.transform}>
-            {b.windows.map((sh, j) => (
-              <ShapeEl key={j} s={sh} />
-            ))}
-          </g>
-        ))}
-      </g>
+        <g style={{ fill: "var(--sky-silhouette)" }}>
+          {city.ground.map((sh, i) => (
+            <ShapeEl key={i} s={sh} />
+          ))}
+          {city.buildings.map((b, i) => (
+            <g key={i} transform={b.transform}>
+              {b.shapes.map((sh, j) => (
+                <ShapeEl key={j} s={sh} />
+              ))}
+            </g>
+          ))}
+        </g>
+        <g fill="#F6C77E" opacity={s.windows}>
+          {city.buildings.map((b, i) => (
+            <g key={i} transform={b.transform}>
+              {b.windows.map((sh, j) => (
+                <ShapeEl key={j} s={sh} />
+              ))}
+            </g>
+          ))}
+        </g>
       </g>
     </svg>
   );
@@ -188,11 +191,27 @@ export function SkyPicture({
     base: Math.round(height * 0.9),
     k: (width / 640) * 1.2,
     starsMul: 0.4,
-    buildings: [["T", 0.18, 1], ["D", 0.62, 1.1], ["H", 0.88, 1]],
+    buildings: [
+      ["T", 0.18, 1],
+      ["D", 0.62, 1.1],
+      ["H", 0.88, 1],
+    ],
   };
   return (
-    <div data-sky={sky} role="img" aria-label={caption ?? "Фото появится позже"} className={`relative overflow-hidden ${className}`}>
-      <SkyGraphic state={sky} frame={frame} arc={false} seed={201} preserve="xMidYMid slice" className="absolute inset-0 size-full" />
+    <div
+      data-sky={sky}
+      role="img"
+      aria-label={caption ?? "Фото появится позже"}
+      className={`relative overflow-hidden ${className}`}
+    >
+      <SkyGraphic
+        state={sky}
+        frame={frame}
+        arc={false}
+        seed={201}
+        preserve="xMidYMid slice"
+        className="absolute inset-0 size-full"
+      />
     </div>
   );
 }
