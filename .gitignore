@@ -42,3 +42,6 @@ next-env.d.ts
 
 # local
 .impeccable/
+
+# перенос со старого сайта: файлы большие, воспроизводятся скриптом
+/data/legacy/media/
