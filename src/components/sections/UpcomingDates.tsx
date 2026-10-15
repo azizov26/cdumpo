@@ -23,7 +23,11 @@ export function UpcomingDates() {
   return (
     <section aria-labelledby="dates-title" className="container-site pt-14 md:pt-24">
       <SectionHeading id="dates-title" label="Календарь хиджры" title="Ближайшие" accent="даты" />
-      <ul className="-mx-5 flex min-h-[170px] snap-x gap-3 overflow-x-auto px-5 pb-1 md:mx-0 md:grid md:grid-cols-4 md:gap-4 md:overflow-visible md:px-0">
+      <ul
+        tabIndex={0}
+        aria-label="Ближайшие даты"
+        className="-mx-5 flex min-h-[170px] snap-x gap-3 overflow-x-auto px-5 pb-1 md:mx-0 md:grid md:grid-cols-4 md:gap-4 md:overflow-visible md:px-0"
+      >
         {list.map((d, i) => {
           const hl = i === list.length - 1;
           return (
