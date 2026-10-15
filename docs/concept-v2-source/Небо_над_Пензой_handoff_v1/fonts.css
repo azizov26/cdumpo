@@ -1,0 +1,21 @@
+/* Шрифты «Небо над Пензой». Файлы — из npm @fontsource (OFL). В Next.js удобнее next/font/google:
+   Cormorant_Garamond({weight:['500','600'],style:['normal','italic'],subsets:['cyrillic','latin']})
+   Manrope({weight:['200','400','500','600','700'],subsets:['cyrillic','latin']})
+   Amiri({weight:['400'],subsets:['arabic']}) */
+@font-face{font-family:Manrope;font-weight:200;font-display:swap;src:url(fonts/manrope-cyrillic-200-normal.woff2) format('woff2');unicode-range:U+0400-04FF}
+@font-face{font-family:Manrope;font-weight:200;font-display:swap;src:url(fonts/manrope-latin-200-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF,U+2212,U+20BD,U+2248}
+@font-face{font-family:Manrope;font-weight:400;font-display:swap;src:url(fonts/manrope-cyrillic-400-normal.woff2) format('woff2');unicode-range:U+0400-04FF}
+@font-face{font-family:Manrope;font-weight:400;font-display:swap;src:url(fonts/manrope-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF,U+2212,U+20BD,U+2248}
+@font-face{font-family:Manrope;font-weight:500;font-display:swap;src:url(fonts/manrope-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0400-04FF}
+@font-face{font-family:Manrope;font-weight:500;font-display:swap;src:url(fonts/manrope-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF,U+2212,U+20BD,U+2248}
+@font-face{font-family:Manrope;font-weight:600;font-display:swap;src:url(fonts/manrope-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0400-04FF}
+@font-face{font-family:Manrope;font-weight:600;font-display:swap;src:url(fonts/manrope-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF,U+2212,U+20BD,U+2248}
+@font-face{font-family:Manrope;font-weight:700;font-display:swap;src:url(fonts/manrope-cyrillic-700-normal.woff2) format('woff2');unicode-range:U+0400-04FF}
+@font-face{font-family:Manrope;font-weight:700;font-display:swap;src:url(fonts/manrope-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF,U+2212,U+20BD,U+2248}
+@font-face{font-family:Cormorant;font-weight:500;font-display:swap;src:url(fonts/cormorant-garamond-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0400-04FF}
+@font-face{font-family:Cormorant;font-weight:500;font-display:swap;src:url(fonts/cormorant-garamond-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+2212,U+2248}
+@font-face{font-family:Cormorant;font-weight:600;font-display:swap;src:url(fonts/cormorant-garamond-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0400-04FF}
+@font-face{font-family:Cormorant;font-weight:600;font-display:swap;src:url(fonts/cormorant-garamond-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+2212,U+2248}
+@font-face{font-family:Cormorant;font-style:italic;font-weight:500;font-display:swap;src:url(fonts/cormorant-garamond-cyrillic-500-italic.woff2) format('woff2');unicode-range:U+0400-04FF}
+@font-face{font-family:Cormorant;font-style:italic;font-weight:500;font-display:swap;src:url(fonts/cormorant-garamond-latin-500-italic.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:Amiri;font-weight:400;font-display:swap;src:url(fonts/amiri-arabic-400-normal.woff2) format('woff2')}

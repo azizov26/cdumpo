@@ -1,0 +1,163 @@
+/* Дизайн-токены — по эталону дизайнера (docs/concept-v2-source/…/css/tokens.css, sky.css). */
+@theme {
+  --color-night: #0b1636;
+  --color-night-2: #0e1430;
+  --color-night-3: #141c44;
+  --color-land: #0c1128;
+  --color-land-day: #26304f;
+  --color-dusk: #3d2d5e;
+  --color-sunset: #d9805a;
+  --color-zarya: #f2b57c;
+  --color-gold-soft: #f6cf96;
+  --color-gold-pale: #fbebd2;
+  --color-light: #fff8ec;
+  --color-paper: #f6f2ea;
+  --color-panel: #eae2d3;
+  --color-ink: #161a2e;
+  --color-muted: #5c5f6b;
+  --color-goldtx: #8a5a1e;
+  --color-hairline: #ddd5c6;
+  --color-hairline-2: #eee8dc;
+  --color-on-gold: #1c1020;
+  --color-window: #f6c77e;
+  --color-star: #fff6e4;
+  --color-star-lit: #ffe7b8;
+  --color-sun: #fff3d6;
+  --color-moon: #f4eedc;
+  --color-glass: rgb(10 14 34 / 0.66);
+
+  --font-display: "Cormorant Garamond Variable", Georgia, serif;
+  --font-sans: "Manrope Variable", system-ui, sans-serif;
+  --font-ar: "Amiri", serif;
+
+  --radius-xs: 6px;
+  --radius-s: 11px;
+  --radius-m: 14px;
+  --radius-cell: 15px;
+  --radius-card: 20px;
+  --radius-l: 22px;
+  --radius-xl: 28px;
+
+  --shadow-card: 0 1px 0 rgb(22 26 46 / 0.04), 0 12px 30px -18px rgb(22 26 46 / 0.25);
+  --shadow-float: 0 30px 60px -24px rgb(20 20 40 / 0.45);
+  --shadow-gold: 0 10px 24px -10px rgb(242 181 124 / 0.6);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Семантические токены темы (ниже первого экрана). */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-fg: var(--text);
+  --color-fg-2: var(--text-2);
+  --color-fg-3: var(--text-3);
+  --color-accent: var(--accent);
+  --color-chip: var(--chip);
+  --color-chip-fg: var(--chip-fg);
+  --color-chip-on: var(--chip-on);
+  --color-chip-on-fg: var(--chip-on-fg);
+  --color-btn-line: var(--btn-line);
+  --color-btn-line-bg: var(--btn-line-bg);
+  --color-panel-bg: var(--panel-bg);
+}
+
+:root,
+[data-theme="light"] {
+  --bg: var(--color-paper);
+  --surface: #fff;
+  --line: var(--color-hairline);
+  --text: var(--color-ink);
+  --text-2: var(--color-muted);
+  --text-3: var(--color-muted);
+  --accent: var(--color-goldtx);
+  --chip: #f3e3c8;
+  --chip-fg: var(--color-goldtx);
+  --chip-on: var(--color-night);
+  --chip-on-fg: var(--color-light);
+  --btn-line: var(--color-hairline);
+  --btn-line-bg: #fff;
+  --panel-bg: var(--color-panel);
+  --tab-bg: rgb(255 255 255 / 0.97);
+  --tab-line: var(--color-hairline);
+  --tab-fg: #6b6e78;
+  --tab-on: var(--color-goldtx);
+  --tab-don: #9a5f1f;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: var(--color-night-2);
+  --surface: rgb(255 255 255 / 0.06);
+  --line: rgb(247 241 230 / 0.12);
+  --text: var(--color-light);
+  --text-2: rgb(247 241 230 / 0.78);
+  --text-3: rgb(247 241 230 / 0.62);
+  --accent: var(--color-gold-soft);
+  --chip: rgb(246 207 150 / 0.14);
+  --chip-fg: var(--color-gold-soft);
+  --chip-on: var(--color-gold-soft);
+  --chip-on-fg: var(--color-on-gold);
+  --btn-line: rgb(247 241 230 / 0.35);
+  --btn-line-bg: transparent;
+  --panel-bg: rgb(255 255 255 / 0.06);
+  --tab-bg: rgb(9 13 32 / 0.94);
+  --tab-line: rgb(247 241 230 / 0.1);
+  --tab-fg: rgb(247 241 230 / 0.62);
+  --tab-on: var(--color-gold-soft);
+  --tab-don: var(--color-zarya);
+  color-scheme: dark;
+}
+
+/* Пять состояний неба — значения из sky.css. Ставятся на <html data-sky> или на любой блок. */
+:root,
+[data-sky="night"] {
+  --sky-text: #fff8ec;
+  --sky-text-2: rgb(247 241 230 / 0.78);
+  --sky-title: #fbebd2;
+  --sky-accent: #f6cf96;
+  --sky-silhouette: #0c1128;
+  --sky-windows: 0.95;
+  --sky-arc: rgb(220 228 255 / 0.22);
+  --sky-arc-done: transparent;
+  --sky-arc-dot: rgb(247 241 230 / 0.4);
+  --sky-glass: rgb(10 14 34 / 0.66);
+  --sky-glass-line: rgb(246 207 150 / 0.22);
+  --sky-glass-text: #fff8ec;
+  --sky-glass-muted: rgb(247 241 230 / 0.66);
+  --sky-glass-icon: var(--color-gold-soft);
+  --sky-pill-line: rgb(247 241 230 / 0.35);
+  --sky-pill-bg: rgb(255 255 255 / 0.06);
+}
+[data-sky="dawn"],
+[data-sky="evening"] {
+  --sky-text: #fff8ec;
+  --sky-text-2: rgb(247 241 230 / 0.78);
+  --sky-title: #fbebd2;
+  --sky-accent: #f6cf96;
+  --sky-silhouette: #0c1128;
+  --sky-windows: 0.75;
+  --sky-arc: rgb(255 240 215 / 0.38);
+  --sky-arc-done: rgb(255 224 180 / 0.6);
+  --sky-arc-dot: #f7f1e6;
+}
+[data-sky="day"],
+[data-sky="asr"] {
+  --sky-text: #161a2e;
+  --sky-text-2: rgb(22 26 46 / 0.7);
+  --sky-title: #2a2f4a;
+  --sky-accent: #8a5a1e;
+  --sky-silhouette: #26304f;
+  --sky-windows: 0;
+  --sky-arc: rgb(22 26 46 / 0.3);
+  --sky-arc-done: rgb(138 90 30 / 0.6);
+  --sky-arc-dot: #161a2e;
+  --sky-glass: rgb(255 255 255 / 0.72);
+  --sky-glass-line: rgb(22 26 46 / 0.12);
+  --sky-glass-text: #161a2e;
+  --sky-glass-muted: #5c5f6b;
+  --sky-glass-icon: var(--color-goldtx);
+  --sky-pill-line: rgb(22 26 46 / 0.18);
+  --sky-pill-bg: rgb(255 255 255 / 0.7);
+}

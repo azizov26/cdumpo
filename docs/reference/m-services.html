@@ -1,0 +1,75 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><link rel="stylesheet" href="phones.css">
+<style>
+.f{margin-top:12px}
+.f label{font-size:13px;font-weight:600;color:var(--ink-2)}
+.f .in{margin-top:6px;min-height:50px;border-radius:14px;border:1px solid var(--line-2);background:#fff;padding:13px 14px;font-size:14.5px;color:var(--ink-3)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.chips span{height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--line-2);display:inline-flex;align-items:center;font-size:13px;font-weight:500;background:#fff}
+.chips span.on{background:var(--em-800);color:var(--ivory);border-color:var(--em-800)}
+.faq{margin-top:16px;border-top:1px solid var(--line)}
+.faq div{padding:12px 0;border-bottom:1px solid var(--line);font-size:14px;font-weight:500;display:flex;justify-content:space-between;gap:10px}
+.faq svg.i{width:16px;color:var(--ink-3)}
+.rite{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;margin-top:10px}
+.rite .ic{width:46px;height:46px;border-radius:14px;background:var(--em-50);color:var(--em-800);display:grid;place-items:center;flex:none}
+.rite h4{font-size:16px;font-weight:600}
+.rite p{font-size:13px;color:var(--ink-2);line-height:1.45;margin-top:2px}
+.urgent{background:var(--em-900);color:var(--ivory);border-radius:20px;padding:16px;margin-top:14px;display:flex;gap:12px;align-items:center}
+.urgent .ic{width:46px;height:46px;border-radius:14px;background:var(--gold);display:grid;place-items:center;color:#fff;flex:none}
+.rm{background:var(--em-950);color:var(--ivory);height:100%;position:relative;overflow:hidden}
+.rm:before{content:"";position:absolute;inset:0;background:url(pattern-gold.svg);background-size:100px;opacity:.06}
+.rm>*:not(.island):not(.tabbar){position:relative}
+.moon{width:150px;height:150px;margin:6px auto 0;display:block}
+.ram{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 20px 0;text-align:center}
+.ram div{background:rgba(247,243,234,.06);border-radius:16px;padding:12px 4px}
+.ram b{display:block;font-family:var(--f-display);font-size:34px;line-height:1;color:var(--gold-l)}
+.ram span{font-size:11px;color:rgba(247,243,234,.6)}
+.ev{display:flex;gap:14px;padding:12px 0;border-top:1px solid rgba(247,243,234,.1)}
+.ev .d{width:48px;flex:none;text-align:center;font-family:var(--f-display);font-size:28px;line-height:1;color:var(--gold-l)}
+.ev .d small{display:block;font-family:var(--f-ui);font-size:10.5px;color:rgba(247,243,234,.55);margin-top:2px}
+.ev h4{font-size:14.5px;font-weight:600}
+.ev p{font-size:12.5px;color:rgba(247,243,234,.6)}
+</style></head><body><div class="stage">
+
+<div class="phone"><div class="screen"><div class="island"></div>
+ <div class="sbar"><span>16:20</span><span>●●● 5G</span></div>
+ <div class="mh"><div class="btnr" data-i="arrl"></div><span style="font-size:13px;color:var(--em-700);font-weight:600">Архив ответов</span></div>
+ <div class="scr">
+  <div class="m-h2">Вопрос имаму</div>
+  <div style="font-size:13.5px;color:var(--ink-2);margin-top:6px">Ответ придёт на почту или в Telegram. Можно спросить анонимно.</div>
+  <div class="f"><label>Тема</label><div class="chips"><span class="on">Намаз</span><span>Семья</span><span>Пост</span><span>Закят</span><span>Халяль</span><span>Другое</span></div></div>
+  <div class="f"><label>Ваш вопрос</label><div class="in" style="min-height:96px">Опишите ситуацию…</div></div>
+  <div class="f"><label>Как с вами связаться</label><div class="in">Email или @telegram</div></div>
+  <a class="btn btn-em" style="width:100%;justify-content:center;margin-top:16px">Отправить вопрос</a>
+  <div class="faq"><div>Можно ли совмещать намазы в дороге?<svg class="i"><use href="#i-arr"/></svg></div><div>Как рассчитать закят с вклада?<svg class="i"><use href="#i-arr"/></svg></div></div>
+ </div>
+</div></div>
+
+<div class="phone"><div class="screen"><div class="island"></div>
+ <div class="sbar"><span>16:21</span><span>●●● 5G</span></div>
+ <div class="mh"><div class="btnr" data-i="arrl"></div><div></div></div>
+ <div class="scr">
+  <div class="m-h2">Обряды</div>
+  <div style="font-size:13.5px;color:var(--ink-2);margin-top:6px">Запишитесь онлайн — имам свяжется для уточнения деталей.</div>
+  <div class="rite"><div class="ic" data-i="ring"></div><div><h4>Никах</h4><p>Мусульманское бракосочетание в мечети или дома. Что подготовить, запись на дату.</p></div></div>
+  <div class="rite"><div class="ic" data-i="baby"></div><div><h4>Имянаречение</h4><p>Азан и наречение имени новорождённому, подбор имени.</p></div></div>
+  <div class="rite"><div class="ic" data-i="leaf"></div><div><h4>Курбан</h4><p>Заказ жертвоприношения и раздача мяса нуждающимся.</p></div></div>
+  <div class="urgent"><div class="ic" data-i="phone"></div><div><div style="font-weight:600">Джаназа — круглосуточно</div><div style="font-size:13px;color:rgba(247,243,234,.7)">Позвонить дежурному имаму</div></div></div>
+ </div>
+ <div class="tabbar"><div><svg class="i"><use href="#i-home"/></svg>Главная</div><div><svg class="i"><use href="#i-clock"/></svg>Намаз</div><div><svg class="i"><use href="#i-pin"/></svg>Мечети</div><div class="give"><svg class="i"><use href="#i-heart"/></svg>Помочь</div><div class="on"><svg class="i"><use href="#i-menu"/></svg>Меню</div></div>
+</div></div>
+
+<div class="phone"><div class="screen rm"><div class="island"></div>
+ <div class="sbar"><span>16:22</span><span>●●● 5G</span></div>
+ <div style="text-align:center;padding:4px 20px 0"><div class="eyebrow">Календарь · 1448 г. х.</div></div>
+ <svg class="moon" viewBox="0 0 150 150"><circle cx="75" cy="75" r="60" fill="none" stroke="rgba(214,188,140,.25)"/><path d="M95 30a48 48 0 1 0 0 90 40 40 0 1 1 0-90z" fill="#D6BC8C"/><circle cx="112" cy="46" r="3" fill="#D6BC8C"/></svg>
+ <div style="text-align:center"><div style="font-family:var(--f-display);font-size:34px;line-height:1.05">До Рамадана</div><div style="font-size:13px;color:rgba(247,243,234,.6);margin-top:4px">ориентировочно 8 февраля 2027</div></div>
+ <div class="ram tnum"><div><b>117</b><span>дней</span></div><div><b>07</b><span>часов</span></div><div><b>37</b><span>минут</span></div><div><b>52</b><span>секунд</span></div></div>
+ <div style="padding:20px 20px 0">
+  <div class="ev"><div class="d">16<small>окт</small></div><div><h4>Джума-намаз</h4><p>Во всех мечетях области</p></div></div>
+  <div class="ev"><div class="d">10<small>дек ≈</small></div><div><h4>Начало Раджаба</h4><p>Запретный месяц</p></div></div>
+  <div class="ev"><div class="d">5<small>янв ≈</small></div><div><h4>Ночь Мирадж</h4><p>27 раджаба</p></div></div>
+ </div>
+ <div class="tabbar" style="background:rgba(7,31,25,.96);border-color:rgba(247,243,234,.1);color:rgba(247,243,234,.5)"><div><svg class="i"><use href="#i-home"/></svg>Главная</div><div><svg class="i"><use href="#i-clock"/></svg>Намаз</div><div><svg class="i"><use href="#i-pin"/></svg>Мечети</div><div style="color:var(--gold-l)"><svg class="i"><use href="#i-heart"/></svg>Помочь</div><div style="color:var(--ivory)"><svg class="i"><use href="#i-menu"/></svg>Меню</div></div>
+</div></div>
+
+</div><script src="common.js"></script></body></html>

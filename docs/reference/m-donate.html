@@ -1,0 +1,83 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><link rel="stylesheet" href="phones.css">
+<style>
+.hd2{display:flex;align-items:center;gap:12px;padding:4px 20px 12px}
+.hd2 .bk{width:40px;height:40px;border-radius:12px;border:1px solid var(--line-2);display:grid;place-items:center}
+.step{font-size:12px;color:var(--ink-3);font-weight:600;letter-spacing:.08em}
+.pp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.pp div{border:1px solid var(--line-2);border-radius:16px;padding:12px;font-size:13.5px;font-weight:600;background:#fff;line-height:1.25}
+.pp div svg.i{display:block;margin-bottom:8px;color:var(--em-700);width:22px;height:22px}
+.pp div.on{border:2px solid var(--em-800);background:var(--em-50)}
+.am{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.am span{height:50px;border-radius:14px;border:1px solid var(--line-2);display:grid;place-items:center;font-weight:600;background:#fff}
+.am span.on{background:var(--em-800);color:var(--ivory);border-color:var(--em-800)}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--sand);border-radius:14px;padding:4px;margin-top:14px}
+.seg span{height:38px;border-radius:11px;display:grid;place-items:center;font-weight:600;font-size:13.5px;color:var(--ink-2)}
+.seg span.on{background:#fff;color:var(--ink);box-shadow:var(--sh-1)}
+.foot{position:absolute;left:0;right:0;bottom:0;padding:16px 20px 34px;background:var(--paper);border-top:1px solid var(--line)}
+.lb{font-size:13px;font-weight:600;color:var(--ink-2);margin-top:18px}
+.sum{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;margin-top:12px}
+.sum div{display:flex;justify-content:space-between;font-size:14px;padding:6px 0}
+.pay{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.pay div{height:58px;border-radius:16px;border:1px solid var(--line-2);background:#fff;display:flex;align-items:center;gap:12px;padding:0 16px;font-weight:600;font-size:15px}
+.pay div.on{border:2px solid var(--em-800)}
+.pay div small{display:block;font-weight:400;font-size:12px;color:var(--ink-3)}
+.pay .r{margin-left:auto;width:20px;height:20px;border-radius:50%;border:2px solid var(--line-2)}
+.pay .on .r{border:6px solid var(--em-800)}
+.ok{background:var(--em-900);color:var(--ivory);height:100%;position:relative;overflow:hidden}
+.ok:before{content:"";position:absolute;inset:0;background:url(pattern-gold.svg);background-size:100px;opacity:.07}
+.ok>*:not(.island){position:relative}
+.seal{width:120px;height:120px;margin:40px auto 0;display:block}
+</style></head><body><div class="stage">
+
+<div class="phone"><div class="screen"><div class="island"></div>
+ <div class="sbar"><span>16:02</span><span>●●● 5G</span></div>
+ <div class="hd2"><div class="bk" data-i="arrl"></div><div><div class="step">ШАГ 1 ИЗ 2</div><div style="font-weight:600">Пожертвование</div></div></div>
+ <div class="scr" style="padding-bottom:0">
+  <div class="m-h2" style="font-size:30px">На что направить<br>помощь?</div>
+  <div class="pp">
+   <div class="on"><svg class="i"><use href="#i-heart"/></svg>Садака</div>
+   <div><svg class="i"><use href="#i-shield"/></svg>Закят</div>
+   <div><svg class="i"><use href="#i-mosque"/></svg>Мечетям</div>
+   <div><svg class="i"><use href="#i-users"/></svg>Нуждающимся</div>
+  </div>
+  <div class="seg"><span class="on">Разово</span><span>Ежемесячно</span></div>
+  <div class="lb">Сумма</div>
+  <div class="am tnum"><span>300 ₽</span><span>500 ₽</span><span class="on">1 000 ₽</span><span>2 000 ₽</span><span>5 000 ₽</span><span style="font-size:13px">Другая</span></div>
+  <div style="margin-top:18px;border-radius:18px;background:var(--ivory);padding:14px 16px;display:flex;gap:12px;align-items:center"><svg class="i" style="color:var(--gold-d);width:22px;height:22px"><use href="#i-eye"/></svg><div style="font-size:13px;line-height:1.4;color:var(--ink-2)">Отчёт о расходовании садаки публикуется <b style="color:var(--ink)">каждый месяц</b></div></div>
+ </div>
+ <div class="foot"><a class="btn btn-gold" style="width:100%;justify-content:center;height:54px">Продолжить · 1 000 ₽</a></div>
+</div></div>
+
+<div class="phone"><div class="screen"><div class="island"></div>
+ <div class="sbar"><span>16:02</span><span>●●● 5G</span></div>
+ <div class="hd2"><div class="bk" data-i="arrl"></div><div><div class="step">ШАГ 2 ИЗ 2</div><div style="font-weight:600">Оплата</div></div></div>
+ <div class="scr" style="padding-bottom:0">
+  <div class="sum tnum"><div><span class="muted">Назначение</span><b>Садака</b></div><div><span class="muted">Сумма</span><b>1 000 ₽</b></div><div><span class="muted">Комиссия</span><b>0 ₽</b></div></div>
+  <div class="lb">Способ оплаты</div>
+  <div class="pay">
+   <div class="on"><svg class="i"><use href="#i-qr"/></svg><span>СБП<small>Через ваш банк, без комиссии</small></span><i class="r"></i></div>
+   <div><svg class="i"><use href="#i-card"/></svg><span>Банковская карта<small>МИР, Visa, Mastercard РФ</small></span><i class="r"></i></div>
+  </div>
+  <div class="lb">Чек и отчёт</div>
+  <div class="inp" style="height:50px;border-radius:14px;border:1px solid var(--line-2);display:flex;align-items:center;padding:0 14px;color:var(--ink-3);background:#fff;margin-top:10px;font-size:14px">Email (необязательно)</div>
+  <div style="display:flex;gap:10px;align-items:center;font-size:14px;margin-top:14px"><i style="width:20px;height:20px;border-radius:6px;background:var(--em-800);display:grid;place-items:center;color:#fff"><svg class="i" style="width:14px;stroke-width:2.4"><use href="#i-check"/></svg></i>Анонимно</div>
+ </div>
+ <div class="foot"><a class="btn btn-em" style="width:100%;justify-content:center;height:54px"><svg class="i"><use href="#i-lock"/></svg>Оплатить через СБП</a><div style="text-align:center;font-size:11.5px;color:var(--ink-3);margin-top:10px">Получатель: БФ «Радуга». Оферта и реквизиты</div></div>
+</div></div>
+
+<div class="phone"><div class="screen ok"><div class="island"></div>
+ <div class="sbar"><span>16:03</span><span>●●● 5G</span></div>
+ <svg class="seal" viewBox="0 0 120 120"><g fill="none" stroke="#D6BC8C" stroke-width="1.5"><rect x="27" y="27" width="66" height="66"/><rect x="27" y="27" width="66" height="66" transform="rotate(45 60 60)"/><circle cx="60" cy="60" r="26"/></g><path d="m48 61 8 8 16-17" fill="none" stroke="#D6BC8C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ <div style="text-align:center;padding:0 28px">
+  <div class="ar" style="font-size:26px;color:var(--gold-l);margin-top:24px;direction:rtl">جَزَاكَ ٱللَّٰهُ خَيْرًا</div>
+  <div style="font-family:var(--f-display);font-size:34px;line-height:1.05;margin-top:8px">Пусть Аллах<br>вознаградит вас</div>
+  <p style="font-size:14.5px;color:rgba(247,243,234,.72);margin-top:14px">Ваша садака 1 000 ₽ получена. Отчёт о том, на что пошли средства, придёт на почту в конце месяца.</p>
+ </div>
+ <div style="margin:26px 20px 0;border-radius:20px;background:rgba(247,243,234,.06);border:1px solid rgba(247,243,234,.12);padding:16px;display:flex;gap:12px;align-items:center">
+  <div style="width:44px;height:44px;border-radius:14px;background:var(--gold);display:grid;place-items:center;color:#fff;flex:none"><svg class="i"><use href="#i-cal"/></svg></div>
+  <div style="font-size:13.5px;line-height:1.4">Сделать садаку ежемесячной? <b style="color:var(--gold-l)">Подключить в 1 касание</b></div>
+ </div>
+ <div style="position:absolute;left:20px;right:20px;bottom:30px;display:flex;flex-direction:column;gap:10px"><a class="btn btn-gold" style="justify-content:center"><svg class="i"><use href="#i-share"/></svg>Рассказать близким</a><a class="btn btn-ghost-l" style="justify-content:center">На главную</a></div>
+</div></div>
+
+</div><script src="common.js"></script></body></html>

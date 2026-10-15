@@ -1,0 +1,88 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><link rel="stylesheet" href="phones.css">
+<style>
+.days{display:flex;gap:8px;margin:14px 0 0;overflow:hidden}
+.days div{flex:none;width:52px;height:66px;border-radius:16px;border:1px solid var(--line-2);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--ink-3);background:#fff}
+.days div b{font-size:19px;color:var(--ink)}
+.days div.on{background:var(--em-800);border-color:var(--em-800);color:rgba(247,243,234,.7)} .days div.on b{color:var(--ivory)}
+.pr{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.pr div{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-top:1px solid var(--line);font-size:15.5px}
+.pr div:first-child{border-top:0}
+.pr div span{display:flex;gap:10px;align-items:center;color:var(--ink-2)}
+.pr div b{font-size:18px}
+.pr div.past b{color:var(--ink-3);font-weight:500}
+.pr div.now{background:var(--em-900);color:var(--ivory)} .pr div.now span{color:var(--gold-l)} .pr div.now b{color:var(--gold-l)}
+.pr svg.i{width:18px;height:18px}
+.mapm{position:absolute;inset:0;background:#E9E2D2}
+.mapm:before{content:"";position:absolute;inset:0;background:url(pattern-soft.svg);background-size:100px;opacity:.6}
+.pinm{position:absolute;transform:translate(-50%,-100%)}
+.pinm i{display:block;width:28px;height:28px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--em-800);border:3px solid #fff;box-shadow:var(--sh-1)}
+.pinm.g i{background:var(--gold);width:36px;height:36px}
+.me{position:absolute;width:18px;height:18px;border-radius:50%;background:#3A7BD5;border:3px solid #fff;box-shadow:0 0 0 10px rgba(58,123,213,.18)}
+.sheet{position:absolute;left:0;right:0;bottom:0;height:430px;background:var(--paper);border-radius:28px 28px 0 0;box-shadow:0 -10px 40px rgba(7,31,25,.15);padding:10px 20px 0}
+.grab{width:40px;height:5px;border-radius:5px;background:var(--line-2);margin:0 auto 14px}
+.mq{background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px 16px;margin-top:10px}
+.mq h4{font-size:16px;font-weight:600}
+.mq .r{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.mq .r span{font-size:11.5px;padding:3px 9px;border-radius:999px;background:var(--em-50);color:var(--em-700);font-weight:600}
+.mq .b{display:flex;gap:8px;margin-top:12px}
+.mq .b a{flex:1;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:13px;font-weight:600;border:1px solid var(--line-2)}
+.mq .b a.p{background:var(--em-800);color:var(--ivory);border-color:var(--em-800)}
+.mq svg.i{width:16px;height:16px}
+.art .ph{height:250px;border-radius:0}
+.art p{font-size:16.5px;line-height:1.65;color:#2B3532;margin-top:14px}
+.prog{position:absolute;top:96px;left:0;height:3px;width:38%;background:var(--gold);z-index:4}
+</style></head><body><div class="stage">
+
+<div class="phone"><div class="screen"><div class="island"></div>
+ <div class="sbar"><span>15:53</span><span>●●● 5G</span></div>
+ <div class="mh"><div style="font-weight:600;font-size:17px;display:flex;gap:6px;align-items:center"><svg class="i"><use href="#i-pin"/></svg>Пенза<svg class="i" style="width:16px"><use href="#i-down"/></svg></div><div class="btnr" data-i="bell"></div></div>
+ <div class="scr">
+  <div class="m-h2">Время намаза</div>
+  <div style="font-size:13.5px;color:var(--ink-2);margin-top:4px">Вторник, 13 октября · 2 джумада аль-уля 1448</div>
+  <div class="days tnum"><div>пн<b>12</b></div><div class="on">вт<b>13</b></div><div>ср<b>14</b></div><div>чт<b>15</b></div><div>пт<b>16</b></div><div>сб<b>17</b></div></div>
+  <div class="pr tnum">
+   <div class="past"><span><svg class="i"><use href="#i-moon"/></svg>Фаджр</span><b>04:50</b></div>
+   <div class="past"><span><svg class="i"><use href="#i-sunrise"/></svg>Восход</span><b>06:23</b></div>
+   <div class="past"><span><svg class="i"><use href="#i-sun"/></svg>Зухр</span><b>12:15</b></div>
+   <div class="past"><span><svg class="i"><use href="#i-sun"/></svg>Аср</span><b>14:31</b></div>
+   <div class="now"><span><svg class="i"><use href="#i-sunset"/></svg>Магриб · через 1:16</span><b>17:09</b></div>
+   <div><span><svg class="i"><use href="#i-moon"/></svg>Иша</span><b>18:43</b></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px"><a class="btn btn-ghost btn-s" style="justify-content:center"><svg class="i" style="width:16px"><use href="#i-dl"/></svg>Месяц PDF</a><a class="btn btn-ghost btn-s" style="justify-content:center"><svg class="i" style="width:16px"><use href="#i-compass"/></svg>Кибла</a></div>
+ </div>
+ <div class="tabbar"><div><svg class="i"><use href="#i-home"/></svg>Главная</div><div class="on"><svg class="i"><use href="#i-clock"/></svg>Намаз</div><div><svg class="i"><use href="#i-pin"/></svg>Мечети</div><div class="give"><svg class="i"><use href="#i-heart"/></svg>Помочь</div><div><svg class="i"><use href="#i-menu"/></svg>Меню</div></div>
+</div></div>
+
+<div class="phone"><div class="screen"><div class="island"></div>
+ <div class="mapm">
+  <svg viewBox="0 0 366 820" style="position:absolute;inset:0" preserveAspectRatio="none"><g fill="none" stroke="#fff" stroke-linecap="round"><path d="M-10 300 C100 280 200 320 380 290" stroke-width="10"/><path d="M180 -10 C170 120 200 250 190 420" stroke-width="10"/><path d="M40 -10 C60 150 20 260 70 420" stroke-width="5"/><path d="M380 150 C300 200 260 260 190 300" stroke-width="5"/></g></svg>
+  <div class="pinm g" style="left:52%;top:31%"><i></i></div><div class="pinm" style="left:24%;top:22%"><i></i></div><div class="pinm" style="left:76%;top:20%"><i></i></div><div class="pinm" style="left:34%;top:42%"><i></i></div>
+  <div class="me" style="left:44%;top:36%"></div>
+ </div>
+ <div class="sbar" style="position:relative"><span>15:58</span><span>●●● 5G</span></div>
+ <div style="position:relative;margin:6px 20px;height:50px;border-radius:16px;background:#fff;box-shadow:var(--sh-2);display:flex;align-items:center;gap:10px;padding:0 14px;color:var(--ink-3);font-size:15px"><svg class="i"><use href="#i-search"/></svg>Город или адрес</div>
+ <div class="sheet">
+  <div class="grab"></div>
+  <div style="display:flex;justify-content:space-between;align-items:baseline"><div class="m-h2" style="font-size:28px">Рядом с вами</div><span style="font-size:13px;color:var(--ink-3)">Список</span></div>
+  <div class="mq"><div style="display:flex;justify-content:space-between"><h4>Мечеть «Ахун Патеев»</h4><span style="font-size:13px;color:var(--ink-3)">1,2 км</span></div><div style="font-size:13px;color:var(--ink-2);margin-top:2px">г. Пенза · адрес из базы муфтията</div>
+   <div class="r"><span>Джума 12:30*</span><span>Женский зал</span><span>Парковка</span></div>
+   <div class="b"><a class="p"><svg class="i"><use href="#i-compass"/></svg>Маршрут</a><a><svg class="i"><use href="#i-phone"/></svg>Позвонить</a></div></div>
+  <div class="mq"><div style="display:flex;justify-content:space-between"><h4>Следующая мечеть</h4><span style="font-size:13px;color:var(--ink-3)">3,8 км</span></div><div style="font-size:13px;color:var(--ink-2);margin-top:2px">пример карточки из списка</div></div>
+ </div>
+ <div class="tabbar"><div><svg class="i"><use href="#i-home"/></svg>Главная</div><div><svg class="i"><use href="#i-clock"/></svg>Намаз</div><div class="on"><svg class="i"><use href="#i-pin"/></svg>Мечети</div><div class="give"><svg class="i"><use href="#i-heart"/></svg>Помочь</div><div><svg class="i"><use href="#i-menu"/></svg>Меню</div></div>
+</div></div>
+
+<div class="phone"><div class="screen art"><div class="island"></div>
+ <div class="sbar"><span>16:10</span><span>●●● 5G</span></div>
+ <div class="mh"><div class="btnr" data-i="arrl"></div><div style="display:flex;gap:8px"><div class="btnr" data-i="share"></div></div></div>
+ <div class="prog"></div>
+ <div class="ph" data-mosque></div>
+ <div class="scr" style="padding-top:18px">
+  <div style="font-size:12px;color:var(--ink-3)"><span class="tag gold" style="height:22px">Проповедь</span> &nbsp;13 сентября · 4 мин чтения</div>
+  <div style="font-family:var(--f-display);font-size:30px;line-height:1.08;margin-top:10px">Пятничная проповедь о ценности намаза</div>
+  <p>В пятницу, 11 сентября, в мечети «Ахун Патеев» заместитель муфтия по религиозным вопросам Юсеф-хазрат Бибарсов посвятил проповедь намазу — не как обязанности, а как дару и источнику света в жизни верующего.</p>
+  <div style="margin-top:16px;padding:14px 16px;border-left:3px solid var(--gold);background:var(--ivory);border-radius:0 14px 14px 0;font-family:var(--f-display);font-style:italic;font-size:19px;line-height:1.35">Цитата из проповеди выделяется так — крупно и спокойно.</div>
+ </div>
+</div></div>
+
+</div><script src="common.js"></script></body></html>

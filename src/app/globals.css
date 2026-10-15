@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+/* Контент ниже первого экрана: 1200 px на компьютере, поля 20 px на телефоне. */
+@utility container-site {
+  width: 100%;
+  max-width: calc(1200px + 2 * 40px);
+  margin-inline: auto;
+  padding-inline: 20px;
+  @media (width >= 48rem) {
+    padding-inline: 40px;
+  }
+}
+
+/* Надзаголовок (.label в эталоне): Manrope 700 10.5 px, капс, разрядка .16em. */
+@utility eyebrow {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+@utility tnum {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.55;
+    font-variant-numeric: lining-nums;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-zarya);
+    outline-offset: 2px;
+  }
+}

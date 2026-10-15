@@ -1,0 +1,76 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+body{width:1440px}
+.top{padding:56px 56px 0}
+.crumbs{font-size:13px;color:var(--ink-3)}
+.titlerow{display:flex;justify-content:space-between;align-items:flex-end;margin-top:14px}
+.cities{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}
+.cities span{height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line-2);display:inline-flex;align-items:center;font-size:14px;font-weight:500}
+.cities span.on{background:var(--em-800);color:var(--ivory);border-color:var(--em-800)}
+.cities span.geo{gap:6px;color:var(--em-700);border-style:dashed}
+.grid{display:grid;grid-template-columns:440px 1fr;gap:32px;padding:32px 56px 96px}
+.today{background:var(--em-900);color:var(--ivory);border-radius:28px;padding:28px;position:relative;overflow:hidden;align-self:start}
+.today:before{content:"";position:absolute;inset:0;background:url(pattern-gold.svg);background-size:100px;opacity:.06}
+.today>*{position:relative}
+.tl{margin-top:8px}
+.tl div{display:flex;justify-content:space-between;align-items:center;padding:13px 4px;border-top:1px solid rgba(247,243,234,.1);font-size:16px}
+.tl div span{display:flex;gap:10px;align-items:center;color:rgba(247,243,234,.75)}
+.tl div b{font-size:20px;font-weight:600}
+.tl div.past b{color:rgba(247,243,234,.4)}
+.tl .now{background:rgba(214,188,140,.12);border-radius:14px;border-top-color:transparent;padding:13px 12px;margin:0 -8px}
+.tl .now span,.tl .now b{color:var(--gold-l)}
+.tl svg.i{width:18px;height:18px}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.acts a{height:44px;border-radius:14px;border:1px solid rgba(247,243,234,.16);display:flex;align-items:center;justify-content:center;gap:8px;font-size:13.5px;font-weight:600}
+.tbl{background:#fff;border:1px solid var(--line);border-radius:28px;overflow:hidden}
+.th{display:flex;justify-content:space-between;align-items:center;padding:20px 28px;border-bottom:1px solid var(--line)}
+.mon{display:flex;align-items:center;gap:14px;font-family:var(--f-display);font-size:30px;font-weight:500}
+.mon a{width:38px;height:38px;border-radius:12px;border:1px solid var(--line-2);display:grid;place-items:center}
+table{width:100%;border-collapse:collapse;font-size:15px}
+thead th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;text-align:left;padding:14px 18px;background:var(--paper)}
+td{padding:12px 18px;border-top:1px solid var(--line)}
+td.d{font-weight:600;width:64px}
+td.wd{color:var(--ink-2);width:150px}
+td.hj{color:var(--gold-d);width:110px;font-size:14px}
+tr.fri td.wd{color:var(--em-700);font-weight:600}
+tr.fri td.wd:after{content:"джума";margin-left:8px;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--em-50);color:var(--em-700)}
+tr.cur td{background:#FBF5E8}
+tr.cur td.d{box-shadow:inset 4px 0 0 var(--gold)}
+.note{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--ink-2);padding:16px 28px;background:var(--paper);border-top:1px solid var(--line)}
+</style></head><body>
+<header class="hdr"><a class="logo" data-logo><div class="logo-t">Духовное управление мусульман<small>Пензенской области</small></div></a>
+<nav class="nav"><a>О муфтияте</a><a>Новости</a><a>Мечети</a><a class="on">Намаз</a><a>Календарь</a><a>Знания</a><a>Халяль</a></nav>
+<div class="chip-prayer"><svg class="i"><use href="#i-sunset"/></svg>Магриб 17:09</div><a class="btn btn-gold btn-s"><svg class="i"><use href="#i-heart"/></svg>Пожертвовать</a></header>
+<div class="top">
+ <div class="crumbs">Главная / Время намаза</div>
+ <div class="titlerow"><h1 class="h2" style="font-size:64px">Время намаза</h1>
+ <div style="display:flex;gap:10px"><a class="btn btn-ghost btn-s"><svg class="i"><use href="#i-dl"/></svg>PDF на месяц</a><a class="btn btn-ghost btn-s"><svg class="i"><use href="#i-cal"/></svg>В календарь телефона</a><a class="btn btn-em btn-s"><svg class="i"><use href="#i-bell"/></svg>Напоминания</a></div></div>
+ <div class="cities"><span class="geo"><svg class="i" style="width:16px"><use href="#i-compass"/></svg>Определить автоматически</span><span class="on">Пенза</span><span>Кузнецк</span><span>Сосновоборск</span><span>Индерка</span><span>Ср. Елюзань</span><span>Н. Елюзань</span><span>Лопатино</span><span>Неверкино</span><span>Каменка</span><span>Городище</span><span>Исса</span></div>
+</div>
+<div class="grid">
+ <div class="today">
+  <div class="eyebrow">Сегодня · Пенза</div>
+  <div style="font-family:var(--f-display);font-size:34px;line-height:1.1;margin:8px 0 2px">13 октября, вторник</div>
+  <div style="font-size:14px;color:rgba(247,243,234,.6)">2 джумада аль-уля 1448 г. х.</div>
+  <div data-arc="dark" data-w="380" data-h="190" style="margin:18px 0 6px"></div>
+  <div class="tl tnum">
+   <div class="past"><span><svg class="i"><use href="#i-moon"/></svg>Фаджр</span><b>04:50</b></div>
+   <div class="past"><span><svg class="i"><use href="#i-sunrise"/></svg>Восход</span><b>06:23</b></div>
+   <div class="past"><span><svg class="i"><use href="#i-sun"/></svg>Зухр</span><b>12:15</b></div>
+   <div class="past"><span><svg class="i"><use href="#i-sun"/></svg>Аср</span><b>14:31</b></div>
+   <div class="now"><span><svg class="i"><use href="#i-sunset"/></svg>Магриб · через 1:16</span><b>17:09</b></div>
+   <div><span><svg class="i"><use href="#i-moon"/></svg>Иша</span><b>18:43</b></div>
+  </div>
+  <div class="acts"><a><svg class="i" style="width:16px"><use href="#i-compass"/></svg>Направление киблы</a><a><svg class="i" style="width:16px"><use href="#i-tg"/></svg>Бот в Telegram</a></div>
+ </div>
+ <div class="tbl">
+  <div class="th"><div class="mon"><a data-i="arrl"></a>Октябрь 2026<a data-i="arr"></a></div><div style="font-size:14px;color:var(--ink-2)">Раби аль-ахир — джумада аль-уля 1448</div></div>
+  <table class="tnum"><thead><tr><th>Дата</th><th>День</th><th>Хиджра</th><th>Фаджр</th><th>Восход</th><th>Зухр</th><th>Аср</th><th>Магриб</th><th>Иша</th></tr></thead><tbody id="tb"></tbody></table>
+  <div class="note"><svg class="i" style="width:18px;color:var(--gold-d)"><use href="#i-info"/></svg>Время рассчитано муфтиятом для г. Пензы. Для других населённых пунктов выберите город выше — разница может составлять до 10 минут.</div>
+ </div>
+</div>
+<script>
+const R=[[7,'среда',26,'04:39','06:12','12:15','14:42','17:23','18:57'],[8,'четверг',27,'04:41','06:14','12:15','14:40','17:20','18:55'],[9,'пятница',28,'04:43','06:15','12:15','14:38','17:18','18:52'],[10,'суббота',29,'04:45','06:17','12:15','14:37','17:16','18:50'],[11,'воскресенье',30,'04:46','06:19','12:15','14:35','17:13','18:48'],[12,'понедельник',1,'04:48','06:21','12:15','14:33','17:11','18:46'],[13,'вторник',2,'04:50','06:23','12:15','14:31','17:09','18:43'],[14,'среда',3,'04:52','06:24','12:15','14:30','17:07','18:41'],[15,'четверг',4,'04:54','06:26','12:15','14:28','17:04','18:39'],[16,'пятница',5,'04:54','06:26','12:15','14:28','17:04','18:39'],[17,'суббота',6,'04:55','06:28','12:15','14:26','17:02','18:37'],[18,'воскресенье',7,'04:59','06:32','12:15','14:23','16:58','18:33'],[19,'понедельник',8,'05:00','06:34','12:15','14:21','16:55','18:30']];
+document.getElementById('tb').innerHTML=R.map(r=>`<tr class="${r[0]==13?'cur':''} ${r[1]=='пятница'?'fri':''}"><td class="d">${r[0]}</td><td class="wd">${r[1]}</td><td class="hj">${r[2]} ${r[2]<=30&&r[0]<12?'раби II':'джум. I'}</td>${r.slice(3).map(t=>`<td>${t}</td>`).join('')}</tr>`).join('');
+</script>
+<script src="common.js"></script></body></html>
