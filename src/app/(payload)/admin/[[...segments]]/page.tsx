@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
+import { connection } from "next/server";
 import config from "@payload-config";
 import { generatePageMetadata, RootPage } from "@payloadcms/next/views";
 import { importMap } from "../importMap";
+
+// Админка — служебный раздел: всегда рендерится по запросу (Payload использует текущее время, сессию),
+// мгновенная навигация и пререндер ей не нужны.
+export const instant = false;
 
 type Args = {
   params: Promise<{ segments: string[] }>;
@@ -11,6 +16,9 @@ type Args = {
 export const generateMetadata = ({ params, searchParams }: Args): Promise<Metadata> =>
   generatePageMetadata({ config, params, searchParams });
 
-const Page = ({ params, searchParams }: Args) => RootPage({ config, params, searchParams, importMap });
+const Page = async ({ params, searchParams }: Args) => {
+  await connection();
+  return RootPage({ config, params, searchParams, importMap });
+};
 
 export default Page;
