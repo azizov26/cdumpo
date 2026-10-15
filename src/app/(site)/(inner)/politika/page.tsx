@@ -1,7 +1,138 @@
-import { ComingSoon, comingSoonMetadata } from "@/components/layout/ComingSoon";
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import { PageHeading } from "@/components/layout/PageHeading";
+import { Pending } from "@/components/sections/FactList";
+import { SITE_ADDRESS, SITE_FULL_NAME } from "@/lib/site";
 
-export const metadata = comingSoonMetadata("/politika");
+export const metadata: Metadata = {
+  title: "Политика обработки персональных данных",
+  description: "Какие данные собирает сайт ЦДУМ ПО, зачем, как долго хранит и как их удалить.",
+  alternates: { canonical: "/politika" },
+};
 
-export default function Page() {
-  return <ComingSoon path="/politika" />;
+function Section({ n, title, children }: { n: number; title: string; children: ReactNode }) {
+  return (
+    <section className="mt-10 first:mt-0">
+      <h2 className="font-display text-[26px] leading-[1.15] font-medium md:text-[32px]">
+        {n}. {title}
+      </h2>
+      <div className="mt-3 space-y-3 text-[17px] leading-[1.65] text-fg-2">{children}</div>
+    </section>
+  );
+}
+
+const List = ({ items }: { items: ReactNode[] }) => (
+  <ul className="list-disc space-y-1.5 pl-6">
+    {items.map((it, i) => (
+      <li key={i}>{it}</li>
+    ))}
+  </ul>
+);
+
+// Черновик под 152-ФЗ «О персональных данных». Перед публикацией — на проверку юристу; реквизиты оператора — от муфтията.
+export default function PolicyPage() {
+  return (
+    <>
+      <PageHeading
+        title="Политика обработки персональных данных"
+        lead="Простыми словами: что мы о вас узнаём, зачем, сколько храним и как это удалить."
+      />
+      <div className="container-site pt-8 pb-20 md:pt-12 md:pb-28">
+        <article className="max-w-[760px]">
+          <p className="mb-8 rounded-[18px] border border-line px-5 py-4 text-[15px] leading-[1.55] text-fg-2">
+            Черновик. Текст ждёт проверки юристом, реквизиты оператора ещё не внесены:{" "}
+            <Pending what="дата вступления в силу" />.
+          </p>
+
+          <Section n={1} title="Кто обрабатывает данные">
+            <p>
+              Оператор — {SITE_FULL_NAME}, адрес: {SITE_ADDRESS}. ОГРН: <Pending what="ОГРН" />, ИНН:{" "}
+              <Pending what="ИНН" />. Электронная почта по вопросам данных: <Pending what="адрес для обращений" />.
+            </p>
+          </Section>
+
+          <Section n={2} title="Что мы собираем и зачем">
+            <List
+              items={[
+                <>
+                  <b>Вопрос имаму</b> — текст вопроса и контакт для ответа (почта или Telegram), который вы указываете
+                  сами. Нужны, чтобы ответить вам. Вопрос публикуется только без имени и контакта и только если вы
+                  отметили согласие.
+                </>,
+                <>
+                  <b>Пожертвование</b> — сумма, периодичность и способ оплаты. Данные банковской карты на сайт не
+                  попадают: оплата проходит на стороне платёжного провайдера. Имя жертвователя на сайте не публикуется.
+                </>,
+                <>
+                  <b>Статистика посещений</b> — Яндекс Метрика: обезличенные данные о страницах, устройстве и источнике
+                  перехода, файлы cookie. Нужна, чтобы понимать, чем сайт полезен и что исправить. Запись экранов
+                  (вебвизор) выключена.
+                </>,
+              ]}
+            />
+            <p>
+              Мы не собираем сведения о вероисповедании, здоровье и других специальных категориях, кроме тех, что вы
+              сами напишете в вопросе.
+            </p>
+          </Section>
+
+          <Section n={3} title="Основание">
+            <p>
+              Ваше согласие, которое вы даёте отметкой в форме. Для статистики — согласие при продолжении работы с
+              сайтом, если вы не отключили cookie в браузере.
+            </p>
+          </Section>
+
+          <Section n={4} title="Что мы делаем с данными">
+            <p>
+              Собираем, записываем, храним, используем для ответа, уточняем и удаляем. Не продаём и не передаём третьим
+              лицам, кроме платёжного провайдера (для оплаты) и Яндекса (для статистики). Данные хранятся на серверах в
+              России.
+            </p>
+          </Section>
+
+          <Section n={5} title="Сколько храним">
+            <p>
+              Вопрос и контакт — до ответа и ещё <Pending what="срок хранения вопросов" />. Сведения о платежах —
+              столько, сколько требует закон об учёте. Статистика — по правилам Яндекс Метрики.
+            </p>
+          </Section>
+
+          <Section n={6} title="Ваши права">
+            <List
+              items={[
+                "узнать, какие данные о вас у нас есть;",
+                "потребовать исправить или удалить их;",
+                "отозвать согласие в любой момент;",
+                "пожаловаться в Роскомнадзор.",
+              ]}
+            />
+            <p>
+              Напишите на <Pending what="адрес для обращений" /> — ответим в течение 10 рабочих дней.
+            </p>
+          </Section>
+
+          <Section n={7} title="Cookie">
+            <p>
+              Сайт хранит в браузере только то, что нужно для работы (например, что вы уже видели заставку), и cookie
+              Яндекс Метрики. Отключить их можно в настройках браузера — сайт продолжит работать.
+            </p>
+          </Section>
+
+          <Section n={8} title="Защита">
+            <p>
+              Соединение шифруется (HTTPS), доступ к данным только у сотрудников муфтията, которым это нужно, вход в
+              админку защищён.
+            </p>
+          </Section>
+
+          <Section n={9} title="Изменения">
+            <p>
+              Новая редакция публикуется на этой странице. Дата последнего изменения: <Pending what="дата" />.
+            </p>
+          </Section>
+        </article>
+      </div>
+    </>
+  );
 }

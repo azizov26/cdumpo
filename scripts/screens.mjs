@@ -6,7 +6,7 @@ const widths = [360, 768, 1280, 1440];
 const browser = await chromium.launch();
 for (const w of widths) {
   const page = await browser.newPage({ viewport: { width: w, height: 900 }, deviceScaleFactor: 1 });
-  await page.goto(`http://localhost:3000${path}`, { waitUntil: "networkidle" });
+  await page.goto(`http://localhost:${process.env.PORT || 3000}${path}`, { waitUntil: "networkidle" });
   await page.waitForTimeout(600);
   const name = `${out}/${path.replace(/\W+/g, "_") || "home"}-${w}.png`;
   await page.screenshot({ path: name, fullPage: true });

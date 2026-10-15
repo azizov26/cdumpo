@@ -41,7 +41,7 @@ export const SECTIONS: Section[] = [
     ready: true,
   },
   { href: "/dobro/sadaka", title: "Садака по пятницам", about: "Регулярная садака и её назначение." },
-  { href: "/dobro/zakyat", title: "Закят", about: "Калькулятор закята и категории получателей." },
+  { href: "/dobro/zakyat", title: "Закят", about: "Калькулятор закята и категории получателей.", ready: true },
   {
     href: "/dobro/otchyoty",
     title: "Отчёты о сборах",
@@ -79,6 +79,7 @@ export const SECTIONS: Section[] = [
     href: "/politika",
     title: "Политика обработки персональных данных",
     about: "Как сайт обращается с персональными данными посетителей.",
+    ready: true,
   },
   { href: "/eshchyo", title: "Ещё", about: "Все разделы сайта.", ready: true },
 ];
