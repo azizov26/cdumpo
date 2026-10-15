@@ -1,5 +1,5 @@
 import { CalculationMethod, Coordinates, HighLatitudeRule, Madhab, PrayerTimes } from "adhan";
-import table from "@/data/prayer-times.json";
+import bundled from "@/data/prayer-times.json";
 
 // Источник — таблица на год (scripts/scrape-namaz.mjs → scripts/build-prayer-table.mjs).
 // Для дат вне таблицы — предварительный расчёт; метод и мазхаб сверить с муфтиятом до запуска.
@@ -88,11 +88,18 @@ export function dateKey(d: Date): string {
 }
 
 /** Есть ли на эту дату время из таблицы (иначе — предварительный расчёт). */
-export const hasTable = (d: Date) => dateKey(d) in table.days;
+// Таблица дня → «04:54 06:26 …». По умолчанию — встроенная (src/data/prayer-times.json);
+// если в админке загружено расписание, PrayerTableSeed подменяет её до отрисовки.
+let days: Record<string, string> = bundled.days;
+export const setPrayerDays = (d: Record<string, string> | null | undefined) => {
+  days = d && Object.keys(d).length ? d : bundled.days;
+};
+
+export const hasTable = (d: Date) => dateKey(d) in days;
 
 function fromTable(d: Date): DayTimes | null {
   const key = dateKey(d);
-  const row = (table.days as Record<string, string>)[key];
+  const row = days[key];
   if (!row) return null;
   const [y, m, day] = key.split("-").map(Number);
   // Время в таблице — местное (Москва, UTC+3, без перехода на летнее время).

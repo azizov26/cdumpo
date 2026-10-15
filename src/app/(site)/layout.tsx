@@ -4,6 +4,8 @@ import "@fontsource-variable/cormorant-garamond/wght.css";
 import "@fontsource-variable/cormorant-garamond/wght-italic.css";
 import "@fontsource/amiri/arabic-400.css";
 import "../globals.css";
+import { Suspense } from "react";
+import { PrayerTableLoader } from "@/components/layout/PrayerTableLoader";
 import { YandexMetrika } from "@/components/layout/YandexMetrika";
 import { SITE_FULL_NAME, SITE_NAME, SITE_URL, YANDEX_VERIFICATION } from "@/lib/site";
 
@@ -75,6 +77,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: earlySky }} />
       </head>
       <body>
+        <Suspense fallback={null}>
+          <PrayerTableLoader />
+        </Suspense>
         {children}
         <YandexMetrika />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: organizationLd }} />

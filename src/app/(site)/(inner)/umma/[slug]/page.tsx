@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { RichText } from "@payloadcms/richtext-lexical/react";
 import { Cover } from "@/components/sections/NewsCard";
 import { ShareLinks } from "@/components/sections/ShareLinks";
 import { Icon } from "@/components/ui/Icon";
@@ -34,6 +35,10 @@ export async function generateMetadata({ params }: PageProps<"/umma/[slug]">): P
   };
 }
 
+// Новости, опубликованные после сборки, рендерятся по запросу (оболочка страницы готова заранее).
+// Несуществующий адрес показывает «не найдено» с noindex; код ответа при этом 200 — так устроен частичный пререндер.
+export const instant = false;
+
 export default async function NewsPage({ params }: PageProps<"/umma/[slug]">) {
   const item = await getNewsBySlug((await params).slug);
   if (!item) notFound();
@@ -55,11 +60,7 @@ export default async function NewsPage({ params }: PageProps<"/umma/[slug]">) {
         <h1 className="mt-3 font-display text-[36px] leading-[1.05] font-medium md:text-[56px]">{item.title}</h1>
         {item.lead && <p className="mt-5 text-[19px] leading-[1.55] text-fg-2">{item.lead}</p>}
         <Cover item={item} width={1200} height={750} className="mt-8 h-[220px] w-full rounded-[24px] md:h-[420px]" />
-        <div className="mt-8 space-y-5 text-[17px] leading-[1.7] md:text-[18px]">
-          {item.body?.map((p, i) => (
-            <p key={i}>{p}</p>
-          ))}
-        </div>
+        {item.body && <RichText data={item.body} className="news-body mt-8 text-[17px] leading-[1.7] md:text-[18px]" />}
         <div className="mt-10 border-t border-line pt-6">
           <ShareLinks url={`${SITE_URL}/umma/${item.slug}`} title={item.title} />
         </div>
