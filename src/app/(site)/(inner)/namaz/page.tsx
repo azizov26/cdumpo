@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Button } from "@/components/ui/Button";
+import { Icon } from "@/components/ui/Icon";
 import { PageHeading } from "@/components/layout/PageHeading";
 import { NamazDay } from "@/components/sections/NamazDay";
 import { PrayerMonth } from "@/components/sections/PrayerMonth";
@@ -14,6 +16,12 @@ export default function NamazPage() {
   return (
     <>
       <PageHeading title="Время намаза" lead="Расписание для Пензы: сегодня, неделя и весь месяц." />
+      <div className="container-site pt-6">
+        <Button href="/namaz/kibla">
+          <Icon name="arrow-right" />
+          Кибла
+        </Button>
+      </div>
       <NamazDay />
       <div className="pb-20 md:pb-28">
         <PrayerMonth />

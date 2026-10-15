@@ -22,6 +22,7 @@ export type Section = {
 
 export const SECTIONS: Section[] = [
   { href: "/namaz", title: "Время намаза", about: "Расписание на сегодня, неделю и месяц.", ready: true },
+  { href: "/namaz/kibla", title: "Кибла", about: "Направление и расстояние до Каабы, компас.", ready: true },
   {
     href: "/mosques",
     title: "Мечети",
@@ -98,6 +99,7 @@ export const NAV = [
 
 /** Группы экрана «Ещё» (концепция 2.0, вкладка «Ещё»). */
 export const MORE_GROUPS: { title: string; hrefs: string[] }[] = [
+  { title: "Намаз", hrefs: ["/namaz", "/namaz/kibla"] },
   { title: "Жизнь общины", hrefs: ["/umma", "/znaniya", "/vopros-imamu", "/obryady"] },
   { title: "Добро", hrefs: ["/dobro", "/dobro/postupleniya", "/dobro/sadaka", "/dobro/zakyat", "/dobro/otchyoty"] },
   { title: "Муфтият", hrefs: ["/muftiyat", "/muftiyat/struktura", "/muftiyat/dokumenty", "/muftiyat/kontakty"] },
