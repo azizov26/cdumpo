@@ -77,6 +77,7 @@ export const SECTIONS: Section[] = [
     href: "/muftiyat/istoriya",
     title: "История муфтията",
     about: "История Централизованного духовного управления мусульман Пензенской области.",
+    ready: true,
   },
   { href: "/muftiyat/struktura", title: "Структура и имамы", about: "Структура управления и имамы мечетей области." },
   { href: "/muftiyat/dokumenty", title: "Документы", about: "Официальные документы муфтията." },
