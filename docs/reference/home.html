@@ -1,0 +1,232 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+body{width:1440px}
+.hero{background:var(--em-900);color:var(--ivory);position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:url(pattern-gold.svg);background-size:120px;opacity:.07;
+ -webkit-mask-image:radial-gradient(ellipse 60% 80% at 85% 40%,#000 0%,transparent 75%)}
+.hero-in{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:64px;padding:72px 56px 96px;align-items:center}
+.bism{font-family:var(--f-ar);font-size:30px;color:var(--gold-l);direction:rtl;text-align:left;margin-bottom:6px}
+.hero h1{font-family:var(--f-display);font-weight:500;font-size:84px;line-height:.98;letter-spacing:-.015em;margin:20px 0 26px}
+.hero h1 em{font-style:italic;color:var(--gold-l)}
+.hero p.lead{font-size:19px;line-height:1.6;color:rgba(247,243,234,.78);max-width:560px}
+.hero .ctas{display:flex;gap:14px;margin-top:38px}
+.pcard{background:rgba(247,243,234,.045);border:1px solid rgba(247,243,234,.12);border-radius:28px;padding:28px 30px 22px;backdrop-filter:blur(8px)}
+.pc-top{display:flex;justify-content:space-between;align-items:flex-start}
+.city{display:inline-flex;gap:6px;align-items:center;font-weight:600;font-size:15px}
+.date{font-size:13px;color:rgba(247,243,234,.6);margin-top:4px}
+.count{text-align:right}
+.count b{font-family:var(--f-display);font-weight:500;font-size:44px;line-height:1;color:var(--gold-l)}
+.count small{display:block;font-size:12px;color:rgba(247,243,234,.6);letter-spacing:.06em}
+.plist{display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid rgba(247,243,234,.12);margin-top:6px;padding-top:16px}
+.plist div{text-align:center;font-size:12px;color:rgba(247,243,234,.6)}
+.plist b{display:block;font-size:17px;font-weight:600;color:var(--ivory);margin-top:2px}
+.plist .now{color:var(--gold-l)} .plist .now b{color:var(--gold-l)}
+.plist .past b{color:rgba(247,243,234,.45)}
+.pc-foot{display:flex;justify-content:space-between;margin-top:18px;font-size:13px;color:rgba(247,243,234,.7)}
+.pc-foot a{display:flex;gap:6px;align-items:center}
+.pc-foot svg.i{width:16px;height:16px}
+
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:0 56px;margin-top:-44px;position:relative;z-index:2}
+.q{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px 24px;box-shadow:var(--sh-2);display:flex;gap:16px;align-items:center}
+.q .ic{width:48px;height:48px;border-radius:14px;background:var(--em-50);color:var(--em-800);display:grid;place-items:center;flex:none}
+.q .ic svg.i{width:24px;height:24px}
+.q b{display:block;font-size:16px}
+.q span{font-size:13px;color:var(--ink-2)}
+.q.give .ic{background:#F3EAD9;color:var(--gold-d)}
+
+.sec-h{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px}
+.news{display:grid;grid-template-columns:1.25fr 1fr;gap:36px}
+.feat .ph{height:400px}
+.feat h3{font-family:var(--f-display);font-weight:500;font-size:36px;line-height:1.1;margin:20px 0 10px}
+.meta{font-size:13px;color:var(--ink-3);display:flex;gap:12px;align-items:center}
+.nl{display:flex;flex-direction:column}
+.ni{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:22px 0;border-top:1px solid var(--line)}
+.ni:first-child{border-top:0;padding-top:0}
+.ni .ph{height:104px;border-radius:12px}
+.ni h4{font-size:17px;font-weight:600;line-height:1.35;margin:6px 0 4px}
+
+.mosq{background:var(--ivory);}
+.mgrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.map{position:relative;height:480px;border-radius:28px;background:#E9E2D2;overflow:hidden;border:1px solid var(--line)}
+.map:before{content:"";position:absolute;inset:0;background:url(pattern-soft.svg);background-size:120px;opacity:.6}
+.map svg.roads{position:absolute;inset:0}
+.pinm{position:absolute;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;font-size:12px;font-weight:600;color:var(--em-800)}
+.pinm i{width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--em-800);border:3px solid #fff;box-shadow:var(--sh-1)}
+.pinm span{margin-top:6px;background:rgba(255,255,255,.9);padding:2px 8px;border-radius:999px}
+.pinm.big i{width:38px;height:38px;background:var(--gold)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:34px 0 36px;border-top:1px solid var(--line-2)}
+.stats div{padding-top:18px}
+.stats b{font-family:var(--f-display);font-size:54px;font-weight:500;line-height:1;color:var(--em-800)}
+.stats span{display:block;font-size:13px;color:var(--ink-2);margin-top:6px}
+
+.givesec{background:var(--em-900);color:var(--ivory);position:relative;overflow:hidden}
+.givesec:before{content:"";position:absolute;inset:0;background:url(pattern-gold.svg);background-size:120px;opacity:.06}
+.ggrid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.ayah{font-family:var(--f-ar);font-size:34px;line-height:1.7;color:var(--gold-l);direction:rtl;text-align:right}
+.ayah-t{font-family:var(--f-display);font-style:italic;font-size:24px;line-height:1.4;color:rgba(247,243,234,.85);margin-top:14px}
+.ayah-s{font-size:13px;color:rgba(247,243,234,.55);margin-top:10px;letter-spacing:.06em}
+.camp{background:rgba(247,243,234,.05);border:1px solid rgba(247,243,234,.12);border-radius:28px;padding:32px}
+.camp h3{font-family:var(--f-display);font-size:34px;font-weight:500;line-height:1.1;margin:12px 0 10px}
+.bar{height:8px;border-radius:9px;background:rgba(247,243,234,.12);margin:24px 0 10px;overflow:hidden}
+.bar i{display:block;height:100%;width:68%;border-radius:9px;background:linear-gradient(90deg,var(--gold),var(--gold-l))}
+.barv{display:flex;justify-content:space-between;font-size:14px;color:rgba(247,243,234,.7)}
+.barv b{color:var(--ivory);font-size:20px}
+.amts{display:flex;gap:10px;margin:26px 0 18px}
+.amts span{flex:1;height:48px;border-radius:14px;border:1px solid rgba(247,243,234,.2);display:grid;place-items:center;font-weight:600}
+.amts span.on{background:var(--ivory);color:var(--em-900);border-color:var(--ivory)}
+
+.cal{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.ev{border:1px solid var(--line);border-radius:22px;padding:24px;background:#fff}
+.ev .d{font-family:var(--f-display);font-size:46px;font-weight:500;line-height:1;color:var(--em-800)}
+.ev .mo{font-size:13px;color:var(--ink-3);margin:4px 0 16px}
+.ev h4{font-size:17px;font-weight:600;line-height:1.35}
+.ev p{font-size:13px;color:var(--ink-2);margin-top:6px}
+
+.mufti{display:grid;grid-template-columns:420px 1fr;gap:64px;align-items:center}
+.mufti .ph{height:460px;border-radius:28px}
+.tgband{margin:0 56px 96px;border-radius:28px;background:var(--sand);display:flex;align-items:center;justify-content:space-between;padding:40px 48px}
+footer{background:var(--em-950);color:rgba(247,243,234,.7);padding:72px 56px 40px;font-size:14px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1.2fr;gap:40px}
+footer h5{color:var(--ivory);font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+footer li{list-style:none;margin:8px 0}
+.fbot{border-top:1px solid rgba(247,243,234,.1);margin-top:56px;padding-top:24px;display:flex;justify-content:space-between;font-size:13px}
+</style></head><body>
+
+<section class="hero">
+ <header class="hdr dark">
+  <a class="logo" data-logo="l"><div class="logo-t">Духовное управление мусульман<small>Пензенской области</small></div></a>
+  <nav class="nav"><a>О муфтияте</a><a>Новости</a><a>Мечети</a><a>Намаз</a><a>Календарь</a><a>Знания</a><a>Халяль</a></nav>
+  <div class="chip-prayer"><svg class="i"><use href="#i-sunset"/></svg>Магриб 17:09</div>
+  <a class="btn btn-gold btn-s"><svg class="i"><use href="#i-heart"/></svg>Пожертвовать</a>
+ </header>
+ <div class="hero-in">
+  <div>
+   <div class="bism">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+   <div class="eyebrow">Муфтият Пензенской области</div>
+   <h1>Вера, знание<br>и <em>милосердие</em> —<br>для каждого</h1>
+   <p class="lead">Духовное управление объединяет мусульманские общины Пензенской области: мечети, имамов, образование и благотворительность.</p>
+   <div class="ctas"><a class="btn btn-gold"><svg class="i"><use href="#i-pin"/></svg>Найти мечеть рядом</a><a class="btn btn-ghost-l">О муфтияте<svg class="i"><use href="#i-arr"/></svg></a></div>
+  </div>
+  <div class="pcard">
+   <div class="pc-top">
+    <div><div class="city">Пенза <svg class="i" style="width:16px;height:16px"><use href="#i-down"/></svg></div><div class="date">Вторник, 13 октября · 2 джумада аль-уля 1448</div></div>
+    <div class="count"><small>ДО МАГРИБА</small><b class="tnum">1:16:04</b></div>
+   </div>
+   <div data-arc="dark" data-w="480" data-h="230" style="margin:8px 0 2px"></div>
+   <div class="plist tnum">
+    <div class="past">Фаджр<b>04:50</b></div><div class="past">Восход<b>06:23</b></div><div class="past">Зухр<b>12:15</b></div><div class="past">Аср<b>14:31</b></div><div class="now">Магриб<b>17:09</b></div><div>Иша<b>18:43</b></div>
+   </div>
+   <div class="pc-foot"><a><svg class="i"><use href="#i-cal"/></svg>Расписание на месяц</a><a><svg class="i"><use href="#i-tg"/></svg>Уведомления в Telegram</a></div>
+  </div>
+ </div>
+</section>
+
+<div class="quick">
+ <a class="q"><div class="ic" data-i="mosque"></div><div><b>Мечети области</b><span>Адреса, джума, контакты</span></div></a>
+ <a class="q"><div class="ic" data-i="chat"></div><div><b>Вопрос имаму</b><span>Ответ в течение 3 дней</span></div></a>
+ <a class="q"><div class="ic" data-i="ring"></div><div><b>Обряды</b><span>Никах, имянаречение, джаназа</span></div></a>
+ <a class="q give"><div class="ic" data-i="heart"></div><div><b>Садака и закят</b><span>Онлайн, прозрачно</span></div></a>
+</div>
+
+<section class="sec">
+ <div class="sec-h"><div><div class="eyebrow">Новости муфтията</div><h2 class="h2" style="margin-top:12px">Жизнь общины</h2></div><a class="btn btn-ghost btn-s">Все новости<svg class="i"><use href="#i-arr"/></svg></a></div>
+ <div class="news">
+  <article class="feat"><div class="ph" data-mosque><span class="cap">Фото события</span></div>
+   <div class="meta" style="margin-top:22px"><span class="tag">Муфтият</span>13 октября 2026</div>
+   <h3>Рафик-хазрат Шабанов на проводах пензенских призывников</h3>
+   <p class="muted">10 октября 36 призывников из Пензенской области отправились к месту службы. Первый заместитель муфтия обратился к ребятам с напутствием.</p></article>
+  <div class="nl">
+   <div class="ni"><div class="ph warm" data-mosque></div><div><div class="meta"><span class="tag">Совет ДУМ</span>9 октября</div><h4>Заседание Президиума Совета Духовного управления мусульман</h4></div></div>
+   <div class="ni"><div class="ph" data-mosque></div><div><div class="meta"><span class="tag gold">Проповедь</span>13 сентября</div><h4>Пятничная проповедь о ценности намаза в мечети «Ахун Патеев»</h4></div></div>
+   <div class="ni"><div class="ph sky" data-mosque></div><div><div class="meta"><span class="tag">Федеральные</span>24 сентября</div><h4>Представители ДУМ приняли участие в Пленуме ДУМ РФ</h4></div></div>
+   <div class="ni"><div class="ph warm" data-mosque></div><div><div class="meta"><span class="tag">Общины</span>8 сентября</div><h4>В Старом Карлыгане отметили «День села»</h4></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="sec mosq">
+ <div class="mgrid">
+  <div>
+   <div class="eyebrow">Мечети и общины</div>
+   <h2 class="h2" style="margin-top:12px">Ближайшая мечеть —<br>в два касания</h2>
+   <p class="muted" style="font-size:17px;margin-top:18px;max-width:480px">Интерактивная карта всех мечетей области: адрес, время джума-намаза, контакты имама, маршрут в Яндекс Картах.</p>
+   <div class="stats"><div><b>11</b><span>населённых пунктов в расписании</span></div><div><b>40+</b><span>общин*</span></div><div><b>24/7</b><span>телефон по джаназе</span></div></div>
+   <a class="btn btn-em"><svg class="i"><use href="#i-compass"/></svg>Открыть карту мечетей</a>
+   <div style="font-size:12px;color:var(--ink-3);margin-top:14px">* Цифры условные, уточняются у муфтията</div>
+  </div>
+  <div class="map">
+   <svg class="roads" viewBox="0 0 700 480" preserveAspectRatio="none"><g fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".9"><path d="M-10 250 C120 230 230 260 330 240 S520 200 710 220"/><path d="M330 240 C340 140 360 80 380 -10"/><path d="M330 240 C300 330 260 400 240 490"/><path d="M120 236 C140 300 120 380 90 490"/></g><g fill="none" stroke="#fff" stroke-width="2.5" opacity=".7"><path d="M500 210 C540 300 600 360 700 400"/><path d="M200 250 C210 160 160 90 100 -10"/></g><path d="M600 40 C640 120 620 200 680 260" stroke="#B9CFC4" stroke-width="14" fill="none" opacity=".6"/></svg>
+   <div class="pinm big" style="left:47%;top:50%"><i></i><span>Пенза</span></div>
+   <div class="pinm" style="left:86%;top:45%"><i></i><span>Кузнецк</span></div>
+   <div class="pinm" style="left:22%;top:66%"><i></i><span>Ср. Елюзань</span></div>
+   <div class="pinm" style="left:17%;top:80%"><i></i><span>Н. Елюзань</span></div>
+   <div class="pinm" style="left:72%;top:72%"><i></i><span>Лопатино</span></div>
+   <div class="pinm" style="left:56%;top:20%"><i></i><span>Исса</span></div>
+   <div class="pinm" style="left:16%;top:34%"><i></i><span>Каменка</span></div>
+   <div class="pinm" style="left:66%;top:40%"><i></i><span>Городище</span></div>
+   <div class="pinm" style="left:93%;top:20%"><i></i><span>Неверкино</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="sec givesec">
+ <div class="ggrid">
+  <div>
+   <div class="eyebrow">Садака · Закят · Фонд «Радуга»</div>
+   <div class="ayah" style="margin-top:26px">مَّثَلُ ٱلَّذِينَ يُنفِقُونَ أَمْوَٰلَهُمْ فِى سَبِيلِ ٱللَّهِ كَمَثَلِ حَبَّةٍ أَنۢبَتَتْ سَبْعَ سَنَابِلَ</div>
+   <div class="ayah-t">«Расходующие своё имущество на пути Аллаха подобны зерну, взрастившему семь колосьев…»</div>
+   <div class="ayah-s">СУРА «АЛЬ-БАКАРА», 2:261 · смысловой перевод</div>
+  </div>
+  <div class="camp">
+   <span class="tag gold">Сбор открыт</span>
+   <h3>Зимние продуктовые наборы для нуждающихся семей</h3>
+   <p style="color:rgba(247,243,234,.7);font-size:15px">Собираем на 200 наборов для многодетных семей, пожилых и одиноких людей области.</p>
+   <div class="bar"><i></i></div>
+   <div class="barv tnum"><span><b>412 300 ₽</b> собрано</span><span>цель 600 000 ₽ · 318 человек</span></div>
+   <div class="amts tnum"><span>300 ₽</span><span class="on">1 000 ₽</span><span>3 000 ₽</span><span>Другая</span></div>
+   <a class="btn btn-gold" style="width:100%;justify-content:center"><svg class="i"><use href="#i-heart"/></svg>Помочь через СБП или картой</a>
+   <div style="font-size:12px;color:rgba(247,243,234,.5);margin-top:12px;text-align:center">Отчёт о каждом сборе публикуется на сайте</div>
+  </div>
+ </div>
+</section>
+
+<section class="sec">
+ <div class="sec-h"><div><div class="eyebrow">Календарь</div><h2 class="h2" style="margin-top:12px">Ближайшие даты</h2></div><a class="btn btn-ghost btn-s"><svg class="i"><use href="#i-cal"/></svg>Добавить в свой календарь</a></div>
+ <div class="cal">
+  <div class="ev"><div class="d">16</div><div class="mo">октября · пятница</div><h4>Джума-намаз</h4><p>Проповедь в мечетях области, 12:30*</p></div>
+  <div class="ev"><div class="d">10</div><div class="mo">декабря ≈ · 1 раджаб</div><h4>Начало месяца Раджаб</h4><p>Один из четырёх запретных месяцев</p></div>
+  <div class="ev"><div class="d">5</div><div class="mo">января ≈ · 27 раджаба</div><h4>Ночь Мирадж</h4><p>Вознесение Пророка <span class="ar">ﷺ</span></p></div>
+  <div class="ev" style="background:var(--em-50);border-color:transparent"><div class="d">8</div><div class="mo">февраля ≈ · 1 рамадан 1448</div><h4>Начало Рамадана</h4><p>Таймер поста, ифтары, расписание таравиха</p></div>
+ </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+ <div class="mufti">
+  <div class="ph sky" data-mosque><span class="cap" style="color:rgba(15,61,51,.6)">Портрет муфтия</span></div>
+  <div>
+   <div class="eyebrow">Муфтий Пензенской области</div>
+   <h2 class="h2" style="margin:12px 0 18px">Ислям-хазрат Дашкин</h2>
+   <p class="muted" style="font-size:17px;max-width:620px">Обращения, проповеди и интервью муфтия, его поездки по общинам региона. Видео и тексты собраны в одном месте — с удобным поиском и субтитрами.</p>
+   <div style="display:flex;gap:14px;margin-top:30px"><a class="btn btn-em">Обращения муфтия<svg class="i"><use href="#i-arr"/></svg></a><a class="btn btn-ghost"><svg class="i"><use href="#i-play"/></svg>Видео</a></div>
+  </div>
+ </div>
+</section>
+
+<div class="tgband">
+ <div style="display:flex;gap:22px;align-items:center"><div style="width:64px;height:64px;border-radius:20px;background:var(--em-800);color:var(--gold-l);display:grid;place-items:center"><svg class="i" style="width:30px;height:30px"><use href="#i-tg"/></svg></div>
+ <div><div class="h3" style="font-size:24px;font-family:var(--f-display);font-weight:600">Время намаза и новости — в Telegram</div><div class="muted">Напоминание за 10 минут до намаза для вашего города. Можно отключить в любой момент.</div></div></div>
+ <a class="btn btn-em">Подписаться</a>
+</div>
+
+<footer>
+ <div class="fgrid">
+  <div><a class="logo" data-logo="l" style="color:var(--ivory)"><div class="logo-t">Духовное управление мусульман<small>Пензенской области</small></div></a><p style="margin-top:20px;max-width:300px">Объединяем мусульманские общины региона: мечети, имамов, образование и благотворительность.</p></div>
+  <div><h5>Муфтият</h5><ul><li>О нас и история</li><li>Муфтий</li><li>Структура</li><li>Документы</li></ul></div>
+  <div><h5>Верующим</h5><ul><li>Время намаза</li><li>Мечети</li><li>Вопрос имаму</li><li>Обряды</li></ul></div>
+  <div><h5>Помощь</h5><ul><li>Садака и закят</li><li>Фонд «Радуга»</li><li>Отчёты</li><li>Волонтёрство</li></ul></div>
+  <div><h5>Связь</h5><ul><li>г. Пенза, адрес уточняется</li><li>+7 (8412) 00-00-00</li><li>info@dumpo.ru</li><li>Telegram · ВКонтакте</li></ul></div>
+ </div>
+ <div class="fbot"><span>© ДУМ Пензенской области, 2026</span><span>Политика конфиденциальности · Реквизиты</span></div>
+</footer>
+<script src="common.js"></script>
+</body></html>

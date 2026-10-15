@@ -1,0 +1,83 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><link rel="stylesheet" href="phones.css">
+<style>
+.dk{background:var(--em-900);color:var(--ivory);position:relative}
+.dk:before{content:"";position:absolute;inset:0;background:url(pattern-gold.svg);background-size:100px;opacity:.06}
+.dk>*:not(.tabbar):not(.island){position:relative}
+.pc{margin:6px 20px 0;border-radius:26px;background:rgba(247,243,234,.05);border:1px solid rgba(247,243,234,.12);padding:18px 18px 14px}
+.pc .row{display:flex;justify-content:space-between;align-items:flex-start}
+.pc .cnt{font-family:var(--f-display);font-size:38px;line-height:1;color:var(--gold-l)}
+.pl{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.pl div{border-radius:14px;padding:9px 10px;background:rgba(247,243,234,.05);font-size:11px;color:rgba(247,243,234,.6)}
+.pl b{display:block;font-size:16px;color:var(--ivory)}
+.pl .now{background:var(--gold);color:rgba(255,255,255,.85)} .pl .now b{color:#fff}
+.qa{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 20px 0}
+.qa a{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:10px;font-size:14px;font-weight:600;line-height:1.25}
+.qa a svg.i{color:var(--em-700);width:24px;height:24px}
+.qa a.g{background:#F3EAD9;border-color:transparent} .qa a.g svg.i{color:var(--gold-d)}
+.nc{display:flex;flex-direction:column;gap:14px}
+.nc .ph{height:190px;border-radius:18px}
+.nsm{display:grid;grid-template-columns:92px 1fr;gap:14px;align-items:center}
+.nsm .ph{height:76px;border-radius:12px}
+.nsm h4{font-size:14.5px;line-height:1.35;font-weight:600}
+.mini-give{background:var(--em-900);color:var(--ivory);border-radius:22px;padding:18px;position:relative;overflow:hidden}
+.mini-give .bar{height:6px;border-radius:9px;background:rgba(247,243,234,.15);margin:14px 0 8px}
+.mini-give .bar i{display:block;height:100%;width:68%;background:var(--gold-l);border-radius:9px}
+.menu{background:var(--em-950);color:var(--ivory);height:100%}
+.menu .grp{padding:0 24px;margin-top:22px}
+.menu .grp h6{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-l);font-weight:600;margin-bottom:8px}
+.menu .grp a{display:flex;justify-content:space-between;align-items:center;font-family:var(--f-display);font-size:23px;line-height:1.1;padding:6px 0;border-bottom:1px solid rgba(247,243,234,.08)}
+.menu .grp a svg.i{opacity:.4;width:18px}
+.srch{margin:8px 24px 0;height:48px;border-radius:14px;background:rgba(247,243,234,.07);display:flex;align-items:center;gap:10px;padding:0 14px;color:rgba(247,243,234,.55);font-size:15px}
+</style></head><body><div class="stage">
+
+<!-- 1: home top -->
+<div class="phone"><div class="screen dk"><div class="island"></div>
+ <div class="sbar"><span>15:53</span><span>●●● 5G</span></div>
+ <div class="mh"><div class="logo" data-logo="l"><div class="logo-t">ДУМ<small>Пензенской области</small></div></div><div class="btnr" style="border-color:rgba(247,243,234,.2)" data-i="menu"></div></div>
+ <div style="padding:2px 20px 0"><div class="eyebrow">Вторник · 2 джумада аль-уля</div></div>
+ <div class="pc">
+  <div class="row"><div><div style="font-weight:600;display:flex;gap:4px;align-items:center">Пенза <svg class="i" style="width:15px"><use href="#i-down"/></svg></div><div style="font-size:12px;color:rgba(247,243,234,.6)">до магриба</div></div><div class="cnt tnum">1:16:04</div></div>
+  <div data-arc="dark" data-w="320" data-h="170" style="margin-top:2px"></div>
+  <div class="pl tnum"><div>Аср<b>14:31</b></div><div class="now">Магриб<b>17:09</b></div><div>Иша<b>18:43</b></div></div>
+ </div>
+ <div style="background:var(--paper);color:var(--ink);border-radius:28px 28px 0 0;margin-top:18px;padding-top:2px;height:400px">
+  <div class="qa"><a><svg class="i"><use href="#i-mosque"/></svg>Мечети рядом</a><a><svg class="i"><use href="#i-chat"/></svg>Вопрос имаму</a><a><svg class="i"><use href="#i-ring"/></svg>Обряды</a><a class="g"><svg class="i"><use href="#i-heart"/></svg>Садака и закят</a></div>
+  <div style="margin:22px 20px 0;display:flex;justify-content:space-between;align-items:center"><div class="eyebrow">Новости</div><span style="font-size:13px;color:var(--em-700);font-weight:600">Все</span></div>
+  <div class="nsm" style="margin:10px 20px 0;display:grid;grid-template-columns:92px 1fr;gap:14px;align-items:center"><div class="ph" data-mosque style="height:72px;border-radius:12px"></div><h4 style="font-size:14.5px;line-height:1.35">Рафик-хазрат Шабанов на проводах призывников</h4></div>
+ </div>
+ <div class="tabbar"><div class="on"><svg class="i"><use href="#i-home"/></svg>Главная</div><div><svg class="i"><use href="#i-clock"/></svg>Намаз</div><div><svg class="i"><use href="#i-pin"/></svg>Мечети</div><div class="give"><svg class="i"><use href="#i-heart"/></svg>Помочь</div><div><svg class="i"><use href="#i-menu"/></svg>Меню</div></div>
+</div></div>
+
+<!-- 2: news + give -->
+<div class="phone"><div class="screen"><div class="island"></div>
+ <div class="sbar"><span>15:54</span><span>●●● 5G</span></div>
+ <div class="mh"><div class="logo" data-logo><div class="logo-t">ДУМ<small>Пензенской области</small></div></div><div class="chip-prayer" style="height:34px;font-size:13px"><svg class="i" style="width:16px"><use href="#i-sunset"/></svg>17:09</div></div>
+ <div class="scr">
+  <div class="eyebrow" style="margin-top:4px">Новости</div><div class="m-h2" style="margin:6px 0 16px">Жизнь общины</div>
+  <div class="nc">
+   <div class="ph" data-mosque></div>
+   <div><div style="font-size:12px;color:var(--ink-3)"><span class="tag" style="height:22px">Муфтият</span> &nbsp;13 октября</div>
+   <div style="font-family:var(--f-display);font-size:24px;line-height:1.12;margin-top:8px">Рафик-хазрат Шабанов на проводах пензенских призывников</div></div>
+   <div class="nsm"><div class="ph warm" data-mosque></div><h4>Заседание Президиума Совета ДУМ</h4></div>
+   <div class="nsm"><div class="ph sky" data-mosque></div><h4>Пятничная проповедь о ценности намаза</h4></div>
+  </div>
+  <div class="mini-give" style="margin-top:22px"><span class="tag gold" style="height:22px">Сбор открыт</span>
+   <div style="font-family:var(--f-display);font-size:22px;line-height:1.15;margin-top:10px">Зимние продуктовые наборы</div>
+   <div class="bar"><i></i></div><div style="display:flex;justify-content:space-between;font-size:12px;color:rgba(247,243,234,.7)" class="tnum"><span><b style="color:#fff">412 300 ₽</b></span><span>из 600 000 ₽</span></div>
+  </div>
+ </div>
+ <div class="tabbar"><div class="on"><svg class="i"><use href="#i-home"/></svg>Главная</div><div><svg class="i"><use href="#i-clock"/></svg>Намаз</div><div><svg class="i"><use href="#i-pin"/></svg>Мечети</div><div class="give"><svg class="i"><use href="#i-heart"/></svg>Помочь</div><div><svg class="i"><use href="#i-menu"/></svg>Меню</div></div>
+</div></div>
+
+<!-- 3: menu -->
+<div class="phone"><div class="screen menu"><div class="island"></div>
+ <div class="sbar"><span>15:55</span><span>●●● 5G</span></div>
+ <div class="mh"><div class="logo" data-logo="l"><div class="logo-t">ДУМ<small>Пензенской области</small></div></div><div class="btnr" style="border-color:rgba(247,243,234,.2)" data-i="x"></div></div>
+ <div class="srch"><svg class="i"><use href="#i-search"/></svg>Поиск по сайту</div>
+ <div class="grp"><h6>Верующим</h6><a>Время намаза<svg class="i"><use href="#i-arr"/></svg></a><a>Мечети области<svg class="i"><use href="#i-arr"/></svg></a><a>Вопрос имаму<svg class="i"><use href="#i-arr"/></svg></a><a>Обряды<svg class="i"><use href="#i-arr"/></svg></a><a>Календарь<svg class="i"><use href="#i-arr"/></svg></a></div>
+ <div class="grp"><h6>Знания</h6><a>Проповеди и статьи<svg class="i"><use href="#i-arr"/></svg></a><a>Курсы и медресе<svg class="i"><use href="#i-arr"/></svg></a><a>Халяль<svg class="i"><use href="#i-arr"/></svg></a></div>
+ <div class="grp"><h6>Муфтият</h6><a>О нас · Муфтий<svg class="i"><use href="#i-arr"/></svg></a><a>Новости · Контакты<svg class="i"><use href="#i-arr"/></svg></a></div>
+ <div style="position:absolute;left:24px;right:24px;bottom:34px;display:flex;gap:10px"><a class="btn btn-gold" style="flex:1;justify-content:center"><svg class="i"><use href="#i-heart"/></svg>Пожертвовать</a><a class="btn btn-ghost-l" style="width:48px;padding:0;justify-content:center"><svg class="i"><use href="#i-tg"/></svg></a></div>
+</div></div>
+
+</div><script src="common.js"></script></body></html>

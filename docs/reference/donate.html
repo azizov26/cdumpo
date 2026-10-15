@@ -1,0 +1,118 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+body{width:1440px}
+.dh{background:var(--em-900);color:var(--ivory);position:relative;overflow:hidden}
+.dh:before{content:"";position:absolute;inset:0;background:url(pattern-gold.svg);background-size:120px;opacity:.06}
+.dh-in{position:relative;display:grid;grid-template-columns:1fr 520px;gap:64px;padding:64px 56px 80px;align-items:start}
+.dh h1{font-family:var(--f-display);font-weight:500;font-size:76px;line-height:1;margin:16px 0 22px}
+.purp{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:36px}
+.pu{border:1px solid rgba(247,243,234,.14);border-radius:18px;padding:16px;background:rgba(247,243,234,.03)}
+.pu.on{border-color:var(--gold-l);background:rgba(214,188,140,.1)}
+.pu b{display:block;font-size:15px;margin-top:10px}
+.pu span{font-size:12.5px;color:rgba(247,243,234,.6);line-height:1.4;display:block;margin-top:2px}
+.pu svg.i{color:var(--gold-l);width:22px;height:22px}
+.form{background:var(--paper);color:var(--ink);border-radius:28px;padding:30px;box-shadow:0 30px 60px rgba(0,0,0,.25)}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--sand);border-radius:14px;padding:4px}
+.seg span{height:42px;border-radius:11px;display:grid;place-items:center;font-weight:600;font-size:14px;color:var(--ink-2)}
+.seg span.on{background:#fff;color:var(--ink);box-shadow:var(--sh-1)}
+.lbl{font-size:13px;font-weight:600;color:var(--ink-2);margin:22px 0 10px}
+.am{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.am span{height:52px;border-radius:14px;border:1px solid var(--line-2);display:grid;place-items:center;font-weight:600;font-size:16px}
+.am span.on{background:var(--em-800);border-color:var(--em-800);color:var(--ivory)}
+.inp{height:52px;border-radius:14px;border:1px solid var(--line-2);display:flex;align-items:center;padding:0 16px;font-size:15px;color:var(--ink-3);background:#fff;margin-top:8px}
+.pm{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pm span{height:56px;border-radius:14px;border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:14px;background:#fff}
+.pm span.on{border:2px solid var(--em-800)}
+.chk{display:flex;gap:10px;align-items:center;font-size:14px;margin-top:16px}
+.chk i{width:20px;height:20px;border-radius:6px;background:var(--em-800);display:grid;place-items:center;color:#fff}
+.chk i svg.i{width:14px;height:14px;stroke-width:2.4}
+.trust{display:flex;gap:18px;justify-content:center;font-size:12px;color:var(--ink-3);margin-top:16px}
+.trust span{display:flex;gap:6px;align-items:center}.trust svg.i{width:14px;height:14px}
+.camps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.cp .ph{height:200px;border-radius:20px 20px 0 0}
+.cp .b{padding:22px 24px 24px}
+.cp h4{font-family:var(--f-display);font-size:26px;font-weight:500;line-height:1.12;margin:10px 0 0}
+.pbar{height:6px;border-radius:9px;background:var(--sand);margin:18px 0 8px;overflow:hidden}.pbar i{display:block;height:100%;background:var(--gold);border-radius:9px}
+.pv{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-2)}
+.pv b{color:var(--ink);font-size:16px}
+.rep{display:grid;grid-template-columns:1fr 1.3fr;gap:56px;align-items:center}
+.rows div{display:grid;grid-template-columns:1fr auto;padding:16px 0;border-top:1px solid var(--line);font-size:15px}
+.rows b{font-size:17px}
+.donut{width:300px;height:300px;margin:auto}
+.zk{background:var(--ivory);border-radius:28px;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin:0 56px 96px}
+.zrow{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+</style></head><body>
+<section class="dh">
+<header class="hdr dark"><a class="logo" data-logo="l"><div class="logo-t">Духовное управление мусульман<small>Пензенской области</small></div></a>
+<nav class="nav"><a>О муфтияте</a><a>Новости</a><a>Мечети</a><a>Намаз</a><a>Календарь</a><a>Знания</a><a>Халяль</a></nav>
+<div class="chip-prayer"><svg class="i"><use href="#i-sunset"/></svg>Магриб 17:09</div></header>
+<div class="dh-in">
+ <div>
+  <div class="eyebrow">Садака · Закят · Благотворительный фонд «Радуга»</div>
+  <h1>Ваша помощь<br>доходит до адресата</h1>
+  <p style="font-size:18px;color:rgba(247,243,234,.75);max-width:600px">Выберите, на что направить пожертвование. Каждый сбор сопровождается отчётом: фото, суммы и документы публикуются на этой странице.</p>
+  <div class="purp">
+   <div class="pu on"><svg class="i"><use href="#i-heart"/></svg><b>Садака</b><span>Добровольная милостыня на нужды общины</span></div>
+   <div class="pu"><svg class="i"><use href="#i-shield"/></svg><b>Закят</b><span>Обязательная выплата с калькулятором</span></div>
+   <div class="pu"><svg class="i"><use href="#i-mosque"/></svg><b>Мечетям</b><span>Ремонт и содержание мечетей области</span></div>
+   <div class="pu"><svg class="i"><use href="#i-users"/></svg><b>Нуждающимся</b><span>Продукты, лекарства, адресная помощь</span></div>
+   <div class="pu"><svg class="i"><use href="#i-grad"/></svg><b>Образованию</b><span>Курсы, медресе, литература</span></div>
+   <div class="pu"><svg class="i"><use href="#i-leaf"/></svg><b>Фитр и курбан</b><span>Сезонные выплаты в праздники</span></div>
+  </div>
+ </div>
+ <div class="form">
+  <div class="seg"><span class="on">Разово</span><span>Ежемесячно</span></div>
+  <div class="lbl">Сумма пожертвования</div>
+  <div class="am tnum"><span>300 ₽</span><span>500 ₽</span><span class="on">1 000 ₽</span><span>3 000 ₽</span></div>
+  <div class="inp">Другая сумма, ₽</div>
+  <div class="lbl">Способ оплаты</div>
+  <div class="pm"><span class="on"><svg class="i"><use href="#i-qr"/></svg>СБП</span><span><svg class="i"><use href="#i-card"/></svg>Карта</span><span><svg class="i"><use href="#i-doc"/></svg>Реквизиты</span></div>
+  <div class="inp">Email для чека (необязательно)</div>
+  <div class="chk"><i><svg class="i"><use href="#i-check"/></svg></i>Пожертвовать анонимно</div>
+  <a class="btn btn-gold" style="width:100%;justify-content:center;height:56px;margin-top:22px;font-size:16px"><svg class="i"><use href="#i-heart"/></svg>Пожертвовать 1 000 ₽</a>
+  <div class="trust"><span><svg class="i"><use href="#i-lock"/></svg>Защищённый платёж</span><span><svg class="i"><use href="#i-doc"/></svg>Оферта фонда</span><span><svg class="i"><use href="#i-eye"/></svg>Публичный отчёт</span></div>
+ </div>
+</div>
+</section>
+
+<section class="sec">
+ <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px"><div><div class="eyebrow">Открытые сборы</div><h2 class="h2" style="margin-top:12px">Конкретные цели</h2></div><span class="muted" style="font-size:14px">Суммы и названия — примеры для макета</span></div>
+ <div class="camps tnum">
+  <div class="card cp"><div class="ph warm" data-mosque style="border-radius:20px 20px 0 0"></div><div class="b"><span class="tag gold">Нуждающимся</span><h4>Зимние продуктовые наборы для 200 семей</h4><div class="pbar"><i style="width:68%"></i></div><div class="pv"><span><b>412 300 ₽</b> из 600 000 ₽</span><span>318 человек</span></div></div></div>
+  <div class="card cp"><div class="ph" data-mosque style="border-radius:20px 20px 0 0"></div><div class="b"><span class="tag">Мечетям</span><h4>Ремонт кровли сельской мечети</h4><div class="pbar"><i style="width:41%"></i></div><div class="pv"><span><b>738 000 ₽</b> из 1 800 000 ₽</span><span>124 человека</span></div></div></div>
+  <div class="card cp"><div class="ph sky" data-mosque style="border-radius:20px 20px 0 0"></div><div class="b"><span class="tag">Образованию</span><h4>Учебники для воскресной школы</h4><div class="pbar"><i style="width:92%"></i></div><div class="pv"><span><b>138 000 ₽</b> из 150 000 ₽</span><span>Почти собрали</span></div></div></div>
+ </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+ <div class="rep">
+  <svg class="donut" viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" fill="none" stroke="#EFE8DA" stroke-width="5"/>
+   <circle cx="21" cy="21" r="15.9" fill="none" stroke="#0F3D33" stroke-width="5" stroke-dasharray="46 54" stroke-dashoffset="25"/>
+   <circle cx="21" cy="21" r="15.9" fill="none" stroke="#B08D57" stroke-width="5" stroke-dasharray="28 72" stroke-dashoffset="79"/>
+   <circle cx="21" cy="21" r="15.9" fill="none" stroke="#6F8F7F" stroke-width="5" stroke-dasharray="17 83" stroke-dashoffset="51"/>
+   <circle cx="21" cy="21" r="15.9" fill="none" stroke="#D6BC8C" stroke-width="5" stroke-dasharray="9 91" stroke-dashoffset="34"/>
+   <text x="21" y="20.5" text-anchor="middle" font-family="Cormorant Garamond" font-size="6" fill="#18221F">1,24 млн ₽</text><text x="21" y="25.5" text-anchor="middle" font-family="Onest" font-size="2.4" fill="#4A5753">сентябрь 2026</text></svg>
+  <div>
+   <div class="eyebrow">Прозрачность</div><h2 class="h2" style="margin:12px 0 18px">Отчёт за месяц</h2>
+   <div class="rows tnum">
+    <div><span><b style="color:var(--em-800)">●</b>&nbsp; Адресная помощь семьям</span><b>570 400 ₽</b></div>
+    <div><span><b style="color:var(--gold)">●</b>&nbsp; Ремонт и содержание мечетей</span><b>347 200 ₽</b></div>
+    <div><span><b style="color:#6F8F7F">●</b>&nbsp; Образование и литература</span><b>210 800 ₽</b></div>
+    <div><span><b style="color:var(--gold-l)">●</b>&nbsp; Административные расходы фонда</span><b>111 600 ₽</b></div>
+   </div>
+   <div style="display:flex;gap:12px;margin-top:24px"><a class="btn btn-ghost btn-s"><svg class="i"><use href="#i-dl"/></svg>Скачать отчёт PDF</a><a class="btn btn-ghost btn-s">Все отчёты</a></div>
+  </div>
+ </div>
+</section>
+
+<div class="zk">
+ <div><div class="eyebrow">Калькулятор закята</div><h2 class="h2" style="margin:12px 0 16px;font-size:46px">Рассчитать закят<br>за минуту</h2><p class="muted" style="font-size:16px">Нисаб считается по актуальной цене золота или серебра. Результат можно сразу выплатить или сохранить себе в PDF.</p></div>
+ <div class="card" style="padding:26px">
+  <div class="zrow"><span>Наличные и счета</span><b class="tnum">350 000 ₽</b></div>
+  <div class="zrow"><span>Золото и серебро</span><b class="tnum">120 000 ₽</b></div>
+  <div class="zrow"><span>Товары для торговли</span><b class="tnum">0 ₽</b></div>
+  <div class="zrow"><span>Долги к оплате</span><b class="tnum">− 40 000 ₽</b></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px"><div><div style="font-size:13px;color:var(--ink-2)">Закят к выплате (2,5%)</div><div class="tnum" style="font-family:var(--f-display);font-size:44px;color:var(--em-800);line-height:1">10 750 ₽</div></div><a class="btn btn-gold">Выплатить</a></div>
+ </div>
+</div>
+<script src="common.js"></script></body></html>

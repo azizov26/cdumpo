@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>ДУМ Пензенской области — концепции первого экрана</title>
+<style>
+@font-face{font-family:Manrope;font-weight:400;src:url(../fonts/manrope-latin-400-normal.woff2);unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF,U+2212}
+@font-face{font-family:Manrope;font-weight:400;src:url(../fonts/manrope-cyrillic-400-normal.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:Manrope;font-weight:500;src:url(../fonts/manrope-latin-500-normal.woff2);unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF,U+2212}
+@font-face{font-family:Manrope;font-weight:500;src:url(../fonts/manrope-cyrillic-500-normal.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:Manrope;font-weight:600;src:url(../fonts/manrope-latin-600-normal.woff2);unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF,U+2212}
+@font-face{font-family:Manrope;font-weight:600;src:url(../fonts/manrope-cyrillic-600-normal.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:Manrope;font-weight:700;src:url(../fonts/manrope-latin-700-normal.woff2);unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF,U+2212}
+@font-face{font-family:Manrope;font-weight:700;src:url(../fonts/manrope-cyrillic-700-normal.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:Manrope;font-weight:200;src:url(../fonts/manrope-latin-200-normal.woff2);unicode-range:U+0000-00FF,U+2000-206F,U+2212}
+@font-face{font-family:Manrope;font-weight:200;src:url(../fonts/manrope-cyrillic-200-normal.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:Cormorant;font-weight:400;src:url(../fonts/cormorant-garamond-latin-400-normal.woff2);unicode-range:U+0000-00FF,U+2000-206F,U+2212}
+@font-face{font-family:Cormorant;font-weight:400;src:url(../fonts/cormorant-garamond-cyrillic-400-normal.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:Cormorant;font-weight:500;src:url(../fonts/cormorant-garamond-latin-500-normal.woff2);unicode-range:U+0000-00FF,U+2000-206F,U+2212}
+@font-face{font-family:Cormorant;font-weight:500;src:url(../fonts/cormorant-garamond-cyrillic-500-normal.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:Cormorant;font-weight:600;src:url(../fonts/cormorant-garamond-latin-600-normal.woff2);unicode-range:U+0000-00FF,U+2000-206F,U+2212}
+@font-face{font-family:Cormorant;font-weight:600;src:url(../fonts/cormorant-garamond-cyrillic-600-normal.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:Amiri;font-weight:400;src:url(../fonts/amiri-arabic-400-normal.woff2)}
+@font-face{font-family:Amiri;font-weight:700;src:url(../fonts/amiri-arabic-700-normal.woff2)}
+
+@page{size:1440px 1090px;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#111}
+body{font-family:Manrope,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:1440px;height:1090px;position:relative;overflow:hidden;page-break-after:always;break-after:page}
+.page:last-child{page-break-after:auto;break-after:auto}
+.mock{position:absolute;left:0;top:0;width:1440px;height:900px;overflow:hidden}
+.notes{position:absolute;left:0;top:900px;width:1440px;height:190px;background:#F6F3EC;color:#1B1D22;padding:26px 56px;display:grid;grid-template-columns:330px 1fr 230px;gap:40px;align-items:start}
+.notes .num{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7A6F5C;font-weight:600}
+.notes h3{font-family:Cormorant;font-weight:600;font-size:34px;margin:6px 0 6px;line-height:1}
+.notes .idea{font-size:13px;line-height:1.45;color:#3A3D44}
+.story{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.story div{border-top:1.5px solid #1B1D22;padding-top:9px;font-size:12.5px;line-height:1.45;color:#2B2E35}
+.story b{display:block;font-size:11px;letter-spacing:.12em;color:#7A6F5C;margin-bottom:3px}
+.palette{display:flex;gap:6px;margin-top:2px}
+.palette span{width:30px;height:30px;border-radius:50%;border:1px solid rgba(0,0,0,.12)}
+.fonts{font-size:12px;color:#3A3D44;margin-top:12px;line-height:1.5}
+.lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#7A6F5C;font-weight:600;margin-bottom:8px}
+
+/* shared header */
+.hdr{position:absolute;top:0;left:0;right:0;height:92px;padding:0 56px;display:flex;align-items:center;justify-content:space-between;z-index:10}
+.brand{display:flex;align-items:center;gap:14px}
+.brand .t{font-size:13px;line-height:1.3;font-weight:600;letter-spacing:.01em}
+.nav{display:flex;gap:30px;font-size:14px;font-weight:500}
+.nav a{text-decoration:none;color:inherit}
+.btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 24px;border-radius:999px;font-size:14px;font-weight:600;text-decoration:none;border:0;font-family:Manrope}
+
+/* ===== 1. SKY ===== */
+.sky{background:linear-gradient(180deg,#0B1636 0%,#1A2350 26%,#3D2D5E 48%,#8A4A62 64%,#D9805A 79%,#F2B57C 90%,#F6CF96 100%);color:#F7F1E6}
+.sky .nav{color:rgba(247,241,230,.86)}
+.sky .btn-ghost{border:1px solid rgba(247,241,230,.45);color:#F7F1E6;background:rgba(255,255,255,.04)}
+.sky .hero{position:absolute;left:0;right:0;top:250px;text-align:center;z-index:5}
+.sky .date{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:rgba(247,241,230,.8);font-weight:500}
+.sky .until{font-family:Cormorant;font-size:40px;font-weight:500;margin-top:22px;color:#FBEBD2}
+.sky .count{font-size:148px;font-weight:200;letter-spacing:-.02em;line-height:1;margin-top:4px;font-variant-numeric:tabular-nums;color:#FFF8EC}
+.sky .sub{font-size:16px;color:rgba(255,248,236,.86);margin-top:16px}
+.sky .ar{font-family:Amiri;font-size:30px;color:#F6CF96;margin-top:2px}
+.times{position:absolute;left:50%;transform:translateX(-50%);bottom:34px;z-index:6;display:flex;background:rgba(10,14,34,.55);border:1px solid rgba(246,207,150,.22);border-radius:22px;padding:8px;backdrop-filter:blur(12px)}
+.times div{width:150px;padding:14px 0 12px;text-align:center;border-radius:15px}
+.times .n{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,241,230,.68);font-weight:600}
+.times .v{font-size:26px;font-weight:500;margin-top:4px;color:#F7F1E6;font-variant-numeric:tabular-nums}
+.times .on{background:#F2B57C}
+.times .on .n{color:#3A1F18}.times .on .v{color:#1C1020;font-weight:700}
+
+/* ===== 2. GEOMETRY ===== */
+.geo{background:#0B2A23;color:#F3ECDD}
+.geo .nav{color:rgba(243,236,221,.82)}
+.geo .hero{position:absolute;left:96px;top:226px;width:640px;z-index:5}
+.geo .kick{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#D4AE62;font-weight:600}
+.geo h1{font-family:Cormorant;font-weight:500;font-size:96px;line-height:.98;margin:22px 0 0;letter-spacing:-.01em}
+.geo h1 em{font-style:normal;color:#E3C27A}
+.geo p{font-size:18px;line-height:1.6;color:rgba(243,236,221,.8);max-width:500px;margin:28px 0 0}
+.geo .ctas{display:flex;gap:14px;margin-top:40px}
+.geo .btn-gold{background:#D4AE62;color:#14231D}
+.geo .btn-line{border:1px solid rgba(243,236,221,.4);color:#F3ECDD;background:transparent}
+.geo .strip{position:absolute;left:96px;right:96px;bottom:40px;z-index:6;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(212,174,98,.35);padding-top:20px;font-size:14px;color:rgba(243,236,221,.78)}
+.geo .strip .tm{display:flex;gap:36px}
+.geo .strip b{color:#F3ECDD;font-weight:600;margin-left:6px}
+.geo .strip .now b{color:#E3C27A}
+
+/* ===== 3. LIGHTS ===== */
+.lights{background:radial-gradient(1200px 700px at 72% 55%,#14234A 0%,#0A132C 55%,#070D20 100%);color:#F4EBDD}
+.lights .nav{color:rgba(244,235,221,.82)}
+.lights .hero{position:absolute;left:84px;top:190px;width:540px;z-index:5}
+.lights .ar{font-family:Amiri;font-size:76px;line-height:1.2;color:#E9B872;direction:rtl;text-align:left}
+.lights h1{font-family:Cormorant;font-weight:500;font-size:84px;line-height:1;margin:6px 0 0}
+.lights p{font-size:17px;line-height:1.6;color:rgba(244,235,221,.78);margin:24px 0 0;max-width:470px}
+.lights .stats{display:flex;gap:44px;margin-top:40px}
+.lights .stats div{font-size:13px;color:rgba(244,235,221,.66);line-height:1.4}
+.lights .stats b{display:block;font-family:Manrope;font-size:42px;font-weight:200;margin-bottom:4px;color:#F4EBDD;line-height:1}
+.lights .stats .ph{color:#E9B872}
+.lights .btn-warm{background:#E9B872;color:#1A1424}
+.lights .btn-line{border:1px solid rgba(244,235,221,.4);color:#F4EBDD;background:transparent}
+.card{position:absolute;z-index:7;width:300px;background:rgba(12,20,44,.86);border:1px solid rgba(233,184,114,.4);border-radius:18px;padding:20px 22px;backdrop-filter:blur(10px)}
+.card .t{font-family:Cormorant;font-size:28px;font-weight:600;line-height:1.05}
+.card .s{font-size:12.5px;color:rgba(244,235,221,.62);margin-top:4px}
+.card .row{display:flex;justify-content:space-between;font-size:14px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(244,235,221,.12)}
+.card .row b{color:#E9B872;font-weight:600}
+.card a{display:block;margin-top:14px;font-size:13.5px;font-weight:600;color:#E9B872;text-decoration:none}
+
+/* ===== cover ===== */
+.cover{background:#0E1A2E;color:#F4EBDD;padding:90px 96px}
+.cover .k{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:#D4AE62;font-weight:600}
+.cover h1{font-family:Cormorant;font-weight:500;font-size:104px;line-height:.95;margin:28px 0 0;max-width:1000px}
+.cover .lead{font-size:20px;line-height:1.6;color:rgba(244,235,221,.78);max-width:760px;margin-top:34px}
+.cover .list{position:absolute;left:96px;right:96px;bottom:96px;display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+.cover .list div{border-top:1px solid rgba(212,174,98,.5);padding-top:18px}
+.cover .list b{font-family:Cormorant;font-size:34px;font-weight:600;display:block;margin-top:6px}
+.cover .list span{font-size:12px;letter-spacing:.16em;color:#D4AE62;font-weight:600}
+.cover .list p{font-size:14.5px;line-height:1.55;color:rgba(244,235,221,.72);margin:8px 0 0}
+.cover .meta{position:absolute;right:96px;top:96px;font-size:13px;color:rgba(244,235,221,.55);text-align:right;line-height:1.6}
+</style>
+</head>
+<body>
+
+<!-- ================= COVER ================= -->
+<section class="page cover">
+  <svg id="coverStar" width="520" height="520" viewBox="-260 -260 520 520" style="position:absolute;right:-90px;top:200px;opacity:.5" aria-hidden="true"></svg>
+  <div class="meta">Концепции первого экрана<br>Октябрь 2026</div>
+  <div class="k">Духовное управление мусульман Пензенской области</div>
+  <h1>Три концепции главного экрана сайта</h1>
+  <div class="lead">На каждой странице — кадр первого экрана в момент, когда анимация завершилась, и раскадровка того, как он оживает за первые секунды. Тексты, время и цифры в макетах — примерные; поля в квадратных скобках заполняются реальными данными.</div>
+  <div class="list">
+    <div><span>КОНЦЕПЦИЯ 01</span><b>Небо над Пензой</b><p>Живое небо в реальном времени и обратный отсчёт до намаза как главный элемент.</p></div>
+    <div><span>КОНЦЕПЦИЯ 02</span><b>Из единой точки</b><p>Исламская геометрия, которая чертит себя сама, и свет сквозь машрабию.</p></div>
+    <div><span>КОНЦЕПЦИЯ 03</span><b>Огни общин</b><p>Каллиграфия перетекает в карту области, где зажигаются мечети и общины.</p></div>
+  </div>
+</section>
+
+<!-- ================= 1. SKY ================= -->
+<section class="page">
+  <div class="mock sky">
+    <svg id="skySvg" width="1440" height="900" viewBox="0 0 1440 900" style="position:absolute;inset:0" aria-hidden="true"></svg>
+    <header class="hdr">
+      <div class="brand">
+        <svg width="44" height="44" viewBox="-22 -22 44 44" class="logo" data-c="#F6CF96" aria-hidden="true"></svg>
+        <div class="t">Духовное управление мусульман<br>Пензенской области</div>
+      </div>
+      <nav class="nav"><a href="#">Время намаза</a><a href="#">Мечети</a><a href="#">Новости</a><a href="#">Праздники</a><a href="#">Знания</a><a href="#">Об управлении</a></nav>
+      <a class="btn btn-ghost" href="#">Вопрос имаму</a>
+    </header>
+    <div class="hero">
+      <div class="date">Пенза · среда, 14 октября · 3 джумада-ль-уля 1448</div>
+      <div class="until">До вечерней молитвы</div>
+      <div class="count">01:12:40</div>
+      <div class="ar">المغرب</div>
+      <div class="sub">Магриб сегодня в 17:01 · <span style="text-decoration:underline;text-underline-offset:4px">Расписание на месяц →</span></div>
+    </div>
+    <div class="times">
+      <div><div class="n">Фаджр</div><div class="v">05:02</div></div>
+      <div><div class="n">Восход</div><div class="v">06:33</div></div>
+      <div><div class="n">Зухр</div><div class="v">11:47</div></div>
+      <div><div class="n">Аср</div><div class="v">14:23</div></div>
+      <div class="on"><div class="n">Магриб</div><div class="v">17:01</div></div>
+      <div><div class="n">Иша</div><div class="v">18:41</div></div>
+    </div>
+  </div>
+  <div class="notes">
+    <div><div class="num">Концепция 01</div><h3>Небо над Пензой</h3><div class="idea">Небо на сайте совпадает с небом над городом прямо сейчас. Главная функция — время намаза — стала главным впечатлением.</div></div>
+    <div><div class="lbl">Как оживает экран</div><div class="story">
+      <div><b>0–2 С</b>Из темноты проявляется небо текущего часа: звёзды, свет заката, солнце или полумесяц на своём месте.</div>
+      <div><b>2–3 С</b>Снизу поднимаются силуэты мечетей с минаретами, как на горизонте области.</div>
+      <div><b>3–5 С</b>По дуге неба загораются пять точек намазов, солнце скользит к текущему положению.</div>
+      <div><b>5 С →</b>Отсчёт до намаза идёт в реальном времени. Утром, днём и ночью экран выглядит по-разному.</div>
+    </div></div>
+    <div><div class="lbl">Палитра и шрифты</div><div class="palette"><span style="background:#0B1636"></span><span style="background:#3D2D5E"></span><span style="background:#D9805A"></span><span style="background:#F2B57C"></span><span style="background:#FFF8EC"></span></div><div class="fonts">Cormorant Garamond — заголовки<br>Manrope — интерфейс · Amiri — арабский</div></div>
+  </div>
+</section>
+
+<!-- ================= 2. GEOMETRY ================= -->
+<section class="page">
+  <div class="mock geo">
+    <svg id="geoSvg" width="1440" height="900" viewBox="0 0 1440 900" style="position:absolute;inset:0" aria-hidden="true"></svg>
+    <header class="hdr">
+      <div class="brand">
+        <svg width="44" height="44" viewBox="-22 -22 44 44" class="logo" data-c="#D4AE62" aria-hidden="true"></svg>
+        <div class="t">Духовное управление мусульман<br>Пензенской области</div>
+      </div>
+      <nav class="nav"><a href="#">Время намаза</a><a href="#">Мечети</a><a href="#">Новости</a><a href="#">Праздники</a><a href="#">Знания</a><a href="#">Об управлении</a></nav>
+      <a class="btn btn-line" href="#" style="border:1px solid rgba(243,236,221,.4);color:#F3ECDD">Вопрос имаму</a>
+    </header>
+    <div class="hero">
+      <div class="kick">Пензенская область · с [год основания]</div>
+      <h1>Единство, <em>начертанное</em> светом</h1>
+      <p>Общины, мечети и имамы региона — в одном месте. Время намаза, праздники, образование и ответы на вопросы веры.</p>
+      <div class="ctas"><a class="btn btn-gold" href="#">Время намаза</a><a class="btn btn-line" href="#">Мечети области</a></div>
+    </div>
+    <div class="strip">
+      <div class="tm"><span>Фаджр<b>05:02</b></span><span>Зухр<b>11:47</b></span><span>Аср<b>14:23</b></span><span class="now">Магриб<b>17:01</b></span><span>Иша<b>18:41</b></span></div>
+      <span>Ближайший — Магриб, через 1 ч 12 мин</span>
+    </div>
+  </div>
+  <div class="notes">
+    <div><div class="num">Концепция 02</div><h3>Из единой точки</h3><div class="idea">Вся исламская геометрия строится из одного центра. Образ единства общины, где каждый — часть общего узора.</div></div>
+    <div><div class="lbl">Как оживает экран</div><div class="story">
+      <div><b>0–1 С</b>На изумрудном фоне вспыхивает одна золотая точка.</div>
+      <div><b>1–3 С</b>Циркуль прочерчивает окружности, они складываются в восьмиконечную звезду.</div>
+      <div><b>3–5 С</b>Узор разрастается в бесконечный орнамент и уходит за края экрана.</div>
+      <div><b>5 С →</b>Орнамент становится машрабией: сквозь неё падает свет, курсор двигает его, как солнце.</div>
+    </div></div>
+    <div><div class="lbl">Палитра и шрифты</div><div class="palette"><span style="background:#0B2A23"></span><span style="background:#174A3C"></span><span style="background:#D4AE62"></span><span style="background:#E3C27A"></span><span style="background:#F3ECDD"></span></div><div class="fonts">Cormorant Garamond — заголовки<br>Manrope — интерфейс</div></div>
+  </div>
+</section>
+
+<!-- ================= 3. LIGHTS ================= -->
+<section class="page">
+  <div class="mock lights">
+    <svg id="mapSvg" width="1440" height="900" viewBox="0 0 1440 900" style="position:absolute;inset:0" aria-hidden="true"></svg>
+    <header class="hdr">
+      <div class="brand">
+        <svg width="44" height="44" viewBox="-22 -22 44 44" class="logo" data-c="#E9B872" aria-hidden="true"></svg>
+        <div class="t">Духовное управление мусульман<br>Пензенской области</div>
+      </div>
+      <nav class="nav"><a href="#">Время намаза</a><a href="#">Мечети</a><a href="#">Новости</a><a href="#">Праздники</a><a href="#">Знания</a><a href="#">Об управлении</a></nav>
+      <a class="btn btn-line" href="#">Вопрос имаму</a>
+    </header>
+    <div class="hero">
+      <div class="ar">السلام عليكم</div>
+      <h1>Свет каждой общины</h1>
+      <p>Мечети и махалля Пензенской области на одной карте. Найдите свою — с имамом, расписанием намазов и новостями общины.</p>
+      <div class="stats">
+        <div><b class="ph">[XX]</b>мечетей</div>
+        <div><b class="ph">[XX]</b>махалля</div>
+        <div><b>1</b>умма</div>
+      </div>
+      <div style="display:flex;gap:14px;margin-top:38px"><a class="btn btn-warm" href="#">Найти мечеть рядом</a><a class="btn btn-line" href="#">Время намаза</a></div>
+    </div>
+    <div class="card" style="left:1096px;top:104px">
+      <div class="t">Средняя Елюзань</div>
+      <div class="s">Городищенский район</div>
+      <div class="row"><span>Мечети села</span><b>[N]</b></div>
+      <div class="row"><span>Магриб сегодня</span><b>16:58</b></div>
+      <a href="#">Открыть страницу общины →</a>
+    </div>
+  </div>
+  <div class="notes">
+    <div><div class="num">Концепция 03</div><h3>Огни общин</h3><div class="idea">Ислам в регионе — это прежде всего общины и сёла с вековой историей. Каждый находит на карте свою мечеть.</div></div>
+    <div><div class="lbl">Как оживает экран</div><div class="story">
+      <div><b>0–2 С</b>Перо-калам выводит каллиграфическое приветствие золотом.</div>
+      <div><b>2–3 С</b>Росчерк перетекает в татарский орнамент с тюльпанами.</div>
+      <div><b>3–5 С</b>Орнамент разворачивается в контур области, по нему одна за другой зажигаются мечети.</div>
+      <div><b>5 С →</b>Наведение на огонёк открывает карточку общины. Счётчики мечетей докручиваются до итога.</div>
+    </div></div>
+    <div><div class="lbl">Палитра и шрифты</div><div class="palette"><span style="background:#070D20"></span><span style="background:#14234A"></span><span style="background:#2E8C88"></span><span style="background:#C2603E"></span><span style="background:#E9B872"></span></div><div class="fonts">Cormorant Garamond — заголовки<br>Manrope — интерфейс · Amiri — арабский</div></div>
+  </div>
+</section>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+let seed=7;function rnd(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646}
+function starPts(R,cx=0,cy=0,rot=0){const r=R*Math.cos(Math.PI/4)/Math.cos(Math.PI/8);let p=[];for(let i=0;i<16;i++){const a=rot+i*Math.PI/8-Math.PI/2;const rr=i%2?r:R;p.push((cx+rr*Math.cos(a)).toFixed(2)+','+(cy+rr*Math.sin(a)).toFixed(2))}return p.join(' ')}
+function crescent(g,x,y,s,fill){el('path',{d:`M${x},${y-s} A${s},${s} 0 1,0 ${x},${y+s} A${s*.78},${s*.78} 0 1,1 ${x},${y-s}Z`,fill},g)}
+
+/* logos */
+document.querySelectorAll('svg.logo').forEach(s=>{const c=s.dataset.c;el('circle',{r:20,fill:'none',stroke:c,'stroke-width':1.2},s);el('polygon',{points:starPts(15),fill:'none',stroke:c,'stroke-width':1.6},s);el('circle',{r:4.5,fill:c},s)});
+
+/* cover star construction */
+(function(){const s=document.getElementById('coverStar');const c='#D4AE62';
+ for(let i=1;i<=4;i++)el('circle',{r:60*i,fill:'none',stroke:c,'stroke-width':.8,opacity:.5},s);
+ el('polygon',{points:starPts(240),fill:'none',stroke:c,'stroke-width':1.4},s);
+ el('polygon',{points:starPts(150,0,0,Math.PI/8),fill:'none',stroke:c,'stroke-width':1},s);
+ for(let i=0;i<8;i++){const a=i*Math.PI/4;el('line',{x1:0,y1:0,x2:250*Math.cos(a),y2:250*Math.sin(a),stroke:c,'stroke-width':.6,opacity:.6},s)}
+ el('circle',{r:5,fill:c},s);})();
+
+/* ---------- SKY ---------- */
+(function(){const s=document.getElementById('skySvg');
+ const defs=el('defs',{},s);
+ const g1=el('radialGradient',{id:'sunGlow'},defs);el('stop',{offset:'0','stop-color':'#FFE3B0','stop-opacity':'.95'},g1);el('stop',{offset:'.25','stop-color':'#F6B87A','stop-opacity':'.55'},g1);el('stop',{offset:'1','stop-color':'#F2A06A','stop-opacity':'0'},g1);
+ // stars
+ for(let i=0;i<190;i++){const x=rnd()*1440,y=rnd()*rnd()*520;const o=Math.max(0,.9-y/520)*(.35+rnd()*.65);el('circle',{cx:x,cy:y,r:rnd()<.08?1.6:.9,fill:'#FFF6E4',opacity:o.toFixed(2)},s)}
+ // arc
+ const cx=720,cy=770,rx=640,ry=560;
+ el('path',{d:`M${cx-rx},${cy} A${rx},${ry} 0 0,1 ${cx+rx},${cy}`,fill:'none',stroke:'rgba(255,240,215,.38)','stroke-width':1.3,'stroke-dasharray':'2 7'},s);
+ el('path',{d:`M${cx-rx},${cy} A${rx},${ry} 0 0,1 ${cx+rx*Math.cos(20*Math.PI/180)},${cy-ry*Math.sin(20*Math.PI/180)}`,fill:'none',stroke:'rgba(255,224,180,.55)','stroke-width':1.6},s);
+ const pts=[[180,'Восход','06:33'],[90,'Зухр','11:47'],[42,'Аср','14:23'],[0,'Магриб','17:01']];
+ pts.forEach(([d,n,t],i)=>{const a=d*Math.PI/180,x=cx+rx*Math.cos(a),y=cy-ry*Math.sin(a);
+   el('circle',{cx:x,cy:y,r:d===0?7:5,fill:d===0?'#FFE3B0':'#F7F1E6',opacity:d===0?1:.85},s);
+   if(d===0)el('circle',{cx:x,cy:y,r:14,fill:'none',stroke:'#FFE3B0','stroke-width':1.2,opacity:.7},s);
+   const tx=el('text',{x:d===180?x+18:d===0?x-18:x+(d===90?0:18),y:d===90?y-20:y-14,fill:'rgba(255,246,228,.85)','font-size':13,'font-family':'Manrope','font-weight':600,'letter-spacing':'1.2','text-anchor':d===0?'end':d===90?'middle':'start'},s);tx.textContent=n.toUpperCase()+'  '+t;});
+ // sun
+ const sa=20*Math.PI/180,sx=cx+rx*Math.cos(sa),sy=cy-ry*Math.sin(sa);
+ el('circle',{cx:sx,cy:sy,r:150,fill:'url(#sunGlow)'},s);el('circle',{cx:sx,cy:sy,r:24,fill:'#FFF1D2'},s);
+ // crescent faint top-left (moon rising later)
+ crescent(s,180,180,16,'rgba(255,246,228,.75)');
+ // skyline
+ const sk=el('g',{fill:'#0C1128'},s);
+ el('path',{d:'M0,760 C200,735 380,745 560,738 C760,730 940,748 1120,740 C1260,734 1360,742 1440,736 L1440,900 L0,900Z'},sk);
+ // trees
+ for(let i=0;i<70;i++){const x=rnd()*1440;const r=10+rnd()*22;el('circle',{cx:x,cy:752-r*.4+rnd()*8,r},sk)}
+ function tatarMosque(x,base,w,h,mh){// gabled building with minaret from roof
+   el('rect',{x:x-w/2,y:base-h,width:w,height:h},sk);
+   el('path',{d:`M${x-w/2-6},${base-h} L${x},${base-h-h*.55} L${x+w/2+6},${base-h}Z`},sk);
+   const top=base-h-h*.4;let y=top;const tiers=[[16,mh*.35],[12,mh*.3],[9,mh*.2]];
+   tiers.forEach(([tw,th])=>{el('rect',{x:x-tw/2,y:y-th,width:tw,height:th},sk);el('rect',{x:x-tw/2-3,y:y-th-3,width:tw+6,height:3},sk);y-=th+3});
+   el('path',{d:`M${x-6},${y} L${x},${y-mh*.32} L${x+6},${y}Z`},sk);y-=mh*.32;
+   el('rect',{x:x-.8,y:y-10,width:1.6,height:10},sk);crescent(sk,x+1,y-15,5,'#0C1128');}
+ function domeMosque(x,base,w){el('rect',{x:x-w/2,y:base-70,width:w,height:70},sk);el('path',{d:`M${x-w*.28},${base-70} C${x-w*.28},${base-140} ${x+w*.28},${base-140} ${x+w*.28},${base-70}Z`},sk);el('rect',{x:x-1,y:base-150,width:2,height:14},sk);crescent(sk,x+1,base-156,6,'#0C1128');
+   [x-w/2-14,x+w/2+14].forEach(mx=>{el('rect',{x:mx-7,y:base-160,width:14,height:160},sk);el('rect',{x:mx-11,y:base-124,width:22,height:5},sk);el('path',{d:`M${mx-8},${base-160} L${mx},${base-198} L${mx+8},${base-160}Z`},sk);crescent(sk,mx+1,base-207,5,'#0C1128')});}
+ tatarMosque(230,768,110,54,96);
+ tatarMosque(470,760,84,42,80);
+ domeMosque(1010,770,170);
+ tatarMosque(1400,764,96,50,90);
+ // little houses
+ [[90,770,50],[400,762,46],[700,758,54],[780,760,40],[1170,768,44],[1390,760,50]].forEach(([x,b,w])=>{el('rect',{x:x-w/2,y:b-26,width:w,height:26},sk);el('path',{d:`M${x-w/2-4},${b-26} L${x},${b-46} L${x+w/2+4},${b-26}Z`},sk)});
+ // warm windows
+ [[220,744],[242,744],[462,740],[1000,744],[1022,744],[1392,746],[408,752],[704,748]].forEach(([x,y])=>el('rect',{x,y,width:5,height:8,fill:'#F6C77E',opacity:.85},s));
+})();
+
+/* ---------- GEOMETRY ---------- */
+(function(){const s=document.getElementById('geoSvg');const gold='#D4AE62';
+ const defs=el('defs',{},s);
+ // tile pattern
+ const T=96;const pat=el('pattern',{id:'girih',width:T,height:T,patternUnits:'userSpaceOnUse'},defs);
+ el('polygon',{points:starPts(34,T/2,T/2),fill:'none',stroke:gold,'stroke-width':1},pat);
+ el('polygon',{points:starPts(18,T/2,T/2,Math.PI/8),fill:'none',stroke:gold,'stroke-width':.8},pat);
+ [[0,0],[T,0],[0,T],[T,T]].forEach(([x,y])=>el('polygon',{points:starPts(14,x,y),fill:'none',stroke:gold,'stroke-width':.8},pat));
+ [[T/2,0],[0,T/2],[T,T/2],[T/2,T]].forEach(([x,y])=>el('rect',{x:x-6,y:y-6,width:12,height:12,transform:`rotate(45 ${x} ${y})`,fill:'none',stroke:gold,'stroke-width':.7},pat));
+ // fading mask: pattern dense around center star, fading out
+ const rg=el('radialGradient',{id:'fade',cx:'1060',cy:'470',r:'760',gradientUnits:'userSpaceOnUse'},defs);
+ el('stop',{offset:'0','stop-color':'#fff','stop-opacity':'1'},rg);el('stop',{offset:'.5','stop-color':'#fff','stop-opacity':'.55'},rg);el('stop',{offset:'1','stop-color':'#fff','stop-opacity':'0'},rg);
+ const m=el('mask',{id:'fm'},defs);el('rect',{width:1440,height:900,fill:'url(#fade)'},m);
+ el('rect',{width:1440,height:900,fill:'url(#girih)',mask:'url(#fm)',opacity:.42},s);
+ // mashrabiya light shaft
+ const shaftMask=el('mask',{id:'sm'},defs);
+ el('rect',{width:1440,height:900,fill:'#fff'},shaftMask);
+ const P=58;const sp=el('pattern',{id:'holes',width:P,height:P,patternUnits:'userSpaceOnUse',patternTransform:'rotate(12) skewX(-14)'},defs);
+ el('rect',{width:P,height:P,fill:'#000'},sp);el('polygon',{points:starPts(22,P/2,P/2),fill:'#fff'},sp);
+ const sm2=el('mask',{id:'sm2'},defs);el('rect',{width:1440,height:900,fill:'url(#holes)'},sm2);
+ const lg=el('linearGradient',{id:'shaft',x1:'0',y1:'0',x2:'1',y2:'1'},defs);el('stop',{offset:'0','stop-color':'#FFE9B8','stop-opacity':'.0'},lg);el('stop',{offset:'.35','stop-color':'#FFE9B8','stop-opacity':'.15'},lg);el('stop',{offset:'1','stop-color':'#FFE9B8','stop-opacity':'.06'},lg);
+ el('polygon',{points:'40,90 520,90 980,900 260,900',fill:'url(#shaft)',mask:'url(#sm2)'},s);
+ // central construction (being drawn)
+ const g=el('g',{transform:'translate(1060 470)'},s);
+ el('circle',{r:330,fill:'#0B2A23',opacity:.75},g);
+ for(let i=1;i<=6;i++)el('circle',{r:55*i,fill:'none',stroke:gold,'stroke-width':i===6?1.6:.7,opacity:i===6?.9:.45},g);
+ for(let i=0;i<16;i++){const a=i*Math.PI/8;el('line',{x1:0,y1:0,x2:330*Math.cos(a),y2:330*Math.sin(a),stroke:gold,'stroke-width':.5,opacity:.4},g)}
+ el('rect',{x:-233,y:-233,width:466,height:466,fill:'none',stroke:gold,'stroke-width':1.1,opacity:.7},g);
+ el('rect',{x:-233,y:-233,width:466,height:466,fill:'none',stroke:gold,'stroke-width':1.1,opacity:.7,transform:'rotate(45)'},g);
+ el('polygon',{points:starPts(300),fill:'none',stroke:'#E3C27A','stroke-width':2.4},g);
+ el('polygon',{points:starPts(190,0,0,Math.PI/8),fill:'rgba(212,174,98,.08)',stroke:'#E3C27A','stroke-width':1.6},g);
+ el('polygon',{points:starPts(110),fill:'none',stroke:'#E3C27A','stroke-width':1.6},g);
+ for(let i=0;i<8;i++){const a=i*Math.PI/4+Math.PI/8;el('polygon',{points:starPts(26,150*Math.cos(a),150*Math.sin(a)),fill:'none',stroke:gold,'stroke-width':1},g)}
+ el('circle',{r:40,fill:'none',stroke:gold,'stroke-width':1},g);
+ el('polygon',{points:starPts(30,0,0,Math.PI/8),fill:gold},g);
+ el('circle',{r:7,fill:'#0B2A23'},g);
+ // compass arm (animation in progress)
+ const ca=-0.62;const cx2=330*Math.cos(ca),cy2=330*Math.sin(ca);
+ el('line',{x1:0,y1:0,x2:cx2,y2:cy2,stroke:'#F3ECDD','stroke-width':1.4,opacity:.8},g);
+ el('circle',{cx:cx2,cy:cy2,r:6,fill:'#F3ECDD'},g);
+ el('circle',{cx:cx2,cy:cy2,r:16,fill:'none',stroke:'#F3ECDD','stroke-width':1,opacity:.5},g);
+ // drawing arc trail outside
+ el('path',{d:`M${380*Math.cos(-1.4)},${380*Math.sin(-1.4)} A380,380 0 0,1 ${380*Math.cos(ca)},${380*Math.sin(ca)}`,fill:'none',stroke:'#F3ECDD','stroke-width':1.2,opacity:.6},g);
+})();
+
+/* ---------- MAP / LIGHTS ---------- */
+(function(){const s=document.getElementById('mapSvg');
+ const defs=el('defs',{},s);
+ const glow=el('radialGradient',{id:'lg'},defs);el('stop',{offset:'0','stop-color':'#FFD58E','stop-opacity':'1'},glow);el('stop',{offset:'.3','stop-color':'#F2A65A','stop-opacity':'.55'},glow);el('stop',{offset:'1','stop-color':'#F2A65A','stop-opacity':'0'},glow);
+ // schematic oblast outline (stylised)
+ const outline='M700,330 C735,300 790,312 835,296 C880,280 905,250 955,262 C1000,272 1030,250 1075,262 C1120,274 1150,258 1195,272 C1245,288 1285,276 1322,300 C1356,322 1352,362 1372,392 C1392,424 1378,462 1352,488 C1326,516 1336,556 1304,580 C1270,606 1226,594 1188,612 C1146,632 1112,622 1070,640 C1026,658 986,644 944,652 C900,660 862,646 826,628 C790,610 752,618 724,590 C694,560 702,522 682,492 C662,460 676,424 672,392 C668,360 676,348 700,330Z';
+ const mg=el('g',{transform:'translate(0 60)'},s);
+ el('path',{d:outline,fill:'rgba(46,140,136,.07)',stroke:'#2E8C88','stroke-width':1.6},mg);
+ el('path',{d:outline,fill:'none',stroke:'rgba(233,184,114,.25)','stroke-width':8,transform:'translate(0 0)',opacity:.35},mg);
+ // river Sura (schematic)
+ el('path',{d:'M760,612 C800,560 840,520 880,486 C920,452 930,420 972,392 C1010,368 1030,330 1050,300',fill:'none',stroke:'rgba(46,140,136,.55)','stroke-width':2},mg);
+ // ornament: calligraphy stroke flowing into tulip vine into outline
+ const vine='M90,175 C200,140 300,200 420,170 C520,145 560,110 640,150 C700,182 690,300 700,390';
+ el('path',{d:vine,fill:'none',stroke:'#E9B872','stroke-width':1.6,opacity:.7},s);
+ function tulip(x,y,sc,rot){const g=el('g',{transform:`translate(${x} ${y}) rotate(${rot}) scale(${sc})`},s);
+   el('path',{d:'M0,0 C-10,-10 -12,-26 -6,-38 C-3,-30 0,-28 0,-28 C0,-28 3,-30 6,-38 C12,-26 10,-10 0,0Z',fill:'none',stroke:'#C2603E','stroke-width':1.6},g);
+   el('path',{d:'M0,0 C0,-12 0,-20 0,-28',stroke:'#C2603E','stroke-width':1.2},g);
+   el('path',{d:'M0,6 C-12,10 -20,4 -24,-4 C-14,-4 -6,0 0,6Z',fill:'none',stroke:'#2E8C88','stroke-width':1.4},g);
+   el('path',{d:'M0,6 C12,10 20,4 24,-4 C14,-4 6,0 0,6Z',fill:'none',stroke:'#2E8C88','stroke-width':1.4},g);}
+ tulip(470,162,1.1,-8);tulip(610,132,.9,14);tulip(690,230,1,-80);
+ // lights
+ const pts=[];let tries=0;
+ while(pts.length<46&&tries<5000){tries++;const x=690+rnd()*680,y=260+rnd()*390;const p=new DOMPoint(x,y);
+   const path=mg.querySelector('path');if(path.isPointInFill(p)){ // bias east
+     if(x<900&&rnd()<.55)continue;pts.push([x,y,0.6+rnd()*0.8]);}}
+ pts.forEach(([x,y,k])=>{el('circle',{cx:x,cy:y,r:16*k,fill:'url(#lg)',opacity:.85},mg);el('circle',{cx:x,cy:y,r:2.4*k+.6,fill:'#FFF0D2'},mg)});
+ // named places (schematic positions)
+ const named=[[905,452,'Пенза',1.6],[1180,452,'Кузнецк',1.2],[1040,330,'Средняя Елюзань',1.3],[1275,392,'Камешкир',1.1],[1312,500,'Неверкино',1.0]];
+ named.forEach(([x,y,n,k])=>{el('circle',{cx:x,cy:y,r:30*k,fill:'url(#lg)'},mg);el('circle',{cx:x,cy:y,r:4.5*k,fill:'#FFF4DC'},mg);
+   const t=el('text',{x:x+12,y:y+24,fill:'rgba(244,235,221,.82)','font-size':13,'font-family':'Manrope','font-weight':600},mg);t.textContent=n;});
+ // selected
+ el('circle',{cx:1040,cy:330,r:16,fill:'none',stroke:'#E9B872','stroke-width':1.5},mg);
+ el('line',{x1:1052,y1:320,x2:1096,y2:258,stroke:'#E9B872','stroke-width':1},mg);
+ const note=el('text',{x:1370,y:690,fill:'rgba(244,235,221,.4)','font-size':11,'font-family':'Manrope','text-anchor':'end','letter-spacing':'1'},mg);note.textContent='КАРТА СХЕМАТИЧНА · ТОЧКИ ПРИМЕРНЫЕ';
+ // bottom ornament border
+ const b=el('g',{opacity:.55},s);
+ for(let x=40;x<1440;x+=64){el('polygon',{points:starPts(9,x,860),fill:'none',stroke:'#E9B872','stroke-width':1},b);el('line',{x1:x+12,y1:860,x2:x+52,y2:860,stroke:'#E9B872','stroke-width':.8},b)}
+})();
+</script>
+</body>
+</html>

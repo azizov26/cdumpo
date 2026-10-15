@@ -1,0 +1,94 @@
+/* ===== Небо над Пензой · 5 состояний неба =====
+   Ставится на корень первого экрана: <section class="sky" data-sky="evening">.
+   Градиент вертикальный (сверху вниз), позиции — % высоты первого экрана.
+   Солнце/луна/дуга/звёзды/силуэт — в SVG (см. svg/ и data/), их цвета берутся отсюда. */
+
+.sky{position:relative;overflow:hidden;background:var(--sky-gradient);color:var(--sky-text);transition:background var(--d-sky) var(--ease-out)}
+
+/* Рассвет — Фаджр → восход */
+.sky[data-sky="dawn"]{
+  --sky-gradient:linear-gradient(180deg,#1E2450 0%,#4E427A 30%,#B9819E 55%,#F0BE9E 75%,#F8E3C6 100%);
+  --sky-stars:40; --sky-star-zone:.5;           /* звёзд на 390×844; зона = доля высоты сверху */
+  --sky-body:sun; --sky-sun-angle:172deg;       /* угол на дуге: 180 = восход, 0 = магриб */
+  --sky-silhouette:#0C1128; --sky-windows:.75;
+  --sky-text:#FFF8EC; --sky-text-2:rgba(247,241,230,.78); --sky-title:#FBEBD2; --sky-accent:#F6CF96;
+  --sky-arc:rgba(255,240,215,.38); --sky-arc-done:rgba(255,224,180,.6); --sky-arc-dot:#F7F1E6;
+  --sky-theme:dark;
+}
+/* День — восход → Аср */
+.sky[data-sky="day"]{
+  --sky-gradient:linear-gradient(180deg,#6FA3CF 0%,#A9CBE3 40%,#E4ECEA 75%,#F6F2EA 100%);
+  --sky-stars:0; --sky-body:sun; --sky-sun-angle:80deg;
+  --sky-silhouette:#26304F; --sky-windows:0;
+  --sky-text:#161A2E; --sky-text-2:rgba(22,26,46,.7); --sky-title:#2A2F4A; --sky-accent:#8A5A1E;
+  --sky-arc:rgba(22,26,46,.3); --sky-arc-done:rgba(138,90,30,.6); --sky-arc-dot:#161A2E;
+  --sky-theme:light;
+}
+/* Золотой час — Аср → Магриб−60 мин */
+.sky[data-sky="asr"]{
+  --sky-gradient:linear-gradient(180deg,#5F8DBC 0%,#B7C4C9 35%,#EBC98E 62%,#F2B57C 80%,#F6E3C0 100%);
+  --sky-stars:0; --sky-body:sun; --sky-sun-angle:40deg;
+  --sky-silhouette:#26304F; --sky-windows:0;
+  --sky-text:#161A2E; --sky-text-2:rgba(22,26,46,.7); --sky-title:#2A2F4A; --sky-accent:#8A5A1E;
+  --sky-arc:rgba(22,26,46,.3); --sky-arc-done:rgba(138,90,30,.6); --sky-arc-dot:#161A2E;
+  --sky-theme:light;
+}
+/* Закат — Магриб−60 мин → Иша */
+.sky[data-sky="evening"]{
+  --sky-gradient:linear-gradient(180deg,#0B1636 0%,#1A2350 20%,#3D2D5E 38%,#8A4A62 52%,#D9805A 64%,#F2B57C 72%,#F6CF96 80%);
+  --sky-stars:110; --sky-star-zone:.5; --sky-body:sun; --sky-sun-angle:20deg;
+  --sky-silhouette:#0C1128; --sky-windows:.75;
+  --sky-text:#FFF8EC; --sky-text-2:rgba(247,241,230,.78); --sky-title:#FBEBD2; --sky-accent:#F6CF96;
+  --sky-arc:rgba(255,240,215,.38); --sky-arc-done:rgba(255,224,180,.6); --sky-arc-dot:#F7F1E6;
+  --sky-theme:dark;
+}
+/* Ночь — Иша → Фаджр */
+.sky[data-sky="night"]{
+  --sky-gradient:linear-gradient(180deg,#03071A 0%,#081131 35%,#101B48 60%,#1B2658 74%,#0C1128 82%);
+  --sky-stars:230; --sky-star-zone:.75; --sky-body:moon;
+  --sky-silhouette:#0C1128; --sky-windows:.95;
+  --sky-text:#FFF8EC; --sky-text-2:rgba(247,241,230,.78); --sky-title:#FBEBD2; --sky-accent:#F6CF96;
+  --sky-arc:rgba(220,228,255,.22); --sky-arc-done:transparent; --sky-arc-dot:rgba(247,241,230,.4);
+  --sky-theme:dark;
+}
+/* Ниже 80% у заката и ночи градиент держит последний цвет — это «земля», в неё уходит силуэт. */
+
+/* ---------- Солнце ---------- */
+/* Диск: телефон Ø30 (r15), компьютер Ø48 (r24), цвет #FFF3D6.
+   Ореол: телефон r90, компьютер r150 —
+   radial-gradient(circle, rgba(255,233,190,.95) 0%, rgba(246,184,122,.45) 30%, rgba(242,160,106,0) 100%) */
+.sun{position:absolute;width:var(--sun-d,30px);height:var(--sun-d,30px);border-radius:50%;background:#FFF3D6;transform:translate(-50%,-50%)}
+.sun::before{content:"";position:absolute;left:50%;top:50%;width:var(--glow-d,180px);height:var(--glow-d,180px);transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(255,233,190,.95) 0%,rgba(246,184,122,.45) 30%,rgba(242,160,106,0) 70%);z-index:-1}
+/* Луна (ночь): полумесяц r16 (телефон) / r26 (компьютер), #F4EEDC.
+   Вырез: круг r = .85R, смещён на (+.45R, −.35R). Ореол r = 4R:
+   radial-gradient(circle, rgba(220,228,255,.3) 0%, rgba(220,228,255,0) 70%) */
+.moon{position:absolute;width:var(--moon-d,32px);height:var(--moon-d,32px);border-radius:50%;background:#F4EEDC;transform:translate(-50%,-50%);
+  -webkit-mask:radial-gradient(circle calc(var(--moon-d,32px)*.425) at 72.5% 32.5%,transparent 98%,#000 100%);mask:radial-gradient(circle calc(var(--moon-d,32px)*.425) at 72.5% 32.5%,transparent 98%,#000 100%)}
+.moon::before{content:"";position:absolute;inset:-150%;border-radius:50%;background:radial-gradient(circle,rgba(220,228,255,.3) 0%,rgba(220,228,255,0) 70%);z-index:-1}
+
+/* ---------- Свечение у горизонта ----------
+   В макетах отдельного слоя НЕТ: свет у горизонта дают нижние стопы градиента (закат #D9805A→#F2B57C→#F6CF96).
+   Если нужен отдельный слой (опционально, по согласованию): */
+.sky-horizon-glow{position:absolute;left:0;right:0;bottom:var(--horizon-bottom,27%);height:30%;pointer-events:none;
+  background:radial-gradient(60% 100% at 50% 100%,rgba(246,184,122,.35),rgba(246,184,122,0))}
+.sky[data-sky="day"] .sky-horizon-glow,.sky[data-sky="asr"] .sky-horizon-glow,.sky[data-sky="night"] .sky-horizon-glow{display:none}
+
+/* ---------- Звёзды ----------
+   Цвет #FFF6E4. Радиус 0.8px (92%) и 1.4px (8%). Количество: dawn 40, evening 110, night 230 на кадр 390×844;
+   на компьютере ×1.7. x — равномерно; y = rand()·rand()·H·zone (гуще вверху);
+   opacity = max(0, 1 − y/(H·zone)) · (0.35 + 0.65·rand()). Генератор: data/stars.ts.
+   Мерцание (уровень 1+): только 12 звёзд, animation на opacity: */
+@keyframes twinkle{0%,100%{opacity:var(--o,.8)}50%{opacity:calc(var(--o,.8)*.35)}}
+.star-twinkle{animation:twinkle 3.6s ease-in-out infinite}
+
+/* ---------- Силуэт ---------- */
+.skyline{color:var(--sky-silhouette)}           /* svg/skyline-*.svg используют currentColor */
+.skyline .windows{opacity:var(--sky-windows)}   /* окна #F6C77E */
+
+/* ---------- Дуга ---------- */
+.sky-arc{stroke:var(--sky-arc);stroke-dasharray:2 6;fill:none}
+.sky-arc-done{stroke:var(--sky-arc-done);fill:none}
+.sky-arc-dot{fill:var(--sky-arc-dot);opacity:.7}
+
+@media (prefers-reduced-motion:reduce){.sky{transition:none}.star-twinkle{animation:none}}

@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Небо над Пензой — мобильная версия</title>
+<style>
+@font-face{font-family:Manrope;font-weight:200;src:url(../fonts/manrope-latin-200-normal.woff2);unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF,U+2212}
+@font-face{font-family:Manrope;font-weight:200;src:url(../fonts/manrope-cyrillic-200-normal.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:Manrope;font-weight:400;src:url(../fonts/manrope-latin-400-normal.woff2);unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF,U+2212}
+@font-face{font-family:Manrope;font-weight:400;src:url(../fonts/manrope-cyrillic-400-normal.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:Manrope;font-weight:500;src:url(../fonts/manrope-latin-500-normal.woff2);unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF,U+2212}
+@font-face{font-family:Manrope;font-weight:500;src:url(../fonts/manrope-cyrillic-500-normal.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:Manrope;font-weight:600;src:url(../fonts/manrope-latin-600-normal.woff2);unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF,U+2212}
+@font-face{font-family:Manrope;font-weight:600;src:url(../fonts/manrope-cyrillic-600-normal.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:Manrope;font-weight:700;src:url(../fonts/manrope-latin-700-normal.woff2);unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF,U+2212}
+@font-face{font-family:Manrope;font-weight:700;src:url(../fonts/manrope-cyrillic-700-normal.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:Cormorant;font-weight:500;src:url(../fonts/cormorant-garamond-latin-500-normal.woff2);unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF,U+2212}
+@font-face{font-family:Cormorant;font-weight:500;src:url(../fonts/cormorant-garamond-cyrillic-500-normal.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:Cormorant;font-weight:600;src:url(../fonts/cormorant-garamond-latin-600-normal.woff2);unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF,U+2212}
+@font-face{font-family:Cormorant;font-weight:600;src:url(../fonts/cormorant-garamond-cyrillic-600-normal.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:Amiri;font-weight:400;src:url(../fonts/amiri-arabic-400-normal.woff2)}
+
+@page{size:1940px 1260px;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:Manrope,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:1940px;height:1260px;position:relative;overflow:hidden;background:#F6F3EC;color:#1B1D22;padding:56px 70px 0}
+
+.top{display:grid;grid-template-columns:600px 1fr 1fr 1fr;gap:40px;align-items:start;height:150px}
+.top .k{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#7A6F5C;font-weight:600}
+.top h1{font-family:Cormorant;font-weight:500;font-size:56px;line-height:1;margin:10px 0 0}
+.rule{border-top:1.5px solid #1B1D22;padding-top:12px}
+.rule b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#7A6F5C;margin-bottom:6px}
+.rule p{margin:0;font-size:13.5px;line-height:1.5;color:#2B2E35}
+
+.row{display:flex;gap:50px;margin-top:10px}
+.col{width:410px}
+.phone{width:410px;height:864px;padding:10px;border-radius:58px;background:#14151A;box-shadow:0 30px 60px -20px rgba(20,20,40,.35),inset 0 0 0 1.5px #2A2C33}
+.scr{width:390px;height:844px;border-radius:48px;overflow:hidden;position:relative;color:#F7F1E6}
+.island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:120px;height:34px;border-radius:20px;background:#000;z-index:50}
+.homebar{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:rgba(255,255,255,.75);z-index:50}
+.cap{margin-top:24px}
+.cap .n{font-size:11px;letter-spacing:.16em;color:#7A6F5C;font-weight:600}
+.cap h3{font-family:Cormorant;font-weight:600;font-size:28px;margin:4px 0 6px;line-height:1.05}
+.cap p{margin:0;font-size:13.5px;line-height:1.5;color:#3A3D44}
+
+svg.bg{position:absolute;inset:0}
+.hdr{position:absolute;top:56px;left:20px;right:20px;height:44px;display:flex;align-items:center;justify-content:space-between;z-index:10}
+.brand{display:flex;align-items:center;gap:10px}
+.brand .t{font-size:11.5px;line-height:1.25;font-weight:600}
+.icbtn{width:44px;height:44px;border-radius:50%;border:1px solid rgba(247,241,230,.4);background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;padding:0;color:#F7F1E6}
+.hero{position:absolute;left:0;right:0;text-align:center;z-index:5}
+.date{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(247,241,230,.78);font-weight:500;line-height:1.7}
+.until{font-family:Cormorant;font-size:27px;font-weight:500;color:#FBEBD2}
+.count{font-size:62px;font-weight:200;letter-spacing:-.01em;line-height:1;margin-top:6px;font-variant-numeric:tabular-nums;color:#FFF8EC}
+.ar{font-family:Amiri;font-size:24px;color:#F6CF96;margin-top:6px}
+.sub{font-size:13.5px;color:rgba(255,248,236,.86);margin-top:2px}
+.grid{position:absolute;left:16px;right:16px;z-index:6;display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:rgba(10,14,34,.62);border:1px solid rgba(246,207,150,.22);border-radius:22px;padding:6px}
+.grid div{height:62px;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.grid .n{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,241,230,.66);font-weight:600}
+.grid .v{font-size:21px;font-weight:500;margin-top:3px;font-variant-numeric:tabular-nums}
+.grid .on{background:#F2B57C}.grid .on .n{color:#3A1F18}.grid .on .v{color:#1C1020;font-weight:700}
+.link{position:absolute;left:0;right:0;text-align:center;z-index:6;font-size:13.5px;font-weight:600;color:#F6CF96}
+
+/* scrolled */
+.dark{background:#0C1128}
+.sticky{position:absolute;top:50px;left:12px;right:12px;height:60px;border-radius:20px;background:rgba(22,28,62,.92);border:1px solid rgba(246,207,150,.25);display:flex;align-items:center;gap:12px;padding:0 8px 0 14px;z-index:20}
+.sticky .sun{width:26px;height:26px;border-radius:50%;background:radial-gradient(circle,#FFF1D2 0 40%,rgba(242,160,106,.55) 60%,rgba(242,160,106,0) 72%)}
+.sticky .tx{flex:1;font-size:12px;color:rgba(247,241,230,.72);line-height:1.3}
+.sticky .tx b{display:block;font-size:17px;color:#FFF8EC;font-weight:600;font-variant-numeric:tabular-nums}
+.sec{position:absolute;left:20px;right:20px;z-index:5}
+.sec h2{font-family:Cormorant;font-weight:500;font-size:34px;margin:0;line-height:1}
+.sec .lb{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#F6CF96;font-weight:600;margin-bottom:8px}
+.cardx{border-radius:22px;background:rgba(255,255,255,.055);border:1px solid rgba(247,241,230,.12);padding:18px 18px 16px;margin-top:12px}
+.cardx .t{font-size:16.5px;font-weight:600}
+.cardx .d{font-size:13px;color:rgba(247,241,230,.7);margin-top:4px;line-height:1.45}
+.cardx a{display:block;margin-top:12px;font-size:13px;font-weight:600;color:#F6CF96;text-decoration:none}
+.big{font-family:Cormorant;font-size:46px;font-weight:600;line-height:1;color:#FBEBD2;margin-top:8px}
+.btn{display:flex;align-items:center;justify-content:center;height:52px;border-radius:999px;font-size:15px;font-weight:600;font-family:Manrope;text-decoration:none}
+.btn-gold{background:#F2B57C;color:#1C1020}
+.btn-ghost{border:1px solid rgba(247,241,230,.35);color:#F7F1E6;height:46px;font-size:13px;flex:1}
+
+/* menu */
+.menu{position:absolute;inset:0;background:rgba(9,13,32,.9);z-index:8}
+.nav{position:absolute;top:128px;left:20px;right:20px;z-index:10}
+.nav a{display:flex;align-items:center;justify-content:space-between;height:58px;border-bottom:1px solid rgba(247,241,230,.12);font-family:Cormorant;font-size:30px;font-weight:500;color:#F7F1E6;text-decoration:none}
+.nav a span.ar2{font-family:Manrope;font-size:16px;color:rgba(247,241,230,.45)}
+.nav a.cur{color:#F6CF96}
+.nav a.cur::before{content:"";width:7px;height:7px;border-radius:50%;background:#F6CF96;margin-right:12px}
+.nav a.cur .l{flex:1}
+.cardx a.btn{display:flex}
+</style>
+</head>
+<body>
+<section class="page">
+  <div class="top">
+    <div><div class="k">Концепция 01 · мобильная версия</div><h1>Небо над Пензой</h1></div>
+    <div class="rule"><b>Анимация</b><p>Та же раскадровка, но сжатая до 4 секунд. Наклон телефона мягко сдвигает небо, звёзды и солнце: живой параллакс вместо курсора.</p></div>
+    <div class="rule"><b>Скорость</b><p>Небо и силуэты рисуются кодом (SVG/CSS), без видео и тяжёлых картинок. Расписание намазов загружается сразу на месяц вперёд.</p></div>
+    <div class="rule"><b>Доступность</b><p>При настройке «уменьшить движение» небо статично. Кнопки от 44 px, текст контрастный, есть версия для слабовидящих.</p></div>
+  </div>
+
+  <div class="row">
+    <!-- 1 evening -->
+    <div class="col">
+      <div class="phone"><div class="scr">
+        <svg class="bg sky" data-mode="evening" width="390" height="844" viewBox="0 0 390 844" aria-hidden="true"></svg>
+        <div class="island"></div>
+        <header class="hdr">
+          <div class="brand"><svg width="36" height="36" viewBox="-22 -22 44 44" class="logo" data-c="#F6CF96" aria-hidden="true"></svg><div class="t">Духовное управление мусульман<br>Пензенской области</div></div>
+          <button class="icbtn" aria-label="Меню"><svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><path d="M0 1h18M0 6h18M6 11h12" stroke="#F7F1E6" stroke-width="1.6"/></svg></button>
+        </header>
+        <div class="hero" style="top:136px">
+          <div class="date">Пенза · среда, 14 октября<br>3 джумада-ль-уля 1448</div>
+          <div class="until" style="margin-top:44px">До вечерней молитвы</div>
+          <div class="count">01:12:40</div>
+          <div class="ar">المغرب</div>
+          <div class="sub">Магриб сегодня в 17:01</div>
+        </div>
+        <div class="grid" style="top:636px">
+          <div><span class="n">Фаджр</span><span class="v">05:02</span></div>
+          <div><span class="n">Восход</span><span class="v">06:33</span></div>
+          <div><span class="n">Зухр</span><span class="v">11:47</span></div>
+          <div><span class="n">Аср</span><span class="v">14:23</span></div>
+          <div class="on"><span class="n">Магриб</span><span class="v">17:01</span></div>
+          <div><span class="n">Иша</span><span class="v">18:41</span></div>
+        </div>
+        <div class="link" style="top:790px">Расписание на месяц →</div>
+        <div class="homebar"></div>
+      </div></div>
+      <div class="cap"><div class="n">ЭКРАН 1 · ВЕЧЕР</div><h3>Первый экран</h3><p>Отсчёт и небо занимают весь экран. Шесть намазов собраны в сетку 3×2 у большого пальца, текущий подсвечен.</p></div>
+    </div>
+
+    <!-- 2 night -->
+    <div class="col">
+      <div class="phone"><div class="scr">
+        <svg class="bg sky" data-mode="night" width="390" height="844" viewBox="0 0 390 844" aria-hidden="true"></svg>
+        <div class="island"></div>
+        <header class="hdr">
+          <div class="brand"><svg width="36" height="36" viewBox="-22 -22 44 44" class="logo" data-c="#F6CF96" aria-hidden="true"></svg><div class="t">Духовное управление мусульман<br>Пензенской области</div></div>
+          <button class="icbtn" aria-label="Меню"><svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><path d="M0 1h18M0 6h18M6 11h12" stroke="#F7F1E6" stroke-width="1.6"/></svg></button>
+        </header>
+        <div class="hero" style="top:136px">
+          <div class="date">Пенза · среда, 14 октября<br>3 джумада-ль-уля 1448</div>
+          <div class="until" style="margin-top:44px">До утренней молитвы</div>
+          <div class="count">06:48:46</div>
+          <div class="ar">الفجر</div>
+          <div class="sub">Фаджр завтра в 05:03</div>
+        </div>
+        <div class="grid" style="top:636px">
+          <div class="on"><span class="n">Фаджр</span><span class="v">05:03</span></div>
+          <div><span class="n">Восход</span><span class="v">06:35</span></div>
+          <div><span class="n">Зухр</span><span class="v">11:47</span></div>
+          <div><span class="n">Аср</span><span class="v">14:21</span></div>
+          <div><span class="n">Магриб</span><span class="v">16:59</span></div>
+          <div><span class="n">Иша</span><span class="v">18:39</span></div>
+        </div>
+        <div class="link" style="top:790px">Расписание на месяц →</div>
+        <div class="homebar"></div>
+      </div></div>
+      <div class="cap"><div class="n">ЭКРАН 1 · НОЧЬ, 22:14</div><h3>То же место, другое небо</h3><p>Ночью небо гаснет, проступают звёзды и полумесяц, в окнах загорается свет. Таблица переключается на завтрашний день.</p></div>
+    </div>
+
+    <!-- 3 scrolled -->
+    <div class="col">
+      <div class="phone"><div class="scr dark">
+        <svg class="bg" id="scrollBg" width="390" height="844" viewBox="0 0 390 844" aria-hidden="true"></svg>
+        <div class="island"></div>
+        <div class="sticky">
+          <div class="sun"></div>
+          <div class="tx">Магриб в 17:01<b>через 01:12:40</b></div>
+          <button class="icbtn" aria-label="Меню" style="border:0;background:transparent"><svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><path d="M0 1h18M0 6h18M6 11h12" stroke="#F7F1E6" stroke-width="1.6"/></svg></button>
+        </div>
+        <div class="sec" style="top:140px">
+          <div class="lb">Ближайшее</div>
+          <h2>Не пропустите</h2>
+          <div class="cardx">
+            <div class="t">Пятничная молитва</div>
+            <div class="d">Завтра, 16 октября · хутба в [время]<br>в мечетях Пензы и области</div>
+            <a href="#">Где проходит джума-намаз →</a>
+          </div>
+          <div class="cardx">
+            <div class="d" style="margin-top:0">Рамадан 1448</div>
+            <div class="big">≈ 116 дней</div>
+            <div class="d">Начало около 8 февраля 2027 г. Точную дату объявит муфтият.</div>
+          </div>
+          <div class="cardx" style="padding-bottom:18px">
+            <div class="t">Мечети рядом</div>
+            <div class="d">Определим ближайшую по геолокации и покажем время намаза в ней.</div>
+            <a class="btn btn-gold" href="#" style="margin-top:14px;color:#1C1020">Найти мечеть</a>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div></div>
+      <div class="cap"><div class="n">ЭКРАН 2 · ПОСЛЕ ПРОКРУТКИ</div><h3>Небо сжимается в плашку</h3><p>При прокрутке отсчёт не исчезает: он сворачивается в закреплённую плашку сверху и всегда под рукой.</p></div>
+    </div>
+
+    <!-- 4 menu -->
+    <div class="col">
+      <div class="phone"><div class="scr">
+        <svg class="bg sky" data-mode="evening" width="390" height="844" viewBox="0 0 390 844" aria-hidden="true"></svg>
+        <div class="menu"></div>
+        <div class="island"></div>
+        <header class="hdr">
+          <div class="brand"><svg width="36" height="36" viewBox="-22 -22 44 44" class="logo" data-c="#F6CF96" aria-hidden="true"></svg><div class="t">Духовное управление мусульман<br>Пензенской области</div></div>
+          <button class="icbtn" aria-label="Закрыть меню"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="#F7F1E6" stroke-width="1.6"/></svg></button>
+        </header>
+        <nav class="nav">
+          <a class="cur" href="#"><span class="l">Время намаза</span><span class="ar2">→</span></a>
+          <a href="#">Мечети<span class="ar2">→</span></a>
+          <a href="#">Новости<span class="ar2">→</span></a>
+          <a href="#">Праздники<span class="ar2">→</span></a>
+          <a href="#">Знания<span class="ar2">→</span></a>
+          <a href="#">Об управлении<span class="ar2">→</span></a>
+          <a class="btn btn-gold" href="#" style="margin-top:30px;height:54px;font-family:Manrope;font-size:15px;border:0;justify-content:center;color:#1C1020">Задать вопрос имаму</a>
+          <div style="display:flex;gap:10px;margin-top:12px">
+            <a class="btn btn-ghost" href="#" style="height:46px;font-family:Manrope;font-size:13px;border:1px solid rgba(247,241,230,.35);justify-content:center">Для слабовидящих</a>
+            <a class="btn btn-ghost" href="#" style="height:46px;font-family:Manrope;font-size:13px;border:1px solid rgba(247,241,230,.35);justify-content:center">Контакты</a>
+          </div>
+        </nav>
+        <div style="position:absolute;left:20px;right:20px;bottom:40px;z-index:10;display:flex;justify-content:space-between;font-size:12.5px;color:rgba(247,241,230,.6);border-top:1px solid rgba(247,241,230,.12);padding-top:14px"><span>Магриб · 17:01</span><span style="color:#F6CF96">через 01:12:40</span></div>
+        <div class="homebar"></div>
+      </div></div>
+      <div class="cap"><div class="n">ЭКРАН 3 · МЕНЮ</div><h3>Меню поверх неба</h3><p>Крупные пункты для пальца, главное действие — вопрос имаму. Небо остаётся за затемнением, ближайший намаз виден внизу.</p></div>
+    </div>
+  </div>
+</section>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+let seed=11;function rnd(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646}
+function starPts(R,cx=0,cy=0,rot=0){const r=R*Math.cos(Math.PI/4)/Math.cos(Math.PI/8);let p=[];for(let i=0;i<16;i++){const a=rot+i*Math.PI/8-Math.PI/2;const rr=i%2?r:R;p.push((cx+rr*Math.cos(a)).toFixed(2)+','+(cy+rr*Math.sin(a)).toFixed(2))}return p.join(' ')}
+function crescent(g,x,y,s,fill){el('path',{d:`M${x},${y-s} A${s},${s} 0 1,0 ${x},${y+s} A${s*.78},${s*.78} 0 1,1 ${x},${y-s}Z`,fill},g)}
+document.querySelectorAll('svg.logo').forEach(s=>{const c=s.dataset.c;el('circle',{r:20,fill:'none',stroke:c,'stroke-width':1.3},s);el('polygon',{points:starPts(15),fill:'none',stroke:c,'stroke-width':1.7},s);el('circle',{r:4.5,fill:c},s)});
+
+let uid=0;
+function sky(s,mode){uid++;const W=390,H=844,night=mode==='night';
+ const defs=el('defs',{},s);
+ const lg=el('linearGradient',{id:'g'+uid,x1:0,y1:0,x2:0,y2:1},defs);
+ const stops=night?[[0,'#03071A'],[.35,'#081131'],[.6,'#101B48'],[.74,'#1B2658'],[.82,'#0C1128']]
+                  :[[0,'#0B1636'],[.2,'#1A2350'],[.38,'#3D2D5E'],[.52,'#8A4A62'],[.64,'#D9805A'],[.72,'#F2B57C'],[.8,'#F6CF96']];
+ stops.forEach(([o,c])=>el('stop',{offset:o,'stop-color':c},lg));
+ el('rect',{width:W,height:H,fill:`url(#g${uid})`},s);
+ const sg=el('radialGradient',{id:'s'+uid},defs);el('stop',{offset:0,'stop-color':'#FFE3B0','stop-opacity':.95},sg);el('stop',{offset:.25,'stop-color':'#F6B87A','stop-opacity':.5},sg);el('stop',{offset:1,'stop-color':'#F2A06A','stop-opacity':0},sg);
+ const mg=el('radialGradient',{id:'m'+uid},defs);el('stop',{offset:0,'stop-color':'#DCE4FF','stop-opacity':.35},mg);el('stop',{offset:1,'stop-color':'#DCE4FF','stop-opacity':0},mg);
+ const n=night?230:110,lim=night?600:420;
+ for(let i=0;i<n;i++){const x=rnd()*W,y=rnd()*rnd()*lim;const o=Math.max(0,1-y/lim)*(.35+rnd()*.65);el('circle',{cx:x,cy:y,r:rnd()<.08?1.4:.8,fill:'#FFF6E4',opacity:o.toFixed(2)},s)}
+ // arc
+ const cx=195,cy=640,rx=184,ry=452;
+ el('path',{d:`M${cx-rx},${cy} A${rx},${ry} 0 0,1 ${cx+rx},${cy}`,fill:'none',stroke:night?'rgba(220,228,255,.22)':'rgba(255,240,215,.38)','stroke-width':1.1,'stroke-dasharray':'2 6'},s);
+ if(!night){const a=20*Math.PI/180;el('path',{d:`M${cx-rx},${cy} A${rx},${ry} 0 0,1 ${cx+rx*Math.cos(a)},${cy-ry*Math.sin(a)}`,fill:'none',stroke:'rgba(255,224,180,.55)','stroke-width':1.4},s);}
+ [180,90,42,0].forEach(d=>{const a=d*Math.PI/180,x=cx+rx*Math.cos(a),y=cy-ry*Math.sin(a);el('circle',{cx:x,cy:y,r:3.5,fill:'#F7F1E6',opacity:night?.4:.8},s)});
+ if(!night){const a=20*Math.PI/180,x=cx+rx*Math.cos(a),y=cy-ry*Math.sin(a);el('circle',{cx:x,cy:y,r:90,fill:`url(#s${uid})`},s);el('circle',{cx:x,cy:y,r:15,fill:'#FFF1D2'},s);const mk=el('mask',{id:'mk'+uid},defs);el('rect',{width:W,height:H,fill:'#fff'},mk);el('circle',{cx:66,cy:214,r:8,fill:'#000'},mk);el('circle',{cx:62,cy:218,r:9,fill:'rgba(255,246,228,.75)',mask:`url(#mk${uid})`},s);}
+ else{el('circle',{cx:340,cy:192,r:70,fill:`url(#m${uid})`},s);const mk=el('mask',{id:'mk'+uid},defs);el('rect',{width:W,height:H,fill:'#fff'},mk);el('circle',{cx:347,cy:186,r:14,fill:'#000'},mk);el('circle',{cx:340,cy:192,r:16,fill:'#F4EEDC',mask:`url(#mk${uid})`},s);
+   // Fajr label on arc
+   const a=180*Math.PI/180;const t=el('text',{x:cx-rx+10,y:cy-24,fill:'rgba(220,228,255,.6)','font-size':10,'font-family':'Manrope','font-weight':600,'letter-spacing':1.2},s);t.textContent='';}
+ // skyline
+ const ink='#0C1128';const sk=el('g',{fill:ink},s);
+ el('path',{d:`M0,600 C80,590 160,596 240,590 C300,586 350,592 390,588 L390,${H} L0,${H}Z`},sk);
+ for(let i=0;i<26;i++){const x=rnd()*W,r=6+rnd()*14;el('circle',{cx:x,cy:598-r*.4+rnd()*6,r},sk)}
+ const g=el('g',{transform:'translate(0 0)'},sk);
+ function tatar(x,base,w,h,mh){el('rect',{x:x-w/2,y:base-h,width:w,height:h},g);el('path',{d:`M${x-w/2-4},${base-h} L${x},${base-h-h*.55} L${x+w/2+4},${base-h}Z`},g);
+   let y=base-h-h*.4;[[11,mh*.35],[9,mh*.3],[7,mh*.2]].forEach(([tw,th])=>{el('rect',{x:x-tw/2,y:y-th,width:tw,height:th},g);el('rect',{x:x-tw/2-2,y:y-th-2,width:tw+4,height:2},g);y-=th+2});
+   el('path',{d:`M${x-4.5},${y} L${x},${y-mh*.3} L${x+4.5},${y}Z`},g);y-=mh*.3;el('rect',{x:x-.6,y:y-7,width:1.2,height:7},g);crescent(g,x+1,y-11,3.5,ink);}
+ function dome(x,base,w){el('rect',{x:x-w/2,y:base-42,width:w,height:42},g);el('path',{d:`M${x-w*.28},${base-42} C${x-w*.28},${base-92} ${x+w*.28},${base-92} ${x+w*.28},${base-42}Z`},g);el('rect',{x:x-.8,y:base-99,width:1.6,height:10},g);crescent(g,x+1,base-104,4,ink);
+   [x-w/2-9,x+w/2+9].forEach(mx=>{el('rect',{x:mx-4.5,y:base-104,width:9,height:104},g);el('rect',{x:mx-7,y:base-80,width:14,height:3},g);el('path',{d:`M${mx-5},${base-104} L${mx},${base-130} L${mx+5},${base-104}Z`},g);crescent(g,mx+1,base-136,3.5,ink)});}
+ tatar(62,612,72,36,66);
+ dome(268,616,96);
+ [[150,606,34],[360,604,36],[18,608,28]].forEach(([x,b,w])=>{el('rect',{x:x-w/2,y:b-18,width:w,height:18},g);el('path',{d:`M${x-w/2-3},${b-18} L${x},${b-32} L${x+w/2+3},${b-18}Z`},g)});
+ const win=night?[[52,592],[66,592],[146,596],[262,598],[274,598],[356,596],[14,600],[156,596]]:[[52,592],[66,592],[262,598],[146,596]];
+ win.forEach(([x,y])=>el('rect',{x,y,width:4,height:6,fill:'#F6C77E',opacity:.9},s));
+}
+document.querySelectorAll('svg.sky').forEach(s=>sky(s,s.dataset.mode));
+
+// scrolled background: faint stars + ornament line
+(function(){const s=document.getElementById('scrollBg');
+ for(let i=0;i<40;i++){const x=rnd()*390,y=rnd()*130;el('circle',{cx:x,cy:y,r:.8,fill:'#FFF6E4',opacity:(.2+rnd()*.4).toFixed(2)},s)}
+ for(let x=20;x<390;x+=44){el('polygon',{points:starPts(6,x,800),fill:'none',stroke:'#F6CF96','stroke-width':.8,opacity:.35},s);el('line',{x1:x+8,y1:800,x2:x+36,y2:800,stroke:'#F6CF96','stroke-width':.6,opacity:.3},s)}
+})();
+</script>
+</body>
+</html>

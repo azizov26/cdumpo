@@ -1,0 +1,9 @@
+body{width:1440px;background:var(--sand)}
+.stage{display:flex;justify-content:center;gap:56px;padding:64px 40px}
+.mh{display:flex;align-items:center;justify-content:space-between;padding:6px 20px 14px}
+.mh .logo-mark{width:38px;height:38px}
+.mh .logo-t{font-size:12px}
+.mh .btnr{width:42px;height:42px;border-radius:14px;border:1px solid var(--line-2);display:grid;place-items:center}
+.scr{padding:0 20px 110px}
+.m-h2{font-family:var(--f-display);font-weight:500;font-size:34px;line-height:1.05}
+.mcard{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px}
