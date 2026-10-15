@@ -1,0 +1,626 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-15T13:31:23Z",
+    "timestamp_areas_base": "2026-10-14T11:21:03Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 1436807018,
+  "lat": 52.9840858,
+  "lon": 45.8511550,
+  "tags": {
+    "amenity": "place_of_worship",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "node",
+  "id": 2503172626,
+  "lat": 52.8886327,
+  "lon": 46.4212422,
+  "tags": {
+    "amenity": "place_of_worship",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "node",
+  "id": 2503172678,
+  "lat": 52.8965730,
+  "lon": 46.3997634,
+  "tags": {
+    "amenity": "place_of_worship",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "node",
+  "id": 4144447510,
+  "lat": 53.2531858,
+  "lon": 46.2565795,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "node",
+  "id": 4187953702,
+  "lat": 53.2414785,
+  "lon": 46.2636576,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "node",
+  "id": 4187953703,
+  "lat": 53.2429392,
+  "lon": 46.2598435,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "node",
+  "id": 4187953704,
+  "lat": 53.2476467,
+  "lon": 46.2555385,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "node",
+  "id": 4187953705,
+  "lat": 53.2501278,
+  "lon": 46.2623567,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "node",
+  "id": 5746415147,
+  "lat": 52.9811386,
+  "lon": 45.8451694,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 120802526,
+  "center": {
+    "lat": 53.1085686,
+    "lon": 45.0699624
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 225091026,
+  "center": {
+    "lat": 53.2263787,
+    "lon": 44.9511773
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "construction": "yes",
+    "name": "Сияние",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 252993049,
+  "center": {
+    "lat": 53.1984451,
+    "lon": 45.0264545
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 402115680,
+  "center": {
+    "lat": 52.7799966,
+    "lon": 46.7360789
+  },
+  "tags": {
+    "addr:housenumber": "15А",
+    "addr:street": "Полевая улица",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "muslim",
+    "source:addr": "ЕГРН"
+  }
+},
+{
+  "type": "way",
+  "id": 413301032,
+  "center": {
+    "lat": 53.0373661,
+    "lon": 45.9602292
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "barrier": "fence",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 501149284,
+  "center": {
+    "lat": 53.0780533,
+    "lon": 46.8660997
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 501149285,
+  "center": {
+    "lat": 53.0846337,
+    "lon": 46.8629859
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 501149286,
+  "center": {
+    "lat": 53.0843596,
+    "lon": 46.8629241
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 501149287,
+  "center": {
+    "lat": 53.0874302,
+    "lon": 46.8884943
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 501149288,
+  "center": {
+    "lat": 53.0897199,
+    "lon": 46.8837573
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 501149289,
+  "center": {
+    "lat": 53.0938893,
+    "lon": 46.9159353
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 501149290,
+  "center": {
+    "lat": 53.0946002,
+    "lon": 46.9290137
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 671544651,
+  "center": {
+    "lat": 53.0139052,
+    "lon": 45.9385745
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 672447601,
+  "center": {
+    "lat": 53.0287300,
+    "lon": 45.9676796
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 674528684,
+  "center": {
+    "lat": 53.0934187,
+    "lon": 46.9040368
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 674528685,
+  "center": {
+    "lat": 53.0875236,
+    "lon": 46.8887227
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 682288095,
+  "center": {
+    "lat": 52.8094081,
+    "lon": 46.6492434
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 682288096,
+  "center": {
+    "lat": 52.7979995,
+    "lon": 46.5903266
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 682288097,
+  "center": {
+    "lat": 52.7685865,
+    "lon": 46.5123726
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 682288100,
+  "center": {
+    "lat": 52.6954066,
+    "lon": 46.7112716
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 682288101,
+  "center": {
+    "lat": 52.8443397,
+    "lon": 46.8513623
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 682288102,
+  "center": {
+    "lat": 52.8079943,
+    "lon": 46.8204699
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 682288103,
+  "center": {
+    "lat": 52.7869582,
+    "lon": 46.8788851
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 682288104,
+  "center": {
+    "lat": 52.7913720,
+    "lon": 46.8724344
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 682288105,
+  "center": {
+    "lat": 52.7862099,
+    "lon": 46.8679920
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 682513249,
+  "center": {
+    "lat": 53.0265310,
+    "lon": 45.9537742
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 682513250,
+  "center": {
+    "lat": 53.0202365,
+    "lon": 45.9671528
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 682513251,
+  "center": {
+    "lat": 53.0201119,
+    "lon": 45.9485424
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 682513252,
+  "center": {
+    "lat": 53.0982278,
+    "lon": 46.0128617
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 682513254,
+  "center": {
+    "lat": 53.1901946,
+    "lon": 46.3244078
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 682513256,
+  "center": {
+    "lat": 53.1884414,
+    "lon": 46.3105417
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 705995145,
+  "center": {
+    "lat": 53.1044958,
+    "lon": 46.5908167
+  },
+  "tags": {
+    "addr:city": "Кузнецк",
+    "addr:housenumber": "81",
+    "addr:street": "улица Строителей",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "denomination": "sunni",
+    "name": "Мечеть № 226",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 876328152,
+  "center": {
+    "lat": 53.0946712,
+    "lon": 43.6281363
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 876328356,
+  "center": {
+    "lat": 53.0896854,
+    "lon": 43.6317013
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 974442774,
+  "center": {
+    "lat": 53.8819495,
+    "lon": 45.8069397
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 1151573902,
+  "center": {
+    "lat": 52.8697899,
+    "lon": 46.5020878
+  },
+  "tags": {
+    "addr:housenumber": "1Б",
+    "addr:street": "Полевая улица",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 1151574154,
+  "center": {
+    "lat": 52.8729526,
+    "lon": 46.4923357
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "denomination": "sunni",
+    "religion": "muslim"
+  }
+}
+
+  ]
+}
