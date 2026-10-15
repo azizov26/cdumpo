@@ -1,4 +1,5 @@
 import { cacheLife, cacheTag } from "next/cache";
+import { sql } from "@payloadcms/db-postgres";
 import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 import type { News, Media } from "@/payload-types";
 import { getCms } from "@/lib/cms/payload";
@@ -93,3 +94,35 @@ export const formatNewsDate = (iso: string) =>
     year: "numeric",
     timeZone: "Europe/Moscow",
   });
+
+/** Поиск по новостям: полнотекстовый поиск Postgres (русская морфология) по заголовку, лиду и тексту перенесённых новостей. */
+export async function searchNews(query: string, limit = 30): Promise<NewsItem[]> {
+  const q = query.trim().slice(0, 100);
+  if (q.length < 2) return [];
+  const cms = await getCms();
+  const { rows } = await cms.db.drizzle.execute<{ id: number }>(sql`
+    WITH doc AS (
+      SELECT id, date,
+        to_tsvector('russian',
+          coalesce(title, '') || ' ' || coalesce(lead, '') || ' ' ||
+          regexp_replace(coalesce(legacy_html, ''), '<[^>]+>', ' ', 'g')) AS tsv
+      FROM news
+      WHERE _status = 'published'
+    )
+    SELECT id FROM doc
+    WHERE tsv @@ websearch_to_tsquery('russian', ${q})
+    ORDER BY ts_rank(tsv, websearch_to_tsquery('russian', ${q})) DESC, date DESC
+    LIMIT ${limit}
+  `);
+  const ids = rows.map((r) => r.id);
+  if (ids.length === 0) return [];
+  const { docs } = await cms.find({
+    collection: "news",
+    where: { id: { in: ids } },
+    limit: ids.length,
+    depth: 1,
+    pagination: false,
+  });
+  const byId = new Map(docs.map((d) => [d.id, d]));
+  return ids.flatMap((id) => (byId.get(id) ? [toItem(byId.get(id)!)] : []));
+}
