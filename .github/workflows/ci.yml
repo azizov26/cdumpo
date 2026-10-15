@@ -12,6 +12,20 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
+    # База для Payload: сборка читает новости и настройки, e2e создаёт и удаляет временные записи.
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: cdumpo
+          POSTGRES_PASSWORD: cdumpo
+          POSTGRES_DB: cdumpo
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U cdumpo" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URI: postgres://cdumpo:cdumpo@localhost:5432/cdumpo
+      PAYLOAD_SECRET: ci-only-not-a-real-secret
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4 # версия pnpm — из поля packageManager в package.json
@@ -24,6 +38,9 @@ jobs:
       - run: pnpm lint
       - run: pnpm typecheck
       - run: pnpm test
+      - run: pnpm migrate # схема базы — только миграциями, как на проде
+        env:
+          NODE_ENV: production
       - run: pnpm build
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm e2e # сценарии посетителя и доступность (axe) по продакшен-сборке

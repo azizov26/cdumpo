@@ -16,6 +16,12 @@ const eslintConfig = defineConfig([
     ".claude/**",
     ".agents/**",
     "docs/**",
+    // Сгенерировано Payload:
+    "src/payload-types.ts",
+    "src/migrations/**",
+    "src/app/(payload)/admin/importMap.js",
+    ".data/**",
+    "media/**",
   ]),
 ]);
 

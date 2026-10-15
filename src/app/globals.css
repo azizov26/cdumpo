@@ -2,6 +2,7 @@
 @import "../styles/tokens.css";
 @import "../styles/motion.css";
 @import "../styles/prayer-month.css";
+@import "../styles/news-body.css";
 
 /* Контент ниже первого экрана: 1200 px на компьютере, поля 20 px на телефоне. */
 @utility container-site {

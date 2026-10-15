@@ -53,3 +53,9 @@ next-env.d.ts
 # локальная база и env-пример
 /.data/
 !.env.example
+
+# загруженные в админке файлы
+/media/
+
+# артефакты Playwright MCP
+.playwright-mcp/

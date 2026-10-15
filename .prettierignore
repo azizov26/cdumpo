@@ -10,3 +10,9 @@ src/data
 .agents
 .impeccable
 tsconfig.tsbuildinfo
+# сгенерировано Payload
+src/payload-types.ts
+src/migrations
+src/app/(payload)/admin/importMap.js
+.data
+media

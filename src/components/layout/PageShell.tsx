@@ -1,4 +1,5 @@
-import type { ReactNode } from "react";
+import { type ReactNode, Suspense } from "react";
+import { AnnouncementBanner } from "./AnnouncementBanner";
 import { Footer } from "@/components/sections/Footer";
 import { MobileTabBar } from "@/components/sections/MobileTabBar";
 import { SiteHeader } from "./SiteHeader";
@@ -17,6 +18,9 @@ export function PageShell({ children }: { children: ReactNode }) {
       </a>
       <SiteHeader />
       <main id="main" className="min-h-[60vh]">
+        <Suspense fallback={null}>
+          <AnnouncementBanner />
+        </Suspense>
         {children}
       </main>
       <Footer />

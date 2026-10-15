@@ -19,11 +19,19 @@ pnpm prayer:build # пересобрать src/data/prayer-times.json из data/
 pnpm screens /путь [папка]   # скриншоты страницы на 360/768/1280/1440 + проверка горизонтального скролла (нужен запущенный dev)
 node scripts/sky-shots.mjs [папка] [390,1440]   # первый экран во всех пяти состояниях неба
 node scripts/brand-assets.mjs   # пересобрать иконки сайта и картинку для превью ссылок (src/app/icon.png, apple-icon.png, public/og.png)
+pnpm db:dev       # локальный Postgres без Docker (embedded-postgres, данные в .data/pg); с Docker — docker compose up -d
+pnpm e2e          # Playwright по продакшен-сборке; нужна запущенная база
+pnpm types        # пересобрать src/payload-types.ts после правки коллекций
+pnpm payload migrate:create <имя>   # миграция после изменения схемы (обязательно — на проде push выключен)
+pnpm migrate      # применить миграции (шаг деплоя перед pnpm start)
 ```
+Секреты — в `.env` (образец `.env.example`): `DATABASE_URI`, `PAYLOAD_SECRET`.
+
+Payload: конфиг `src/payload.config.ts`, коллекции `src/collections`, глобальные `src/globals`, доступы и общие поля `src/lib/cms`. Два корневых layout — `app/(site)/layout.tsx` (сайт: ранний скрипт неба, Метрика, JSON-LD) и `app/(payload)/layout.tsx`; неизвестные адреса — `app/global-not-found.tsx`. Данные на сайт — только через `src/lib/content/*` с `"use cache"` + `cacheTag`, сброс — хуки `lib/cms/revalidate.ts`. Клиентские компоненты не должны импортировать значения из модулей с Payload (только типы), иначе сервер попадёт в клиентский бандл.
 Next.js 16 с `cacheComponents`: `new Date()`, `Math.random()` в серверном рендере ломают пререндер — всё, что зависит от текущего времени (виджеты намаза), живёт в клиентских компонентах (`lib/prayer/useNow.ts`). Перед работой с API Next.js сверяйся с `node_modules/next/dist/docs/` (см. `AGENTS.md`).
 
 ## Состояние репозитория
-Дизайн утверждён, идёт реальная разработка по плану **`ROADMAP.md`** (чек-лист этапов — отмечать сделанное). Моков нет: если данных нет — пустое состояние в стиле сайта (`components/ui/EmptyState.tsx`, `Soon`), а не выдуманный контент. Источники данных — `src/lib/content/*` (пока пустые; позже — Payload, см. этап 6 плана).
+Дизайн утверждён, идёт реальная разработка по плану **`ROADMAP.md`** (чек-лист этапов — отмечать сделанное). Моков нет: если данных нет — пустое состояние в стиле сайта (`components/ui/EmptyState.tsx`, `Soon`), а не выдуманный контент. Источники данных — `src/lib/content/*`: новости, контакты, баннер и расписание — из Payload (этап 6), остальное пока пусто.
 
 Время намаза — `src/data/prayer-times.json` (Пенза, 2026), вне таблицы — расчёт `adhan` с пометкой «предварительное время». Город — только Пенза, выбора нет.
 

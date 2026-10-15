@@ -4,6 +4,8 @@ const PORT = 3100;
 
 export default defineConfig({
   testDir: "e2e",
+  // Временный сотрудник в Payload для сценариев с новостями; удаляется после прогона.
+  globalSetup: "./e2e/support/global-setup.ts",
   fullyParallel: true,
   reporter: [["list"]],
   use: { baseURL: `http://localhost:${PORT}`, locale: "ru-RU", timezoneId: "Europe/Moscow" },

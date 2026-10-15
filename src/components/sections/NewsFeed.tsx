@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { RUBRICS, type NewsItem, type Rubric } from "@/lib/content/news";
+import type { NewsItem } from "@/lib/content/news";
+import { RUBRICS, type Rubric } from "@/lib/content/rubrics";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { FeaturedNews, NewsRow } from "./NewsCard";
 
