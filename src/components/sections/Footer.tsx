@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
-import { SKY_NAMES, SKY_STATES } from "@/lib/prayer/times";
 
 const columns = [
   {
@@ -59,13 +58,6 @@ export function Footer() {
                 <Icon name="light-star" className="size-[18px]" />
                 Зажечь звезду
               </Link>
-              {/* [уточнить: ссылки на Telegram и ВКонтакте] */}
-              <Link href="#" aria-label="Telegram" className="grid size-[46px] place-items-center rounded-full border border-light/35">
-                <Icon name="telegram" className="size-[18px]" />
-              </Link>
-              <Link href="#" aria-label="ВКонтакте" className="grid size-[46px] place-items-center rounded-full border border-light/35">
-                <Icon name="vk" className="size-[18px]" />
-              </Link>
             </div>
           </div>
           {columns.map((col) => (
@@ -84,31 +76,9 @@ export function Footer() {
           ))}
         </div>
 
-        {/* Только для макета: посмотреть все пять состояний неба. */}
-        <div className="mt-12 rounded-[16px] border border-dashed border-light/20 p-4">
-          <p className="text-[13px] text-light/78">Макет · посмотреть небо:</p>
-          <ul className="mt-2 flex flex-wrap gap-2">
-            <li>
-              <a href="?" className="inline-flex min-h-11 items-center rounded-full border border-light/25 px-4 text-sm hover:border-light/60">
-                Сейчас
-              </a>
-            </li>
-            {SKY_STATES.map((s) => (
-              <li key={s}>
-                <a
-                  href={`?sky=${s}`}
-                  className="inline-flex min-h-11 items-center rounded-full border border-light/25 px-4 text-sm hover:border-light/60"
-                >
-                  {SKY_NAMES[s]}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
         <div className="mt-10 flex flex-col gap-2 border-t border-light/10 pt-6 text-[13px] text-light/62 sm:flex-row sm:justify-between">
           <span>© ЦДУМ ПО, 2026</span>
-          <span>Макет: тексты, даты, цифры и изображения — демонстрационные</span>
+          <span>г. Пенза</span>
         </div>
       </div>
     </footer>

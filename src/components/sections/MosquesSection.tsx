@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/Button";
-import { Chip, Todo } from "@/components/ui/Tag";
+import { Soon } from "@/components/ui/Tag";
 import { Icon } from "@/components/ui/Icon";
 import { r1, rng, starPts } from "@/lib/sky/geometry";
 import { SectionHeading } from "./SectionHeading";
@@ -55,29 +55,29 @@ function MosquesMap() {
 
 export function MosquesSection() {
   return (
-    <section aria-labelledby="mosques-title" className="container-site pt-14 md:pt-24">
+    <section aria-labelledby="mosques-title" className="container-site pt-14 pb-16 md:pt-24 md:pb-24">
       <div className="grid items-stretch gap-6 lg:grid-cols-[420px_1fr] lg:gap-8">
         <div>
           <SectionHeading id="mosques-title" label="Мечети и общины" title={"Мечеть рядом\u00a0—"} accent="в два касания" />
           <p className="-mt-2 text-[15px] leading-[1.55] text-fg-2 lg:text-[17px]">
             Карта всех мечетей области: адрес, джума, имам, удобства и маршрут.
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-2">
-            <Chip on>Пенза</Chip>
-            <span className="text-[13px]">
-              <Todo>города и сёла с мечетями</Todo>
-            </span>
-          </div>
+          <p className="mt-5 text-[14.5px]">
+            <Soon>Список мечетей области готовится</Soon>
+          </p>
           <div className="mt-6 flex flex-wrap gap-3 lg:mt-7">
             <Button href="/mosques" variant="night">
               <Icon name="mosques" />
               Открыть карту
             </Button>
-            <Button href="/mosques?near=1">Найти ближайшую</Button>
           </div>
         </div>
-        <div className="h-[240px] overflow-hidden rounded-xl md:h-[460px]">
+        {/* Иллюстрация, а не карта: огни условные, пока муфтият не передал адреса мечетей. */}
+        <div className="relative h-[240px] overflow-hidden rounded-xl md:h-[460px]">
           <MosquesMap />
+          <span className="absolute bottom-4 left-4 rounded-full bg-night/80 px-3 py-1.5 text-[12.5px] text-light/85">
+            Иллюстрация · карта готовится
+          </span>
         </div>
       </div>
     </section>

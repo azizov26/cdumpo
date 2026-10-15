@@ -1,7 +1,8 @@
 import { CalculationMethod, Coordinates, HighLatitudeRule, Madhab, PrayerTimes } from "adhan";
+import table from "@/data/prayer-times.json";
 
-// Предварительный расчёт до загрузки расписания муфтията.
-// Метод и мазхаб не согласованы — сверить с муфтиятом до запуска.
+// Источник — таблица на год (scripts/scrape-namaz.mjs → scripts/build-prayer-table.mjs).
+// Для дат вне таблицы — предварительный расчёт; метод и мазхаб сверить с муфтиятом до запуска.
 const PENZA = new Coordinates(53.2007, 45.0046);
 export const TIME_ZONE = "Europe/Moscow";
 
@@ -76,12 +77,39 @@ export function getSkyState(now: Date, t: DayTimes): SkyState {
 
 export type DayTimes = Record<PrayerKey, Date>;
 
-export function getDayTimes(date: Date): DayTimes {
+/** Дата по Москве в формате YYYY-MM-DD. */
+export function dateKey(d: Date): string {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: TIME_ZONE, year: "numeric", month: "2-digit", day: "2-digit" }).format(d);
+}
+
+/** Есть ли на эту дату время из таблицы (иначе — предварительный расчёт). */
+export const hasTable = (d: Date) => dateKey(d) in table.days;
+
+function fromTable(d: Date): DayTimes | null {
+  const key = dateKey(d);
+  const row = (table.days as Record<string, string>)[key];
+  if (!row) return null;
+  const [y, m, day] = key.split("-").map(Number);
+  // Время в таблице — местное (Москва, UTC+3, без перехода на летнее время).
+  const at = (hm: string) => {
+    const [h, min] = hm.split(":").map(Number);
+    return new Date(Date.UTC(y, m - 1, day, h - 3, min));
+  };
+  const v = row.split(" ");
+  return Object.fromEntries(PRAYER_ORDER.map((k, i) => [k, at(v[i])])) as DayTimes;
+}
+
+function calculated(date: Date): DayTimes {
   const params = CalculationMethod.MuslimWorldLeague();
   params.madhab = Madhab.Shafi;
   params.highLatitudeRule = HighLatitudeRule.recommended(PENZA);
   const t = new PrayerTimes(PENZA, date, params);
   return { fajr: t.fajr, sunrise: t.sunrise, dhuhr: t.dhuhr, asr: t.asr, maghrib: t.maghrib, isha: t.isha };
+}
+
+/** Время намазов на дату: из таблицы (src/data/prayer-times.json), если её нет — расчёт adhan. */
+export function getDayTimes(date: Date): DayTimes {
+  return fromTable(date) ?? calculated(date);
 }
 
 /** Ближайший намаз (восход — не намаз, пропускаем). После иши — фаджр завтра. */

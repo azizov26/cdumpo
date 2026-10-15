@@ -1,0 +1,130 @@
+/* Движение первого экрана (DESIGN.md → «Движение», концепция, слайд 11).
+   Только opacity и transform, кривая ease-out. Порядок:
+   1) «Бисмиллях» по центру экрана ~2.5 с (один раз за сессию);
+   2) открытие неба: небо проявляется, поднимаются минареты, по дуге загораются точки намазов, ~2.5 с.
+   html[data-intro]: play — показываем заставку; skip — без неё; done — заставка закончилась.
+   html[data-revealed] — открытие уже показано в этой сессии, при возврате на главную не повторяем. */
+
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in: cubic-bezier(0.64, 0, 0.78, 0);
+  --intro: 0s;
+}
+/* «done» держит ту же задержку: иначе анимации, уже идущие по таймлайну, перескочат в конец. */
+html[data-intro="play"],
+html[data-intro="done"] {
+  --intro: 2.5s;
+}
+
+/* ---------- Заставка «Бисмиллях» ---------- */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: radial-gradient(120% 80% at 50% 45%, #1b2658 0%, #0b1636 55%, #03071a 100%);
+  animation: intro-out 600ms var(--ease-in) 2.5s forwards;
+}
+html[data-intro="skip"] .intro,
+html[data-intro="done"] .intro {
+  display: none;
+}
+.intro-ar {
+  opacity: 0;
+  animation: intro-in 1100ms var(--ease-out) 150ms forwards;
+}
+.intro-ru {
+  opacity: 0;
+  animation: intro-in 900ms var(--ease-out) 700ms forwards;
+}
+@keyframes intro-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes intro-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ---------- Открытие неба ---------- */
+.sky-fade {
+  animation: fade-in 1100ms var(--ease-out) var(--intro) both;
+}
+.sky-city {
+  animation: city-rise 1300ms var(--ease-out) calc(var(--intro) + 100ms) both;
+}
+.sky-arc {
+  animation: fade-in 900ms var(--ease-out) calc(var(--intro) + 600ms) both;
+}
+.sky-dot {
+  animation: dot-in 500ms var(--ease-out) calc(var(--intro) + var(--d, 0ms)) both;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.sky-progress {
+  stroke-dasharray: 1;
+  animation: draw 1200ms var(--ease-out) calc(var(--intro) + 900ms) both;
+}
+.sky-sun {
+  animation: fade-in 900ms var(--ease-out) calc(var(--intro) + 1500ms) both;
+}
+.reveal {
+  animation: rise 700ms var(--ease-out) calc(var(--intro) + var(--d, 0ms)) both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+@keyframes city-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+}
+@keyframes dot-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Повторный заход на главную в той же сессии — сразу готовый кадр. */
+html[data-revealed] :is(.sky-fade, .sky-city, .sky-arc, .sky-dot, .sky-progress, .sky-sun, .reveal) {
+  animation: none;
+}
+
+/* Уровень 0 «тихий»: без заставки и без движения, сразу готовый кадр. */
+@media (prefers-reduced-motion: reduce) {
+  .intro {
+    display: none;
+  }
+  :is(.sky-fade, .sky-city, .sky-arc, .sky-dot, .sky-progress, .sky-sun, .reveal) {
+    animation: none;
+  }
+}

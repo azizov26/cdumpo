@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useId, type CSSProperties } from "react";
 import {
   ARC_DOTS,
   arcPoint,
@@ -43,6 +43,7 @@ export function SkyGraphic({
   seed,
   className = "",
   preserve = "xMidYMax slice",
+  animated = false,
 }: {
   state: SkyState;
   frame: Frame | "phone" | "desktop";
@@ -51,7 +52,10 @@ export function SkyGraphic({
   seed?: number;
   className?: string;
   preserve?: string;
+  /** Классы открытия первого экрана (styles/motion.css). */
+  animated?: boolean;
 }) {
+  const a = (cls: string) => (animated ? cls : undefined);
   const uid = useId().replace(/:/g, "");
   const f = typeof frame === "string" ? FRAME[frame] : frame;
   const s = SKY[state];
@@ -79,10 +83,10 @@ export function SkyGraphic({
           <stop offset="100%" stopColor="#DCE4FF" stopOpacity="0" />
         </radialGradient>
       </defs>
-      <rect width={f.W} height={f.H} fill={`url(#g${uid})`} />
+      <rect width={f.W} height={f.H} fill={`url(#g${uid})`} className={a("sky-fade")} />
 
       {stars.length > 0 && (
-        <g>
+        <g className={a("sky-fade")}>
           {stars.map((st, i) => (
             <circle key={i} cx={st.x} cy={st.y} r={st.r} fill="#FFF6E4" opacity={st.o} />
           ))}
@@ -90,7 +94,7 @@ export function SkyGraphic({
       )}
 
       {arc && (
-        <g>
+        <g className={a("sky-arc")}>
           <path
             d={`M${cx - rx},${cy} A${rx},${ry} 0 0,1 ${cx + rx},${cy}`}
             fill="none"
@@ -98,15 +102,23 @@ export function SkyGraphic({
             strokeWidth={f.arcW}
             strokeDasharray="2 6"
           />
-          {ARC_DOTS.map((d) => {
+          {ARC_DOTS.map((d, i) => {
             const p = arcPoint(f, d);
             return (
-              <circle key={d} cx={p.x} cy={p.y} r={f.dotR} fill={lite ? "#161A2E" : "#F7F1E6"} opacity={state === "night" ? 0.4 : 0.7} />
+              <circle
+                key={d}
+                className={a("sky-dot")}
+                style={animated ? ({ "--d": `${800 + i * 150}ms` } as CSSProperties) : undefined}
+                cx={p.x}
+                cy={p.y}
+                r={f.dotR} fill={lite ? "#161A2E" : "#F7F1E6"} opacity={state === "night" ? 0.4 : 0.7} />
             );
           })}
           {sun && (
             <path
               d={`M${cx - rx},${cy} A${rx},${ry} 0 0,1 ${sun.x},${sun.y}`}
+              className={a("sky-progress")}
+              pathLength={animated ? 1 : undefined}
               fill="none"
               stroke={lite ? "rgba(138,90,30,.6)" : "rgba(255,224,180,.6)"}
               strokeWidth={f.arcW * 1.3}
@@ -116,18 +128,19 @@ export function SkyGraphic({
       )}
 
       {sun && (
-        <>
+        <g className={a("sky-sun")}>
           <circle cx={sun.x} cy={sun.y} r={f.glowR} fill={`url(#sun${uid})`} />
           <circle cx={sun.x} cy={sun.y} r={f.sunR} fill="#FFF3D6" />
-        </>
+        </g>
       )}
       {s.body === "moon" && (
-        <>
+        <g className={a("sky-sun")}>
           <circle cx={f.moon.x} cy={f.moon.y} r={f.moon.r * 4} fill={`url(#moon${uid})`} />
           <Crescent x={f.moon.x} y={f.moon.y} r={f.moon.r} fill="#F4EEDC" id={`cm${uid}`} />
-        </>
+        </g>
       )}
 
+      <g className={a("sky-city")}>
       <g style={{ fill: "var(--sky-silhouette)" }}>
         {city.ground.map((sh, i) => (
           <ShapeEl key={i} s={sh} />
@@ -148,6 +161,7 @@ export function SkyGraphic({
             ))}
           </g>
         ))}
+      </g>
       </g>
     </svg>
   );

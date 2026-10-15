@@ -13,20 +13,12 @@ export function Chip({ children, on = false }: { children: ReactNode; on?: boole
   );
 }
 
-/** Явная заглушка для данных, которых пока нет (правило из CLAUDE.md). */
-export function Todo({ children }: { children: ReactNode }) {
+/** Тихая пометка «раздел готовится» — когда данных от муфтията ещё нет. */
+export function Soon({ children = "Готовится" }: { children?: ReactNode }) {
   return (
-    <span className="rounded-md border border-dashed border-current/50 px-1.5 py-0.5 text-[0.9em] text-accent">
-      [уточнить: {children}]
-    </span>
-  );
-}
-
-/** Пометка «пример» для цифр с макета концепции. */
-export function Example() {
-  return (
-    <span className="inline-flex h-[22px] items-center rounded-full border border-current/30 px-2 text-[11px] font-semibold opacity-80">
-      пример
+    <span className="inline-flex items-center gap-1.5 text-fg-2 italic">
+      <span aria-hidden="true" className="size-1.5 rounded-full bg-accent/70" />
+      {children}
     </span>
   );
 }

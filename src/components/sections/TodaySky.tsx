@@ -2,12 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { SkyGraphic } from "@/components/sky/SkyGraphic";
 import {
   formatDate,
   formatHijri,
   formatTime,
+  hasTable,
   PRAYER_NAMES,
   PRAYER_NAMES_AR,
   PRAYER_ORDER,
@@ -31,6 +33,9 @@ export const NAV = [
   { href: "/muftiyat", label: "Муфтият" },
 ];
 
+/** Задержка появления элемента после заставки (styles/motion.css → .reveal). */
+const d = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
+
 const pad = (n: number) => String(n).padStart(2, "0");
 export function formatCountdown(ms: number) {
   const s = Math.max(0, Math.floor(ms / 1000));
@@ -51,17 +56,6 @@ function Brand({ size }: { size: "phone" | "desktop" }) {
         {d ? "мусульман Пензенской области" : "Пензенской области"}
       </span>
     </Link>
-  );
-}
-
-function CityPill({ tall }: { tall?: boolean }) {
-  return (
-    <button
-      type="button"
-      className={`inline-flex items-center gap-1.5 rounded-full border border-[color:var(--sky-pill-line)] bg-[color:var(--sky-pill-bg)] px-3.5 text-[13px] font-semibold text-[color:var(--sky-text)] ${tall ? "h-[46px]" : "h-11"}`}
-    >
-      Пенза <Icon name="chevron-down" className="size-4" />
-    </button>
   );
 }
 
@@ -105,7 +99,8 @@ function Center({ clock, desktop }: { clock: SkyClock | null; desktop: boolean }
   return (
     <div className="text-center">
       <p
-        className={`tnum min-h-[1.7em] font-medium text-[color:var(--sky-text-2)] uppercase ${
+        style={d(300)}
+        className={`reveal tnum min-h-[1.7em] font-medium text-[color:var(--sky-text-2)] uppercase ${
           desktop ? "text-[14px] tracking-[0.14em]" : "text-[10.5px] leading-[1.7] tracking-[0.16em]"
         }`}
       >
@@ -116,21 +111,23 @@ function Center({ clock, desktop }: { clock: SkyClock | null; desktop: boolean }
             </>
           ) : (
             <>
-              {formatDate(clock.now)}
+              Пенза · {formatDate(clock.now)}
               <br />
               {formatHijri(clock.now)}
             </>
           ))}
       </p>
       <h1
-        className={`font-display leading-[1.15] font-medium text-[color:var(--sky-title)] ${
+        style={d(400)}
+        className={`reveal font-display leading-[1.15] font-medium text-[color:var(--sky-title)] ${
           desktop ? "mt-5 text-[40px]" : "mt-[46px] text-[27px]"
         }`}
       >
         {next ? PRAYER_UNTIL[next.key] : "Время намаза"}
       </h1>
       <p
-        className={`tnum leading-none font-extralight text-[color:var(--sky-text)] ${
+        style={d(500)}
+        className={`reveal tnum font-count leading-none text-[color:var(--sky-text)] ${
           desktop ? "mt-1 text-[clamp(96px,10.3vw,148px)] tracking-[-0.01em]" : "mt-1.5 text-[62px]"
         }`}
       >
@@ -139,12 +136,14 @@ function Center({ clock, desktop }: { clock: SkyClock | null; desktop: boolean }
       <p
         lang="ar"
         dir="rtl"
-        className={`min-h-[1.5em] font-ar leading-[1.5] text-[color:var(--sky-accent)] ${desktop ? "mt-0.5 text-[30px]" : "mt-1.5 text-[24px]"}`}
+        style={d(650)}
+        className={`reveal min-h-[1.5em] font-ar leading-[1.5] text-[color:var(--sky-accent)] ${desktop ? "mt-0.5 text-[30px]" : "mt-1.5 text-[24px]"}`}
       >
         {next ? PRAYER_NAMES_AR[next.key] : ""}
       </p>
-      <p className="mt-0.5 min-h-5 text-[13.5px] text-[color:var(--sky-text-2)]">
+      <p style={d(750)} className="reveal mt-0.5 min-h-5 text-[13.5px] text-[color:var(--sky-text-2)]">
         {next ? `${PRAYER_NAMES[next.key]} в ${formatTime(next.at)}` : ""}
+        {clock && !hasTable(clock.now) && <span className="block text-[12px] opacity-80">предварительное время</span>}
       </p>
     </div>
   );
@@ -167,28 +166,27 @@ export function TodaySky() {
     >
       {clock && (
         <>
-          <SkyGraphic state={sky} frame="phone" sunAngle={angle} className="absolute inset-0 size-full md:hidden" />
-          <SkyGraphic state={sky} frame="desktop" sunAngle={angle} className="absolute inset-0 size-full max-md:hidden" />
+          <SkyGraphic animated state={sky} frame="phone" sunAngle={angle} className="absolute inset-0 size-full md:hidden" />
+          <SkyGraphic animated state={sky} frame="desktop" sunAngle={angle} className="absolute inset-0 size-full max-md:hidden" />
         </>
       )}
 
       {/* Телефон: координаты от верха кадра 844 минус системная зона 47 px. */}
       <div className="md:hidden">
-        <header className="absolute inset-x-5 top-[calc(env(safe-area-inset-top)+9px)] z-10 flex h-11 items-center justify-between">
+        <header style={d(200)} className="reveal absolute inset-x-5 top-[calc(env(safe-area-inset-top)+9px)] z-10 flex h-11 items-center">
           <Brand size="phone" />
-          <CityPill />
         </header>
         <div className="absolute inset-x-0 top-[calc(env(safe-area-inset-top)+89px)] z-[5]">
           <Center clock={clock} desktop={false} />
         </div>
-        <div className="absolute inset-x-3 bottom-[calc(120px+env(safe-area-inset-bottom))] z-[6]">
+        <div style={d(1000)} className="reveal absolute inset-x-3 bottom-[calc(120px+env(safe-area-inset-bottom))] z-[6]">
           <Prayers times={times} next={next} />
         </div>
       </div>
 
       {/* Компьютер: кадр 1440×900. */}
       <div className="max-md:hidden">
-        <header className="absolute inset-x-0 top-0 z-10 flex h-[92px] items-center justify-between gap-6 px-12">
+        <header style={d(200)} className="reveal absolute inset-x-0 top-0 z-10 flex h-[92px] items-center justify-between gap-6 px-12">
           <Brand size="desktop" />
           <nav aria-label="Основное меню" className="hidden xl:block">
             <ul className="flex gap-[30px] text-[15px] font-medium text-[color:var(--sky-text)] opacity-90">
@@ -202,7 +200,6 @@ export function TodaySky() {
             </ul>
           </nav>
           <div className="flex gap-2.5">
-            <CityPill tall />
             <Link
               href="/dobro"
               className="inline-flex h-[46px] items-center gap-2 rounded-full bg-zarya px-[22px] text-[14.5px] font-bold text-on-gold"
@@ -215,7 +212,7 @@ export function TodaySky() {
         <div className="absolute inset-x-0 top-[224px] z-[5]">
           <Center clock={clock} desktop />
         </div>
-        <div className="absolute inset-x-12 bottom-9 z-[6] grid grid-cols-[1.6fr_1fr] gap-3 xl:grid-cols-[1.6fr_1fr_1fr_1fr_1fr]">
+        <div style={d(1000)} className="reveal absolute inset-x-12 bottom-9 z-[6] grid grid-cols-[1.6fr_1fr] gap-3 xl:grid-cols-[1.6fr_1fr_1fr_1fr_1fr]">
           <Prayers times={times} next={next} />
           {ACTIONS.map((a) => (
             <Link

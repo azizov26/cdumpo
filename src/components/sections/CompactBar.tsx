@@ -34,7 +34,7 @@ export function CompactBar() {
           </p>
           <p className="tnum text-[15px] font-semibold">через {formatCountdown(next.at.getTime() - now.getTime())}</p>
         </div>
-        <span className="rounded-full border border-light/35 px-3 py-1 text-xs font-semibold">Пенза</span>
+        <span className="text-xs font-semibold text-light/70">Пенза</span>
       </div>
     </div>
   );

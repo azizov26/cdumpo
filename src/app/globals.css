@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "../styles/tokens.css";
+@import "../styles/motion.css";
 
 /* Контент ниже первого экрана: 1200 px на компьютере, поля 20 px на телефоне. */
 @utility container-site {
@@ -19,6 +20,12 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
+}
+
+/* Отсчёт до намаза: Manrope 200 (эталон дизайнера). */
+@utility font-count {
+  font-family: var(--font-sans);
+  font-weight: 200;
 }
 
 @utility tnum {
