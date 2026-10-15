@@ -88,7 +88,12 @@ export const SECTIONS: Section[] = [
     ready: true,
   },
   { href: "/vopros-imamu", title: "Вопрос имаму", about: "Задайте вопрос имаму и получите ответ.", ready: true },
-  { href: "/obryady", title: "Обряды и запись", about: "Никах, имянаречение, джаназа: как проходит и как записаться." },
+  {
+    href: "/obryady",
+    title: "Обряды и запись",
+    about: "Никах, имянаречение, джаназа: как проходит и как записаться.",
+    ready: true,
+  },
   {
     href: "/politika",
     title: "Политика обработки персональных данных",
