@@ -129,7 +129,7 @@ export const formatDate = (d: Date) =>
   d.toLocaleDateString("ru-RU", { timeZone: TIME_ZONE, weekday: "long", day: "numeric", month: "long" });
 
 // Названия месяцев хиджры — как в макетах дизайнера.
-const HIJRI_MONTHS = [
+export const HIJRI_MONTHS = [
   "мухаррама", "сафара", "раби-уль-авваля", "раби-ус-сани", "джумада-ль-уля", "джумада-ль-ахира",
   "раджаба", "шаабана", "рамадана", "шавваля", "зуль-када", "зуль-хиджа",
 ];

@@ -1,0 +1,69 @@
+/* Время намаза на месяц (components/sections/PrayerMonth.tsx). */
+
+/* Смена месяца: строки и слово в заголовке проявляются, без сдвига больше 6 px. */
+.month-in {
+  animation: month-in 280ms var(--ease-out) both;
+}
+@keyframes month-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+    filter: blur(2px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .month-in {
+    animation: fade-in 160ms ease both;
+  }
+}
+
+/* Сегодня в тёмной теме — «ночная» полоса с тонкой золотой каймой. */
+tr[aria-current="date"] > * {
+  box-shadow: var(--row-today-ring, none);
+}
+
+/* Капсула выбранного месяца: на «ночной» кнопке (светлая тема) и на золотой (тёмная). */
+[aria-pressed="true"] > .capsule {
+  --capsule-track: rgb(255 255 255 / 0.16);
+  --capsule-twilight: rgb(246 207 150 / 0.42);
+  --capsule-day: var(--color-zarya);
+}
+[data-theme="dark"] [aria-pressed="true"] > .capsule {
+  --capsule-track: rgb(28 16 32 / 0.14);
+  --capsule-twilight: rgb(28 16 32 / 0.3);
+  --capsule-day: var(--color-night);
+}
+
+/* Печать: только таблица месяца, светлая, без интерфейса вокруг. */
+@media print {
+  @page {
+    margin: 12mm;
+  }
+  html[data-print="namaz-month"] :is(body *):not(:has(#namaz-month)):not(#namaz-month, #namaz-month *) {
+    display: none !important;
+  }
+  html[data-print="namaz-month"] body {
+    background: #fff;
+  }
+  html[data-print="namaz-month"] #namaz-month {
+    max-width: none;
+    padding: 0;
+    color: #161a2e;
+    --text: #161a2e;
+    --text-2: #5c5f6b;
+    --accent: #8a5a1e;
+    --surface: #fff;
+    --line: #ddd5c6;
+    --row-rule: #eee8dc;
+    --row-today: transparent;
+    --row-today-fg: #161a2e;
+    --row-today-ring: none;
+    --row-today-time: #8a5a1e;
+    --row-friday: #f6efe2;
+    --thead-bg: #fff;
+    print-color-adjust: exact;
+  }
+  html[data-print="namaz-month"] #namaz-month th {
+    position: static;
+  }
+}

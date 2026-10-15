@@ -5,6 +5,7 @@ import { Footer } from "@/components/sections/Footer";
 import { MobileTabBar } from "@/components/sections/MobileTabBar";
 import { MosquesSection } from "@/components/sections/MosquesSection";
 import { MuftiyatSection } from "@/components/sections/MuftiyatSection";
+import { PrayerMonth } from "@/components/sections/PrayerMonth";
 import { QuickActions } from "@/components/sections/QuickActions";
 import { TodaySky } from "@/components/sections/TodaySky";
 import { UmmahLife } from "@/components/sections/UmmahLife";
@@ -24,7 +25,8 @@ export default function TodayPage() {
       <CompactBar />
       <main id="main">
         <QuickActions />
-        {/* Второй экран — новости и муфтият (решение заказчика). */}
+        {/* Сразу под небом — время намаза на месяц, затем новости и муфтият (решения заказчика). */}
+        <PrayerMonth />
         <UmmahLife />
         <MuftiyatSection />
         <CathedralConstellation />

@@ -84,6 +84,16 @@
   --tab-fg: #6b6e78;
   --tab-on: var(--color-goldtx);
   --tab-don: #9a5f1f;
+  /* Таблица намаза на месяц: сегодня — «ночь» на светлом, пятница — тёплая подложка. */
+  --row-today: var(--color-night);
+  --row-today-fg: var(--color-light);
+  --row-today-time: var(--color-gold-soft);
+  --row-friday: rgb(243 227 200 / 0.42);
+  --row-rule: var(--color-hairline-2);
+  --capsule-track: rgb(22 26 46 / 0.08);
+  --capsule-twilight: rgb(138 90 30 / 0.28);
+  --capsule-day: var(--color-zarya);
+  --thead-bg: #fff;
   color-scheme: light;
 }
 
@@ -107,6 +117,16 @@
   --tab-fg: rgb(247 241 230 / 0.62);
   --tab-on: var(--color-gold-soft);
   --tab-don: var(--color-zarya);
+  --row-today: var(--color-night);
+  --row-today-ring: inset 0 1px rgb(246 207 150 / 0.4), inset 0 -1px rgb(246 207 150 / 0.4);
+  --row-today-fg: var(--color-light);
+  --row-today-time: var(--color-gold-soft);
+  --row-friday: rgb(246 207 150 / 0.05);
+  --row-rule: rgb(247 241 230 / 0.07);
+  --capsule-track: rgb(247 241 230 / 0.1);
+  --capsule-twilight: rgb(246 207 150 / 0.3);
+  --capsule-day: var(--color-zarya);
+  --thead-bg: #1c223c; /* непрозрачный аналог --surface на --bg: под липкой шапкой не просвечивают строки */
   color-scheme: dark;
 }
 
