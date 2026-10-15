@@ -4,6 +4,7 @@ import "@fontsource-variable/cormorant-garamond/wght.css";
 import "@fontsource-variable/cormorant-garamond/wght-italic.css";
 import "@fontsource/amiri/arabic-400.css";
 import "../globals.css";
+import { PwaRegister } from "@/components/layout/PwaRegister";
 import { YandexMetrika } from "@/components/layout/YandexMetrika";
 import { SITE_FULL_NAME, SITE_NAME, SITE_URL, YANDEX_VERIFICATION } from "@/lib/site";
 
@@ -77,6 +78,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         {children}
         <YandexMetrika />
+        <PwaRegister />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: organizationLd }} />
       </body>
     </html>

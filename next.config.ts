@@ -37,6 +37,8 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       { source: "/:path*", headers: baseHeaders },
+      // Сервис-воркер всегда проверяется заново — иначе обновление сайта не дойдёт до установленных копий.
+      { source: "/sw.js", headers: [{ key: "Cache-Control", value: "no-cache, no-store, must-revalidate" }] },
       // Админка Payload и её API ведут себя иначе (свои скрипты и стили), строгая политика — только на публичных страницах.
       { source: "/((?!admin|api).*)", headers: [{ key: "Content-Security-Policy", value: csp }] },
     ];
