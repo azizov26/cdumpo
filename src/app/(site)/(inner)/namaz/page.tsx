@@ -16,10 +16,14 @@ export default function NamazPage() {
   return (
     <>
       <PageHeading title="Время намаза" lead="Расписание для Пензы: сегодня, неделя и весь месяц." />
-      <div className="container-site pt-6">
+      <div className="container-site flex flex-wrap gap-3 pt-6">
         <Button href="/namaz/kibla">
           <Icon name="arrow-right" />
           Кибла
+        </Button>
+        <Button href="/namaz/kalendar">
+          <Icon name="arrow-right" />
+          Календарь хиджры
         </Button>
       </div>
       <NamazDay />
