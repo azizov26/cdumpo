@@ -24,6 +24,18 @@ export const SECTIONS: Section[] = [
   { href: "/namaz", title: "Время намаза", about: "Расписание на сегодня, неделю и месяц.", ready: true },
   { href: "/namaz/kibla", title: "Кибла", about: "Направление и расстояние до Каабы, компас.", ready: true },
   {
+    href: "/namaz/kalendar",
+    title: "Календарь хиджры",
+    about: "Даты по лунному календарю, памятные дни и праздники.",
+    ready: true,
+  },
+  {
+    href: "/namaz/kalendar",
+    title: "Календарь хиджры",
+    about: "Даты по лунному календарю, памятные дни и праздники.",
+    ready: true,
+  },
+  {
     href: "/mosques",
     title: "Мечети",
     about: "Историческая мечеть на Бакунина и Соборная мечеть на проспекте Победы; позже — карта мечетей области.",
@@ -99,7 +111,7 @@ export const NAV = [
 
 /** Группы экрана «Ещё» (концепция 2.0, вкладка «Ещё»). */
 export const MORE_GROUPS: { title: string; hrefs: string[] }[] = [
-  { title: "Намаз", hrefs: ["/namaz", "/namaz/kibla"] },
+  { title: "Намаз", hrefs: ["/namaz", "/namaz/kibla", "/namaz/kalendar"] },
   { title: "Жизнь общины", hrefs: ["/umma", "/znaniya", "/vopros-imamu", "/obryady"] },
   { title: "Добро", hrefs: ["/dobro", "/dobro/postupleniya", "/dobro/sadaka", "/dobro/zakyat", "/dobro/otchyoty"] },
   { title: "Муфтият", hrefs: ["/muftiyat", "/muftiyat/struktura", "/muftiyat/dokumenty", "/muftiyat/kontakty"] },

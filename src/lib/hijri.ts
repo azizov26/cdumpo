@@ -51,7 +51,7 @@ export function upcomingDates(now: Date, count = 4): UpcomingDate[] {
   return friday ? [friday, ...out] : out;
 }
 
-const HIJRI_MONTHS_GEN = [
+export const HIJRI_MONTHS_GEN = [
   "мухаррама",
   "сафара",
   "раби-уль-авваля",
@@ -65,3 +65,32 @@ const HIJRI_MONTHS_GEN = [
   "зуль-када",
   "зуль-хиджа",
 ];
+
+export const HIJRI_MONTH_NAMES = [
+  "мухаррам",
+  "сафар",
+  "раби-уль-авваль",
+  "раби-ус-сани",
+  "джумада-ль-уля",
+  "джумада-ль-ахира",
+  "раджаб",
+  "шаабан",
+  "рамадан",
+  "шавваль",
+  "зуль-када",
+  "зуль-хиджа",
+];
+
+/** Памятные даты хиджры в промежутке [from, to] (полдень по Москве каждого дня). */
+export function eventsBetween(from: Date, to: Date): UpcomingDate[] {
+  const out: UpcomingDate[] = [];
+  const start = new Date(`${dateKey(from)}T12:00:00+03:00`);
+  for (let t = start.getTime(); t <= to.getTime(); t += DAY) {
+    const d = new Date(t);
+    const h = toHijri(d);
+    const ev = EVENTS.find((e) => e.month === h.month && e.day === h.day);
+    if (ev)
+      out.push({ date: d, title: ev.title, note: `${h.day} ${HIJRI_MONTHS_GEN[h.month - 1]} ${h.year}`, approx: true });
+  }
+  return out;
+}
