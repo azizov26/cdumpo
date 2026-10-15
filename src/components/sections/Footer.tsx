@@ -78,7 +78,9 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col gap-2 border-t border-light/10 pt-6 text-[13px] text-light/62 sm:flex-row sm:justify-between">
           <span>© ЦДУМ ПО, 2026</span>
-          <span>г. Пенза</span>
+          <Link href="/politika" className="inline-flex min-h-11 items-center hover:text-light sm:-my-3">
+            Политика обработки персональных данных
+          </Link>
         </div>
       </div>
     </footer>

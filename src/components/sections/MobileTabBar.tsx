@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Icon, type IconName } from "@/components/ui/Icon";
+import { isActive } from "@/lib/site";
 
 const tabs: { href: string; label: string; icon: IconName; dobro?: boolean }[] = [
   { href: "/", label: "Сегодня", icon: "today" },
@@ -10,7 +14,9 @@ const tabs: { href: string; label: string; icon: IconName; dobro?: boolean }[] =
 ];
 
 /** Нижняя панель (эталон .tabbar): 84 px вместе с зоной home-indicator. */
-export function MobileTabBar({ current }: { current: string }) {
+export function MobileTabBar({ current }: { current?: string }) {
+  const pathname = usePathname();
+  const here = current ?? pathname;
   return (
     <nav
       aria-label="Разделы"
@@ -18,7 +24,7 @@ export function MobileTabBar({ current }: { current: string }) {
     >
       <ul className="grid grid-cols-5 px-1.5 pt-2">
         {tabs.map((t) => {
-          const on = current === t.href;
+          const on = isActive(t.href, here);
           return (
             <li key={t.href}>
               <Link

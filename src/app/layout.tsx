@@ -4,15 +4,43 @@ import "@fontsource-variable/cormorant-garamond/wght.css";
 import "@fontsource-variable/cormorant-garamond/wght-italic.css";
 import "@fontsource/amiri/arabic-400.css";
 import "./globals.css";
+import { YandexMetrika } from "@/components/layout/YandexMetrika";
+import { SITE_FULL_NAME, SITE_NAME, SITE_URL, YANDEX_VERIFICATION } from "@/lib/site";
+
+const DESCRIPTION =
+  "Время намаза в Пензе, новости мусульманской уммы Пензенской области, строительство Соборной мечети Пензы. Официальный сайт ЦДУМ ПО.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "ЦДУМ ПО — Централизованное духовное управление мусульман Пензенской области",
-    template: "%s — ЦДУМ ПО",
+    default: `${SITE_NAME} — ${SITE_FULL_NAME}`,
+    template: `%s — ${SITE_NAME}`,
   },
-  description:
-    "Новости мусульманской уммы Пензенской области, время намаза, строительство Соборной мечети Пензы.",
+  description: DESCRIPTION,
+  applicationName: SITE_NAME,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "ru_RU",
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} — ${SITE_FULL_NAME}`,
+    description: DESCRIPTION,
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: `${SITE_NAME} — Небо над Пензой` }],
+  },
+  twitter: { card: "summary_large_image" },
+  verification: { yandex: YANDEX_VERIFICATION },
 };
+
+// Разметка организации — только подтверждённые факты (PRODUCT.md).
+const organizationLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE_FULL_NAME,
+  alternateName: [SITE_NAME, "Муфтият Пензы"],
+  url: SITE_URL,
+  logo: `${SITE_URL}/brand/logo.png`,
+  address: { "@type": "PostalAddress", addressLocality: "Пенза", streetAddress: "ул. Бакунина, 10", addressCountry: "RU" },
+}).replace(/</g, "\\u003c");
 
 export const viewport: Viewport = {
   themeColor: "#0b1636",
@@ -39,7 +67,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: earlySky }} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <YandexMetrika />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: organizationLd }} />
+      </body>
     </html>
   );
 }

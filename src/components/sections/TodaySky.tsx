@@ -19,19 +19,12 @@ import {
 } from "@/lib/prayer/times";
 import { useApplySky, useSkyClock, type SkyClock } from "@/lib/prayer/useSkyClock";
 import { sunAngle } from "@/lib/sky/geometry";
+import { NAV } from "@/lib/site";
 
 // Первый экран «Сегодня» по эталону (README пакета: телефон 390×844, компьютер 1440×900).
 
 export const HERO_ID = "today-sky";
 
-export const NAV = [
-  { href: "/namaz", label: "Намаз" },
-  { href: "/mosques", label: "Мечети" },
-  { href: "/dobro", label: "Добро" },
-  { href: "/znaniya", label: "Знания" },
-  { href: "/umma", label: "Жизнь уммы" },
-  { href: "/muftiyat", label: "Муфтият" },
-];
 
 /** Задержка появления элемента после заставки (styles/motion.css → .reveal). */
 const d = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
