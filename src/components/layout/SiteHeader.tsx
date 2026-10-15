@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { Icon } from "@/components/ui/Icon";
 import { isActive, NAV } from "@/lib/site";
 
-/** Шапка внутренних страниц: логотип, разделы, «Зажечь звезду». На главной шапка живёт внутри неба. */
+/** Шапка внутренних страниц: логотип, разделы, «Положить камень». На главной шапка живёт внутри неба. */
 export function SiteHeader() {
   const pathname = usePathname();
   return (
@@ -63,8 +63,8 @@ export function SiteHeader() {
           href="/dobro"
           className="hidden h-[46px] items-center gap-2 rounded-full bg-zarya px-[22px] text-[14.5px] font-bold text-on-gold transition-transform duration-150 ease-out active:scale-[0.97] md:inline-flex"
         >
-          <Icon name="light-star" className="size-[18px]" />
-          Зажечь звезду
+          <Icon name="stones" className="size-[18px]" />
+          Положить камень
         </Link>
       </div>
     </header>

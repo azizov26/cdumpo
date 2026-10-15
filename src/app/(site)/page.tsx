@@ -1,5 +1,5 @@
 import { BismillahIntro } from "@/components/sections/BismillahIntro";
-import { CathedralConstellation } from "@/components/sections/CathedralConstellation";
+import { CathedralStones } from "@/components/sections/CathedralStones";
 import { CompactBar } from "@/components/sections/CompactBar";
 import { Footer } from "@/components/sections/Footer";
 import { Reveal } from "@/components/layout/Reveal";
@@ -37,7 +37,7 @@ export default function TodayPage() {
           <MuftiyatSection />
         </Reveal>
         <Reveal>
-          <CathedralConstellation />
+          <CathedralStones />
         </Reveal>
         <Reveal>
           <UpcomingDates />

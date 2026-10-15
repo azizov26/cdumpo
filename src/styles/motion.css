@@ -233,3 +233,126 @@ html[data-motion="0"] .reveal-block {
     transition: none;
   }
 }
+
+/* «Камень к камню» (components/dobro/Masonry.tsx).
+   Кладка поднимается рядами при первом появлении на экране (задержка — от высоты ряда),
+   новый камень опускается на место, шов вспыхивает и гаснет. */
+svg[data-phase="wait"] .stone {
+  opacity: 0;
+}
+svg[data-phase="rise"] .stone {
+  animation: stone-rise 700ms var(--ease-out) both;
+}
+@keyframes stone-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+.stone-new {
+  animation: stone-lay 1s var(--ease-out) both;
+}
+@keyframes stone-lay {
+  from {
+    opacity: 0;
+    transform: translateY(-46px);
+  }
+}
+.stone-seam {
+  animation: stone-seam 1.6s var(--ease-out) 600ms both;
+}
+@keyframes stone-seam {
+  to {
+    opacity: 0;
+  }
+}
+.stone-light {
+  transition:
+    opacity 1.2s var(--ease-out),
+    fill 1.2s var(--ease-out);
+}
+html[data-motion="0"] :is(.stone, .stone-new, .stone-seam, .stone-light) {
+  animation: none;
+  transition: none;
+}
+html[data-motion="0"] .stone-seam {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .stone,
+  .stone-new,
+  .stone-light {
+    animation: none !important;
+    transition: none;
+  }
+  .stone-seam {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* Лента поступлений: строки, добавленные «Показать ещё», проявляются. */
+.ledger-in {
+  animation: ledger-in 500ms var(--ease-out) both;
+}
+@keyframes ledger-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+html[data-motion="0"] .ledger-in {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ledger-in {
+    animation: none;
+  }
+}
+
+/* Иллюстрации мечетей (components/mosques/MosqueArt.tsx): контур прорисовывается, затем заливка и свет в окнах. */
+svg[data-phase="idle"] .ma-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+svg[data-phase="idle"] :is(.ma-fill, .ma-win) {
+  opacity: 0;
+}
+svg[data-phase="draw"] .ma-line {
+  stroke-dasharray: 1;
+  animation: ma-draw 1.4s var(--ease-out) var(--d, 0ms) both;
+}
+@keyframes ma-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+svg[data-phase="draw"] .ma-fill {
+  animation: ma-fade 900ms var(--ease-out) 1.2s both;
+}
+svg[data-phase="draw"] .ma-win {
+  animation: ma-fade 700ms var(--ease-out) var(--d, 0ms) both;
+}
+@keyframes ma-fade {
+  from {
+    opacity: 0;
+  }
+}
+/* Уровень 0 и reduce-motion: компонент не переводит рисунок в idle — сразу готовый кадр. */
+
+/* Фонарь «Вопроса имаму»: свет следует за длиной вопроса. */
+.lantern-light {
+  opacity: var(--glow, 0.12);
+  transition: opacity 600ms var(--ease-out);
+}
+html[data-motion="0"] .lantern-light {
+  transition: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lantern-light {
+    transition: none;
+  }
+}

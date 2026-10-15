@@ -15,7 +15,8 @@ const columns = [
   {
     title: "Добро",
     links: [
-      { href: "/dobro", label: "Небо добрых дел" },
+      { href: "/dobro", label: "Камень к камню" },
+      { href: "/dobro/postupleniya", label: "Все поступления" },
       { href: "/dobro/sadaka", label: "Садака по пятницам" },
       { href: "/dobro/zakyat", label: "Закят" },
       { href: "/dobro/otchyoty", label: "Отчёты" },
@@ -55,8 +56,8 @@ export function Footer() {
                 href="/dobro"
                 className="inline-flex h-[46px] items-center gap-2 rounded-full bg-zarya px-[22px] text-[14.5px] font-bold text-on-gold"
               >
-                <Icon name="light-star" className="size-[18px]" />
-                Зажечь звезду
+                <Icon name="stones" className="size-[18px]" />
+                Положить камень
               </Link>
             </div>
           </div>

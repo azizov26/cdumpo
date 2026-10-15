@@ -25,12 +25,20 @@ export const SECTIONS: Section[] = [
   {
     href: "/mosques",
     title: "Мечети",
-    about: "Мечети Пензы и области на карте: адрес, имам, время джума, как проехать.",
+    about: "Историческая мечеть на Бакунина и Соборная мечеть на проспекте Победы; позже — карта мечетей области.",
+    ready: true,
   },
   {
     href: "/dobro",
-    title: "Небо добрых дел",
-    about: "Строительство Соборной мечети Пензы: созвездие, этапы стройки и пожертвования.",
+    title: "Камень к камню",
+    about: "Строительство Соборной мечети Пензы: кладка растёт вместе со сбором, этапы стройки и пожертвования.",
+    ready: true,
+  },
+  {
+    href: "/dobro/postupleniya",
+    title: "Все поступления",
+    about: "Каждое пожертвование на Соборную мечеть: когда, сколько и каким способом, без имён.",
+    ready: true,
   },
   { href: "/dobro/sadaka", title: "Садака по пятницам", about: "Регулярная садака и её назначение." },
   { href: "/dobro/zakyat", title: "Закят", about: "Калькулятор закята и категории получателей." },
@@ -65,7 +73,7 @@ export const SECTIONS: Section[] = [
     about: "Адрес, телефоны, электронная почта, социальные сети и контакты для СМИ.",
     ready: true,
   },
-  { href: "/vopros-imamu", title: "Вопрос имаму", about: "Задайте вопрос имаму и получите ответ." },
+  { href: "/vopros-imamu", title: "Вопрос имаму", about: "Задайте вопрос имаму и получите ответ.", ready: true },
   { href: "/obryady", title: "Обряды и запись", about: "Никах, имянаречение, джаназа: как проходит и как записаться." },
   {
     href: "/politika",
@@ -90,7 +98,7 @@ export const NAV = [
 /** Группы экрана «Ещё» (концепция 2.0, вкладка «Ещё»). */
 export const MORE_GROUPS: { title: string; hrefs: string[] }[] = [
   { title: "Жизнь общины", hrefs: ["/umma", "/znaniya", "/vopros-imamu", "/obryady"] },
-  { title: "Добро", hrefs: ["/dobro", "/dobro/sadaka", "/dobro/zakyat", "/dobro/otchyoty"] },
+  { title: "Добро", hrefs: ["/dobro", "/dobro/postupleniya", "/dobro/sadaka", "/dobro/zakyat", "/dobro/otchyoty"] },
   { title: "Муфтият", hrefs: ["/muftiyat", "/muftiyat/struktura", "/muftiyat/dokumenty", "/muftiyat/kontakty"] },
 ];
 

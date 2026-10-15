@@ -36,10 +36,11 @@ const paths = {
       <circle cx="12" cy="12" r="2.2" />
     </>
   ),
-  "light-star": (
+  // «Положить камень» — кладка с перевязкой швов.
+  stones: (
     <>
-      <polygon points={STAR8} />
-      <path d="M12 8.5v7M8.5 12h7" />
+      <rect x="3" y="5" width="18" height="14" rx="1.5" />
+      <path d="M3 9.7h18M3 14.3h18M9.5 5v4.7M15.5 5v4.7M12.5 9.7v4.6M6.5 14.3V19M18.5 14.3V19" />
     </>
   ),
   calendar: (

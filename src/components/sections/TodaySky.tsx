@@ -277,8 +277,8 @@ export function TodaySky() {
               href="/dobro"
               className="inline-flex h-[46px] items-center gap-2 rounded-full bg-zarya px-[22px] text-[14.5px] font-bold text-on-gold"
             >
-              <Icon name="light-star" className="size-[18px]" />
-              Зажечь звезду
+              <Icon name="stones" className="size-[18px]" />
+              Положить камень
             </Link>
           </div>
         </header>
@@ -304,8 +304,8 @@ export function TodaySky() {
             href="/dobro"
             className="flex h-[66px] items-center gap-2.5 rounded-[18px] bg-zarya px-[18px] text-[15px] font-semibold text-on-gold"
           >
-            <Icon name="light-star" className="size-[22px]" />
-            Небо добрых дел
+            <Icon name="stones" className="size-[22px]" />
+            Камень к камню
           </Link>
         </div>
       </div>
