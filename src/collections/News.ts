@@ -1,6 +1,6 @@
 import type { CollectionConfig } from "payload";
 import { RUBRICS } from "@/lib/content/rubrics";
-import { publishedOrStaff, staffOnly } from "@/lib/cms/access";
+import { adminOnlyField, publishedOrStaff, staffOnly } from "@/lib/cms/access";
 import { dateField, slugField } from "@/lib/cms/fields";
 import { revalidateAfterChange, revalidateAfterDelete } from "@/lib/cms/revalidate";
 
@@ -33,6 +33,17 @@ export const News: CollectionConfig = {
       admin: { description: "Если фото нет, на сайте будет фирменная заставка с небом." },
     },
     { name: "body", type: "richText", label: "Текст новости" },
+    {
+      name: "legacyHtml",
+      type: "textarea",
+      label: "Текст со старого сайта (HTML)",
+      access: { create: adminOnlyField, update: adminOnlyField },
+      admin: {
+        position: "sidebar",
+        description:
+          "Заполнено только у перенесённых новостей. Показывается на сайте, пока поле «Текст новости» пустое; чтобы переписать, заполните «Текст новости».",
+      },
+    },
     {
       name: "rubric",
       type: "select",

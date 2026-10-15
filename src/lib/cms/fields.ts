@@ -3,7 +3,8 @@ import { slugify } from "@/lib/slug";
 
 /** Адрес страницы: если поле пустое — собирается из заголовка латиницей. Можно поправить вручную. */
 const fillSlug: FieldHook = ({ value, data, operation, originalDoc }) => {
-  if (typeof value === "string" && value.trim()) return slugify(value);
+  // Уже готовый адрес (например, из переноса со старого сайта) не укорачиваем: на него ведут редиректы.
+  if (typeof value === "string" && value.trim()) return slugify(value, 200);
   const title = (data?.title ?? originalDoc?.title) as string | undefined;
   if (operation === "create" || !originalDoc?.slug) return title ? slugify(title) : value;
   return originalDoc.slug;

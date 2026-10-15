@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { sanitizeLegacyHtml } from "@/lib/sanitize/legacyHtml";
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import { Cover } from "@/components/sections/NewsCard";
 import { ShareLinks } from "@/components/sections/ShareLinks";
@@ -60,7 +61,16 @@ export default async function NewsPage({ params }: PageProps<"/umma/[slug]">) {
         <h1 className="mt-3 font-display text-[36px] leading-[1.05] font-medium md:text-[56px]">{item.title}</h1>
         {item.lead && <p className="mt-5 text-[19px] leading-[1.55] text-fg-2">{item.lead}</p>}
         <Cover item={item} width={1200} height={750} className="mt-8 h-[220px] w-full rounded-[24px] md:h-[420px]" />
-        {item.body && <RichText data={item.body} className="news-body mt-8 text-[17px] leading-[1.7] md:text-[18px]" />}
+        {item.body ? (
+          <RichText data={item.body} className="news-body mt-8 text-[17px] leading-[1.7] md:text-[18px]" />
+        ) : (
+          item.legacyHtml && (
+            <div
+              className="news-body mt-8 text-[17px] leading-[1.7] md:text-[18px]"
+              dangerouslySetInnerHTML={{ __html: sanitizeLegacyHtml(item.legacyHtml) }}
+            />
+          )
+        )}
         <div className="mt-10 border-t border-line pt-6">
           <ShareLinks url={`${SITE_URL}/umma/${item.slug}`} title={item.title} />
         </div>

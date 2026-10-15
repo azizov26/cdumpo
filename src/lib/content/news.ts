@@ -17,6 +17,8 @@ export type NewsItem = {
   lead?: string;
   /** Текст новости — rich text из админки. */
   body?: SerializedEditorState;
+  /** Текст перенесённой новости (HTML со старого сайта); на сайте показывается только после санитайзера. */
+  legacyHtml?: string;
   /** Обложка; пока фото нет — фирменная заглушка-небо. */
   cover?: { src: string; alt: string };
   placeholderSky?: SkyState;
@@ -34,6 +36,7 @@ function toItem(doc: News, withBody = false): NewsItem {
     lead: doc.lead ?? undefined,
     // Текст нужен только на странице новости; в ленте он лишний вес.
     body: withBody ? ((doc.body as SerializedEditorState | null) ?? undefined) : undefined,
+    legacyHtml: withBody ? (doc.legacyHtml ?? undefined) : undefined,
     cover: cover && { src: cover.sizes?.wide?.url ?? cover.url!, alt: cover.alt },
   };
 }

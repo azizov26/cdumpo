@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import type { NextConfig } from "next";
 import { withPayload } from "@payloadcms/next/withPayload";
 
@@ -33,7 +34,22 @@ const baseHeaders = [
   ...(isProd ? [{ key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" }] : []),
 ];
 
+// Постоянные переадресации со старого сайта на Chatium (scripts/scrape-cdumpo.mjs): /cdumpo/article?id=… → /umma/<адрес>.
+type LegacyRedirect = { from: string; to: string };
+const legacyRedirects = (JSON.parse(readFileSync("data/legacy/redirects.json", "utf8")) as LegacyRedirect[]).map(
+  ({ from, to }) => {
+    const [source, query] = from.split("?");
+    const id = new URLSearchParams(query ?? "").get("id");
+    return id
+      ? { source, has: [{ type: "query" as const, key: "id", value: id }], destination: to, permanent: true }
+      : { source, destination: to, permanent: true };
+  },
+);
+
 const nextConfig: NextConfig = {
+  async redirects() {
+    return legacyRedirects;
+  },
   async headers() {
     return [
       { source: "/:path*", headers: baseHeaders },

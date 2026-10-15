@@ -167,6 +167,10 @@ export interface News {
     };
     [k: string]: unknown;
   } | null;
+  /**
+   * Заполнено только у перенесённых новостей. Показывается на сайте, пока поле «Текст новости» пустое; чтобы переписать, заполните «Текст новости».
+   */
+  legacyHtml?: string | null;
   rubric: 'Муфтият' | 'Соборная мечеть' | 'Видео' | 'Фото';
   date: string;
   /**
@@ -512,6 +516,7 @@ export interface NewsSelect<T extends boolean = true> {
   lead?: T;
   cover?: T;
   body?: T;
+  legacyHtml?: T;
   rubric?: T;
   date?: T;
   slug?: T;
