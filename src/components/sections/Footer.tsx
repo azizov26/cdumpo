@@ -18,7 +18,7 @@ const columns = [
       { href: "/dobro", label: "Камень к камню" },
       { href: "/dobro/postupleniya", label: "Все поступления" },
       { href: "/dobro/sadaka", label: "Садака по пятницам" },
-      { href: "/dobro/zakyat", label: "Закят" },
+      { href: "/zakyat", label: "Закят" },
       { href: "/dobro/otchyoty", label: "Отчёты" },
     ],
   },

@@ -5,7 +5,7 @@ import { expect, test } from "@playwright/test";
 test.use({ reducedMotion: "reduce" });
 
 const SKIES = ["dawn", "day", "asr", "evening", "night"];
-const PAGES = ["/namaz", "/umma", "/muftiyat", "/muftiyat/kontakty", "/eshchyo", "/dobro/zakyat", "/net-takoj"];
+const PAGES = ["/namaz", "/umma", "/muftiyat", "/muftiyat/kontakty", "/eshchyo", "/zakyat", "/net-takoj"];
 
 async function check(page: import("@playwright/test").Page, label: string) {
   const { violations } = await new AxeBuilder({ page })

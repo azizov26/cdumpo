@@ -48,7 +48,8 @@ const legacyRedirects = (JSON.parse(readFileSync("data/legacy/redirects.json", "
 
 const nextConfig: NextConfig = {
   async redirects() {
-    return legacyRedirects;
+    // Закят переехал из «Добра» в отдельный раздел.
+    return [{ source: "/dobro/zakyat", destination: "/zakyat", permanent: true }, ...legacyRedirects];
   },
   async headers() {
     return [

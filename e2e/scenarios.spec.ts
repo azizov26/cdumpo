@@ -70,8 +70,8 @@ test("SEO: robots, sitemap, метатеги", async ({ page, request }) => {
   expect(robots).toContain("Sitemap: https://cdumpo.ru/sitemap.xml");
   const sitemap = await (await request.get("/sitemap.xml")).text();
   expect(sitemap).toContain("<loc>https://cdumpo.ru/namaz</loc>");
-  expect(sitemap).not.toContain("/dobro/zakyat"); // заглушки не индексируем
-  await page.goto("/dobro/zakyat");
+  expect(sitemap).not.toContain("/dobro/sadaka"); // заглушки не индексируем
+  await page.goto("/dobro/sadaka");
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
   await page.goto("/namaz");
   await expect(page).toHaveTitle(/Время намаза в Пензе/);

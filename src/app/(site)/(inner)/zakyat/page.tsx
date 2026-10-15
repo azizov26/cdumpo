@@ -6,7 +6,7 @@ import { ZakatCalculator } from "@/components/zakat/ZakatCalculator";
 export const metadata: Metadata = {
   title: "Закят: калькулятор",
   description: "Посчитайте закят: имущество, нисаб по цене золота и 2,5 %. Расчёт ориентировочный.",
-  alternates: { canonical: "/dobro/zakyat" },
+  alternates: { canonical: "/zakyat" },
 };
 
 export default function ZakatPage() {

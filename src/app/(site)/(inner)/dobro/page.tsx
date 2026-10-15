@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
 import { PageHeading } from "@/components/layout/PageHeading";
 import { CampaignTotals } from "@/components/dobro/CampaignTotals";
 import { DonateForm } from "@/components/dobro/DonateForm";
@@ -82,23 +81,6 @@ export default async function DobroPage() {
             </li>
           ))}
         </ol>
-      </section>
-
-      <section aria-labelledby="zakat-title" className="container-site pt-14 md:pt-20">
-        <div className="grid items-center gap-6 rounded-xl border border-line bg-surface p-6 md:grid-cols-[1fr_auto] md:gap-10 md:p-10">
-          <div>
-            <h2 id="zakat-title" className="font-display text-[32px] leading-none font-medium md:text-[44px]">
-              Закят: сколько и достигло ли нисаба
-            </h2>
-            <p className="mt-4 max-w-[62ch] text-[16px] leading-[1.6] text-fg-2">
-              Укажите деньги, золото, товары и долги — калькулятор покажет, достигло ли имущество нисаба и сколько
-              составляет закят. Расчёт ориентировочный, цифры остаются в вашем браузере.
-            </p>
-          </div>
-          <Button href="/dobro/zakyat" variant="gold">
-            Рассчитать закят
-          </Button>
-        </div>
       </section>
 
       <section

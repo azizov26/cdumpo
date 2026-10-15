@@ -54,11 +54,17 @@ export const SECTIONS: Section[] = [
     ready: true,
   },
   { href: "/dobro/sadaka", title: "Садака по пятницам", about: "Регулярная садака и её назначение." },
-  { href: "/dobro/zakyat", title: "Закят", about: "Калькулятор закята и категории получателей.", ready: true },
+
   {
     href: "/dobro/otchyoty",
     title: "Отчёты о сборах",
     about: "Ежемесячные отчёты: сколько собрано и на что пошли средства.",
+  },
+  {
+    href: "/zakyat",
+    title: "Закят",
+    about: "Калькулятор закята: достигло ли имущество нисаба и сколько платить.",
+    ready: true,
   },
   { href: "/znaniya", title: "Знания", about: "Лекции, видео и материалы для изучения религии." },
   {
@@ -110,6 +116,7 @@ export const NAV = [
   { href: "/namaz", label: "Намаз" },
   { href: "/mosques", label: "Мечети" },
   { href: "/dobro", label: "Добро" },
+  { href: "/zakyat", label: "Закят" },
   { href: "/znaniya", label: "Знания" },
   { href: "/umma", label: "Жизнь уммы" },
   { href: "/muftiyat", label: "Муфтият" },
@@ -119,7 +126,7 @@ export const NAV = [
 export const MORE_GROUPS: { title: string; hrefs: string[] }[] = [
   { title: "Намаз", hrefs: ["/namaz", "/namaz/kibla", "/namaz/kalendar"] },
   { title: "Жизнь общины", hrefs: ["/umma", "/znaniya", "/vopros-imamu", "/obryady"] },
-  { title: "Добро", hrefs: ["/dobro", "/dobro/postupleniya", "/dobro/sadaka", "/dobro/zakyat", "/dobro/otchyoty"] },
+  { title: "Добро", hrefs: ["/dobro", "/dobro/postupleniya", "/dobro/sadaka", "/zakyat", "/dobro/otchyoty"] },
   { title: "Муфтият", hrefs: ["/muftiyat", "/muftiyat/struktura", "/muftiyat/dokumenty", "/muftiyat/kontakty"] },
 ];
 
