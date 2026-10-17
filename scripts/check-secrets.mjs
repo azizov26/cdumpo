@@ -15,8 +15,7 @@ const problems = [];
 // Файлы с секретами по имени.
 const forbiddenName = /(^|\/)(\.env(\..+)?|.*\.(pem|key|p12|pfx|keystore)|id_(rsa|ed25519)|credentials\.json)$/;
 for (const f of files) {
-  if (forbiddenName.test(f) && !f.endsWith(".env.example"))
-    problems.push(`${f}: файл с секретами не должен быть в git`);
+  if (forbiddenName.test(f) && !/\.example$/.test(f)) problems.push(`${f}: файл с секретами не должен быть в git`);
 }
 
 // Содержимое: известные формы ключей и присвоение значения переменным-секретам.
@@ -32,7 +31,7 @@ const patterns = [
     "пароль БД в строке подключения",
   ],
   [
-    /\b(PAYLOAD_SECRET|S3_SECRET\w*|S3_ACCESS\w*|SECRET_KEY|API_KEY|PASSWORD|TOKEN)\s*[=:]\s*["']?(?!ci-only)[A-Za-z0-9+/_-]{20,}["']?/i,
+    /\b(PAYLOAD_SECRET|S3_SECRET\w*|S3_ACCESS\w*|SECRET_KEY|API_KEY|PASSWORD|TOKEN)\s*[=:]\s*["']?(?!ci-only|build-only)[A-Za-z0-9+/_-]{20,}["']?/i,
     "значение секретной переменной",
   ],
 ];

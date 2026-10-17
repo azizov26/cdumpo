@@ -1,0 +1,50 @@
+# Продакшен на одном сервере: база + миграции + сайт. Перед сайтом ставится nginx (HTTPS, лимиты, закрытая /admin).
+# Секреты — в файле .env.production рядом с этим (образец .env.production.example), в git он не попадает.
+#   docker compose -f docker-compose.prod.yml --env-file .env.production up -d --build
+services:
+  db:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: cdumpo
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?задайте POSTGRES_PASSWORD в .env.production}
+      POSTGRES_DB: cdumpo
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    # Порт наружу не публикуется: к базе ходит только сайт по внутренней сети.
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cdumpo -d cdumpo"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  migrate:
+    build: .
+    image: cdumpo:latest
+    command: ["node_modules/.bin/payload", "migrate"]
+    environment: &app-env
+      NODE_ENV: production
+      DATABASE_URI: postgres://cdumpo:${POSTGRES_PASSWORD}@db:5432/cdumpo
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET:?задайте PAYLOAD_SECRET в .env.production}
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://cdumpo.ru}
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+
+  app:
+    image: cdumpo:latest
+    restart: unless-stopped
+    environment: *app-env
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    volumes:
+      - media:/app/media
+    # Только для nginx на этом же сервере: снаружи сайт напрямую не открыт.
+    ports:
+      - "127.0.0.1:3000:3000"
+
+volumes:
+  pgdata:
+  media:

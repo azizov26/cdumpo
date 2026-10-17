@@ -1,0 +1,20 @@
+# Не попадает в образ: секреты, зависимости (ставятся внутри), артефакты, большие данные и медиа.
+.git
+.github
+.env*
+!.env.example
+node_modules
+.next
+.data
+.playwright-mcp
+.impeccable
+.claude
+test-results
+playwright-report
+coverage
+media
+data/legacy/media
+docs/concept-v2-source
+docs/reference
+*.tsbuildinfo
+npm-debug.log*

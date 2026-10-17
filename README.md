@@ -118,6 +118,21 @@ pnpm start       # http://localhost:3000
 
 Перед запуском на хостинге задайте в окружении `DATABASE_URI`, `PAYLOAD_SECRET` и `NEXT_PUBLIC_SITE_URL` (адрес сайта, например `https://cdumpo.ru`; по умолчанию используется он). В продакшене сайт не запустится без `PAYLOAD_SECRET` длиной от 32 символов. Подробности деплоя будут описаны после выбора хостинга (этап 12 в [ROADMAP.md](ROADMAP.md)).
 
+## Запуск на сервере (Docker)
+
+Нужны Docker и Docker Compose на сервере. Файлы: [Dockerfile](Dockerfile), [docker-compose.prod.yml](docker-compose.prod.yml), образец настроек [.env.production.example](.env.production.example).
+
+```bash
+cp .env.production.example .env.production   # заполнить POSTGRES_PASSWORD и PAYLOAD_SECRET
+docker compose -f docker-compose.prod.yml --env-file .env.production up -d --build
+```
+
+Что произойдёт: поднимется база, затем применятся миграции (`migrate`), затем запустится сайт на `127.0.0.1:3000`. Наружу сайт напрямую не открыт: перед ним ставится nginx (HTTPS, лимиты запросов, закрытая `/admin`). База из интернета недоступна. Загруженные в админке файлы лежат в томе `media`, база — в томе `pgdata`.
+
+Обновление сайта: `git pull`, затем та же команда `up -d --build`. Секреты лежат только в `.env.production` на сервере и передаются лично.
+
+> Образ и compose-файл **ещё не проверены на сервере** (в разработке Docker не запускался). Первый запуск стоит сделать на тестовой машине. Конфигурация nginx и бэкапы базы — следующие шаги этапа 12 в [ROADMAP.md](ROADMAP.md).
+
 ## Структура проекта
 
 ```
