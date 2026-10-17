@@ -3,6 +3,9 @@ allowBuilds:
   unrs-resolver: true
   esbuild: true
   "@embedded-postgres/darwin-arm64": true
+  # Встроенная база нужна только для разработки на Mac; на Linux (сервер, CI, Docker) её скрипты не запускаем.
+  "@embedded-postgres/linux-arm64": false
+  "@embedded-postgres/linux-x64": false
 overrides:
   undici@>=7.0.0 <7.29.1: ">=7.29.1"
 auditConfig:

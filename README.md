@@ -118,7 +118,9 @@ pnpm start       # http://localhost:3000
 
 Перед запуском на хостинге задайте в окружении `DATABASE_URI`, `PAYLOAD_SECRET` и `NEXT_PUBLIC_SITE_URL` (адрес сайта, например `https://cdumpo.ru`; по умолчанию используется он). В продакшене сайт не запустится без `PAYLOAD_SECRET` длиной от 32 символов. Подробности деплоя будут описаны после выбора хостинга (этап 12 в [ROADMAP.md](ROADMAP.md)).
 
-## Запуск на сервере (Docker)
+## Запуск на сервере (Docker) — заготовка, пока не рабочая
+
+> **Статус:** хостинг ещё не выбран, поэтому Docker-файлы лежат как заготовка. Пробная сборка образа **не прошла**: `next build` требует доступной базы данных (страницы с данными из админки строятся заранее), а при сборке образа базы нет. Для любого хостинга сборку надо запускать при работающем Postgres. Вопросы к муфтияту про хостинг — в [docs/zapros-muftiyatu.md](docs/zapros-muftiyatu.md), раздел 7.
 
 Нужны Docker и Docker Compose на сервере. Файлы: [Dockerfile](Dockerfile), [docker-compose.prod.yml](docker-compose.prod.yml), образец настроек [.env.production.example](.env.production.example).
 
@@ -131,7 +133,7 @@ docker compose -f docker-compose.prod.yml --env-file .env.production up -d --bui
 
 Обновление сайта: `git pull`, затем та же команда `up -d --build`. Секреты лежат только в `.env.production` на сервере и передаются лично.
 
-> Образ и compose-файл **ещё не проверены на сервере** (в разработке Docker не запускался). Первый запуск стоит сделать на тестовой машине. Конфигурация nginx и бэкапы базы — следующие шаги этапа 12 в [ROADMAP.md](ROADMAP.md).
+> Конфигурация nginx и бэкапы базы — следующие шаги этапа 12 в [ROADMAP.md](ROADMAP.md).
 
 ## Структура проекта
 
