@@ -27,7 +27,7 @@ jobs:
       DATABASE_URI: postgres://cdumpo:cdumpo@localhost:5432/cdumpo
       PAYLOAD_SECRET: ci-only-not-a-real-secret-0000000000000000000000000000
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v4 # версия pnpm — из поля packageManager в package.json
       - uses: actions/setup-node@v4
         with:
