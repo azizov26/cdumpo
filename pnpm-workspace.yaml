@@ -7,6 +7,8 @@ allowBuilds:
   "@embedded-postgres/linux-arm64": false
   "@embedded-postgres/linux-x64": false
 overrides:
+  # Тянется через Payload (@lexical/headless), исправлено в 21.0.4; пересмотреть при обновлении Payload.
+  happy-dom@<21.0.4: ">=21.0.4"
   undici@>=7.0.0 <7.29.1: ">=7.29.1"
 auditConfig:
   # braces: только сборка стилей (sass), в рабочий код не попадает; исправления нет. Пересмотреть при обновлении Next.js.
